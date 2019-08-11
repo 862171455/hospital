@@ -3,6 +3,7 @@ package org.java.service.impl;
 import org.java.dao.HisMapper;
 import org.java.service.HisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -15,6 +16,7 @@ public class HisServiceImpl implements HisService {
 	@Autowired
 	private HisMapper hisMapper;
 	
+	@Cacheable("findHis")
 	@Override
 	public Map<String, Object> findHis() {
 		return hisMapper.findHis();

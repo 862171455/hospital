@@ -3,6 +3,7 @@ package org.java.service.impl;
 import org.java.dao.DepartmentMapper;
 import org.java.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	private DepartmentMapper departmentMapper;
 	
+	@Cacheable("findAllDepartment")
 	@Override
 	public List<Map<String, Object>> findAllDepartment() {
 		return departmentMapper.findAllDepartment();
