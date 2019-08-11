@@ -1,0 +1,43 @@
+server:
+  port: 9999    #端口号
+spring:
+  thymeleaf:
+    encoding: UTF-8 #编码
+    cache: false
+    mode: LEGACYHTML5
+  datasource:       #数据库
+    url: jdbc:mysql://106.52.14.170:3306/his?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    tomcat:  #数据库连接池
+      max-idle: 100 #最大闲置 100个连接
+      min-idle: 10 #最小闲置 10个连接
+      max-active: 100 #最多允许多个连接同时执行
+      max-wait: 10000 #最大等待时间
+  activiti: #工作流配置
+    database-schema: update #数据activiti数据表已存在继续使用，不存在，则创建
+    check-process-definitions: false #不检测bpmn文件是否存在
+    #流程图是以文件上传的方式，上传到服务器，此处进行文件上传的相关设置
+  servlet:
+    multipart: #文件上传配置
+      max-request-size: 10MB
+      max-file-size: 1MB
+  redis: #redis配置
+    database: 0
+    host: 106.52.14.170 #IP地址
+    port: 6379 #端口号
+    jedis:
+      pool: #连接池
+        max-active: 100 #连接池最大连接数
+        max-wait: 3000 #连接池最大阻塞等待时间
+        max-idle: 50 #连接池中的最大空闲连接
+        min-idle: 10 #连接池中的最小空闲连接
+mybatis:     #mybatis配置
+  mapper-locations: mapper/*Mapper.xml
+  type-aliases-package: java.util
+  configuration:
+    call-setters-on-nulls: true  #返回空
+
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .mycss{
+        font-size: 22px;
+    }
+</style>
+<body>
+<h1>带附件的邮件</h1>
+<form  method="post" enctype="multipart/form-data">
+    收件人：  <input type="text" name="email" placeholder="请输入收件人邮箱,多人邮箱请用;分隔" class="mycss" size="50" required="required"><br>
+    附件:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="file" name="myfile" class="mycss"><br>
+    &nbsp;&nbsp;&nbsp; 标题：    <input type="text" name="title" class="mycss" placeholder="请输入标题内容"><br>
+    <br>
+    &nbsp;&nbsp;&nbsp; 内容：    <textarea cols="50" rows="10" name="msg"></textarea><br>
+    <input type="submit" class="mycss" value="发送">
+    <input type="button" class="mycss" onclick="history.back()" value="返回">
+
+</form>
+</body>
+</html>

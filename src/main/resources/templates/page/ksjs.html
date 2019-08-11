@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>漳州第四医院</title>
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/base.css'}">
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/main.css'}">
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/font-awesome.min.css'}">
+    <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+    <script th:src="@{'/js/jquery-1.4.4.js'}"></script>
+    <script th:src="@{'/js/fun.js'}"></script>
+    <script th:src="@{'/js/smoothscroll.min.js'}"></script>
+    <script th:src="@{'/js/jquery.cycle.all.js'}"></script>
+    <script th:src="@{'/js/jquery.SuperSlide.2.1.1.js'}"></script>
+    <script th:src="@{'/js/index.js'}"></script>
+    <script th:src="@{'/js/jquery-runbanner.js'}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/banner.css'}">
+</head>
+
+<body style="min-width:1200px;">
+<!--header-->
+<div class="topbox">
+    <div class="head" id="header">
+        <a th:href="@{'/page/index'}"><img th:src="${session.his.photo}"></a>
+        <div class="top_hotline">&nbsp;&nbsp;咨询热线<br><b>[[${session.his.tel}]]</b></div>
+    </div>
+</div>
+<!--header-->
+<!--导航nav-start-->
+<div class="nav">
+    <div class="clearfix" style="width:100%;">
+        <ul>
+            <li  class="cur"><a th:href="@{'/page/index'}">首 页</a><em>|</em></li>
+            <li>
+                <a href="">医院概况</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a th:href="@{'/page/about'}"><span>医院简介</span></a>
+                    <a th:href="@{'/page/zzjg'}"><span>组织架构</span></a>
+                    <a th:href="@{'/page/ylsb'}"><span>医疗设备</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">医护团队</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a th:href="@{'/page/ksjs'}"><span>科室介绍</span></a>
+                    <a th:href="@{'/page/zjjs'}"><span>专家介绍</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">新闻动态</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>新闻</span></a>
+                    <a href=""><span>院报</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">院务公开</a><em>|</em>
+                <div class="submenu">
+                    <a href=""><span>院务公告</span></a>
+                    <a href=""><span>招标公告</span></a>
+                    <a href=""><span>管理制度</span></a>
+                    <a href=""><span>特色栏目</span></a>
+                    <a href=""><span>职工之家</span></a>
+                    <a href=""><span>医院资质</span></a>
+                    <a href=""><span>特色推荐</span></a>
+                </div>
+            </li>
+
+            <li>
+                <a href="">党建工作</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>基层党建</span></a>
+                    <a href=""><span>纪检监察</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">人事招聘</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>招聘公示</span></a>
+                    <a href=""><span>招聘动态</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">科室教研</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>名医工作室</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">在线服务</a>
+                <div class="submenu" style="display: none;">
+                    <a th:href="@{'/page/contactus'}"><span>联系我们</span></a>
+                    <a th:href="@{'/page/hzfw'}"><span>患者服务</span></a>
+                    <a th:href="@{'/page/xlzx'}"><span>心理咨询留言板</span></a>
+                    <a th:href="@{'/page/yjfk'}"><span>意见反馈</span></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+	$(".nav ul li").hover(function(){
+		$(this).find(".submenu").slideDown();
+	},function(){
+		$(this).find(".submenu").slideUp();
+	});
+</script>
+<!--导航nav-end-->
+<!--banner-->
+<div class="innerbanner"><img th:src="@{'/images/bc4.jpg'}"></div>
+<!--banner-->
+<!--content-->
+<div class="pagescont web">
+   <div class="pagesleft" >
+    <div class="lefttitle">
+            <p>医护团队</p>
+            
+        </div>
+        <ul class="subnavlist">
+            <li><a class="cur"  th:href="@{'/page/ksjs'}">科室介绍</a></li>
+            <li><a th:href="@{'/page/zjjs'}">专家介绍</a></li>
+        </ul>
+   </div>
+    <div class="pageright">
+         <div class="pagetitle clearfix">
+            <span class="crumbslink">当前位置：<a href="">首页</a> &gt;  <a href="">医护团队</a>  &gt;  <a class="cur" href="">科室介绍</a></span>
+             <h4>科室介绍<span>科室介绍</span></h4>
+          </div>
+          <!--右侧内容-->
+          <div>
+              <tr th:each="k,st:${session.department}" >
+                  <div class="ksjsbox">
+                      <h1 th:text="${k.name}" >临床科室</h1>
+                      <div class="ksjslist">
+                          <ul class="kslist">
+      <li th:each="k1,st:${session.division1}" th:if="${k1.de_name==k.name}"><a th:href="@{|/ksjs/${k1.di_id}|}">[[${k1.di_name}]]</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </tr>
+
+       </div>
+          
+    </div>
+</div>
+
+<!--content-->
+<!--底部start-->
+<div class="footer" style="margin-top:0;">
+    <div class="con">
+        <ul>
+            <li class="w280">
+                <h1>关于我们</h1>
+                <p><a th:href="@{'/page/about'}">医院简介</a></p>
+                <p><a th:href="@{'/page/zzjg'}">组织架构</a></p>
+                <p><a th:href="@{'/page/ylsb'}">医疗设备</a></p>
+            </li>
+            <li class="w460">
+                <h1>医疗服务</h1>
+                <tr th:each="k,st:${session.division}" align="center">
+                    <p class="on"><a th:href="@{|/ksjs/${k.id}|}"><b th:text="${k.NAME}"></b></a></p>
+                </tr>
+
+
+                <div class="clear"></div>
+            </li>
+            <li class="w461">
+                <h1>联系我们</h1>
+                <div>
+                    <p>医院地址：[[${session.his.address}]]</p><p>公交路线：[[${session.his.comehere}]]<br></p>
+                    <p>路到第四医院站<br></p><p>联系电话：[[${session.his.tel}]]</p><p>[[${session.his.name}]]感谢您的致电！</p>
+                </div>
+            </li>
+            <div class="clear"></div>
+        </ul>
+        <div class="copy">
+            © Copyright 2019  D102
+        </div>
+    </div>
+</div>
+<!--底部end-->
+<!--侧边栏start-->
+<aside class="aside" id="aside">
+    <ul class="aside-service">
+        <li>
+            <a th:href="@{'/page/ksjs'}">
+                <i class="fa fa-calendar"></i><br>
+                <span>科室查询</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{'/page/zjjs'}">
+                <i class="fa fa-user-md"></i><br>
+                <span>医师查询</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{'/page/mapdh'}">
+                <i class="fa fa-map-marker"></i><br>
+                <span>医院位置</span>
+            </a>
+        </li>
+    </ul>
+    <div class="gotop" id="gotop">
+        <a href="#header">回到顶部<i class="fa fa-angle-up"></i></a>
+    </div>
+</aside>
+<!--侧边栏end-->
+</body>
+</html>

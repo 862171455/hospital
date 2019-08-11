@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.StaffMapper">
+    <select id="findAllStaff" resultType="map">
+        SELECT stafff.*,division.NAME AS di_name,rolee.NAME AS ro_name FROM stafff,department_division,division,rolee
+WHERE stafff.dep_div_id=department_division.id AND department_division.div_id=division.id AND stafff.role_id=rolee.id
+;
+</select>
+    <select id="findAllStaffbyid" resultType="map" parameterType="int">
+        SELECT stafff.*,division.NAME AS di_name,rolee.NAME AS ro_name FROM stafff,department_division,division,rolee
+        WHERE stafff.dep_div_id=department_division.id AND department_division.div_id=division.id AND stafff.role_id=rolee.id and stafff.id=#{id}
+        ;
+    </select>
+
+</mapper>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>漳州第四医院</title>
+<link rel="shortcut icon" th:href="@{'/favicon.ico'}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" th:href="@{'/css/base.css'}">
+<link rel="stylesheet" type="text/css" th:href="@{'/css/main.css'}">
+<link rel="stylesheet" type="text/css" th:href="@{'/css/font-awesome.min.css'}">
+<!--<script src="js/jquery-3.2.1.min.js"></script>-->
+<script th:src="@{'/js/jquery-1.4.4.js'}"></script>
+<script th:src="@{'/js/fun.js'}"></script>
+<script th:src="@{'/js/smoothscroll.min.js'}"></script>
+<script th:src="@{'/js/jquery.cycle.all.js'}"></script>
+<script th:src="@{'/js/jquery.SuperSlide.2.1.1.js'}"></script>
+<script th:src="@{'/js/index.js'}"></script>
+    <script th:src="@{'/js/jquery-runbanner.js'}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{'/css/banner.css'}">
+</head>
+
+<body style="min-width:1200px;">
+<!--header-->
+<div class="topbox">
+  <div class="head" id="header">
+    <a th:href="@{'/page/index'}"><img th:src="${session.his.photo}"></a>
+    <div class="top_hotline">&nbsp;&nbsp;咨询热线<br><b>[[${session.his.tel}]]</b></div>
+  </div>
+</div>
+<!--header-->
+<!--导航nav-start-->
+
+<div class="nav">
+    <div class="clearfix" style="width:100%;">
+        <ul>
+            <li  class="cur"><a th:href="@{'/page/index'}">首 页</a><em>|</em></li>
+            <li>
+                <a href="">医院概况</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a th:href="@{'/page/about'}"><span>医院简介</span></a>
+                    <a th:href="@{'/page/zzjg'}"><span>组织架构</span></a>
+                    <a th:href="@{'/page/ylsb'}"><span>医疗设备</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">医护团队</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a th:href="@{'/page/ksjs'}"><span>科室介绍</span></a>
+                    <a th:href="@{'/page/zjjs'}"><span>专家介绍</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">新闻动态</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>新闻</span></a>
+                    <a href=""><span>院报</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">院务公开</a><em>|</em>
+                <div class="submenu">
+                    <a href=""><span>院务公告</span></a>
+                    <a href=""><span>招标公告</span></a>
+                    <a href=""><span>管理制度</span></a>
+                    <a href=""><span>特色栏目</span></a>
+                    <a href=""><span>职工之家</span></a>
+                    <a href=""><span>医院资质</span></a>
+                    <a href=""><span>特色推荐</span></a>
+                </div>
+            </li>
+
+            <li>
+                <a href="">党建工作</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>基层党建</span></a>
+                    <a href=""><span>纪检监察</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">人事招聘</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>招聘公示</span></a>
+                    <a href=""><span>招聘动态</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">科室教研</a><em>|</em>
+                <div class="submenu" style="display: none;">
+                    <a href=""><span>名医工作室</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="">在线服务</a>
+                <div class="submenu" style="display: none;">
+                    <a th:href="@{'/page/contactus'}"><span>联系我们</span></a>
+                    <a th:href="@{'/page/hzfw'}"><span>患者服务</span></a>
+                    <a th:href="@{'/page/xlzx'}"><span>心理咨询留言板</span></a>
+                    <a th:href="@{'/page/yjfk'}"><span>意见反馈</span></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+	$(".nav ul li").hover(function(){
+		$(this).find(".submenu").slideDown();
+	},function(){
+		$(this).find(".submenu").slideUp();
+	});
+</script>
+<!--导航nav-end-->
+<!--轮播图start-->
+<div id="obo_slider">
+  <div class="oneByOne_item">
+        <div class="banner_bg_div" style=" background:url(../images/zzbg1.png) no-repeat center top; "></div>
+        <span class="container" style="position:relative; display:block; margin-top:190px;">
+           <span class="txt1 txtw" style=" margin-left:px;">精益求精  全心全意</span>
+        </span> 
+        <span> </span> 
+        <span class="container" style="position:relative; display:block;">
+           <span class="txt2 txtw" style=" margin-left:px;">救死扶伤  关爱生命</span>
+        </span> 
+  </div>
+  <div class="oneByOne_item">
+     <div class="banner_bg_div" style=" background:url(../images/zbg1.png) no-repeat center top; "></div>
+     <span class="container" style="position:relative; display:block; margin-top:80px;">
+       <span class="txt1 txtw" style=" margin-left:790px;">精益求精  全心全意</span>
+     </span> 
+     <span> </span> 
+     <span class="container" style="position:relative; display:block;">
+        <span class="txt2 txtw" style=" margin-left:790px;">救死扶伤  关爱生命</span>
+     </span> 
+  </div>
+  <div class="oneByOne_item">
+     <div class="banner_bg_div" style=" background:url(../images/zzbg3.png) no-repeat center top; "></div>
+     <span class="container" style="position:relative; display:block; margin-top:70px;">
+        <span class="txt1 txtw" style=" margin-left:50px;">精益求精  全心全意</span>
+    </span> 
+    <span> </span> 
+    <span class="container" style="position:relative; display:block;">
+       <span class="txt2 txtw" style=" margin-left:50px;">救死扶伤  关爱生命</span>
+    </span> 
+ </div>
+</div>
+<!--轮播图endt-->
+<!--特别栏目start-->
+<div class="home-service" id="home-service">
+    <ul class="layout clearfix">
+      <li>
+        <a th:href="@{'/page/about'}"><i class="fa fa-calendar"></i>医院简介</a>
+      </li>
+      <li>
+        <a th:href="@{'/page/zjjs'}"><i class="fa fa-file-text-o"></i>专家介绍</a>
+      </li>
+      <li>
+        <a th:href="@{'/page/ksjs'}"><i class="fa fa-window-close-o"></i>科室介绍</a>
+      </li>
+      <li>
+        <a th:href="@{'/page/mapdh'}"><i class="fa fa-map-marker"></i>医院位置</a>
+      </li>
+      <li>
+        <a th:href="@{'/for/qt_login'}"><i class="fa fa-heart-o"></i>用户登录</a>
+      </li>
+    </ul>
+</div>
+<!--特别栏目endt-->
+
+
+
+<!--专家start-->
+<div class="doctor-row">
+  <div class="layout">
+      <h2>
+          医师介绍
+          <span>DOCTOR INTRODUCTION</span>
+      </h2>
+      <div class="hd">
+     <!-- <ul class="hmkmlist">
+         <li class="on"><a href="javascript:;">介入医学科</a> </li>
+         <li class=""><a href="javascript:;">心血管内科</a></li>
+         <li class=""><a href="javascript:;">呼吸内科</a></li>
+         <li class=""><a href="javascript:;">神经内科</a></li>
+         <li class=""><a href="javascript:;">产科</a></li>
+         <li class=""><a href="javascript:;">更多</a></li>
+      </ul>
+-->          <ul class="hmkmlist">
+          <li class=""><a href="javascript:;"><b>全部</b></a></li>
+          <tr th:each="k,st:${session.division}" align="center">
+              <li class="on" th:if="${k.id lt 6}"><a href="javascript:;"><b th:text="${k.NAME}"></b></a> </li>
+          </tr>
+
+          </ul>
+
+      </div>
+     <div class="hmzjbox">
+        <div class="list-item" style="display:block">
+        <a class="doctorleft sPrev" href="javascript:;">&nbsp;</a>
+        <a class="doctorright sNext" href="javascript:;">&nbsp;</a>
+        <div class="bd">
+          <ul class="doctor-list">
+             <li th:each="k,st:${session.staff}">
+              <img   th:src="${k.photo}" />
+              <!--<div>-->
+                  <!--<h3><p th:text="${k.id}"></p></h3>-->
+              <!--</div>-->
+              <div class="cover">
+                  <b>职称：<span th:text="${k.ro_name}" ></span></b><br>
+                  <b>姓名：<span th:text="${k.NAME}"></span></b><br>
+                  <b>科室:<span th:text="${k.di_name}"></span></b><br>
+                  <b th:text="${k.content}">擅长脑肿瘤、脑外伤和神经内镜治疗</b><br>
+                  <a th:href="@{|/zjjs/${k.id}|}">了解详情</a>
+              </div>
+
+              <!--<img th:src="@{'/images/doc1.jpg'}" />
+              <div>
+                  <h3>11</h3>
+                  <p><span>职称：</span>主任医师</p>
+                  <p><span>院区：</span>庆云南街本部</p>
+                  <p><span>科室：</span>神经外科</p>
+              </div>
+              <div class="cover">
+                  <p>擅长脑肿瘤、脑外伤和神经内镜治疗</p>
+                  <a href="">了解详情</a>
+              </div>-->
+              </li>
+            </ul>
+         </div>
+        </div>
+        <div class="list-item" style="display:none">
+        <a class="doctorleft sPrev" href="javascript:;">&nbsp;</a>
+        <a class="doctorright sNext" href="javascript:;">&nbsp;</a>
+        <div class="bd">
+          <ul class="doctor-list">
+              <li th:each="k,st:${session.staff}" th:if="${k.di_name=='内科'}">
+
+                  <img   th:src="${k.photo}" />
+                  <!--<div>-->
+                  <!--<h3><p th:text="${k.id}"></p></h3>-->
+                  <!--</div>-->
+                  <div class="cover">
+                      <b>职称：<span th:text="${k.ro_name}" ></span></b><br>
+                      <b>姓名：<span th:text="${k.NAME}"></span></b><br>
+                      <b>科室:<span th:text="${k.di_name}"></span></b><br>
+                      <b th:text="${k.content}">擅长脑肿瘤、脑外伤和神经内镜治疗</b><br>
+                      <a th:href="@{|/zjjs/${k.id}|}">了解详情</a>
+                  </div>
+              </li>
+              
+            </ul>
+            </div>
+        </div>
+        <div class="list-item" style="display:none">
+        <a class="doctorleft sPrev" href="javascript:;">&nbsp;</a>
+        <a class="doctorright sNext" href="javascript:;">&nbsp;</a>
+        <div class="bd">
+          <ul class="doctor-list">
+              <li th:each="k,st:${session.staff}" th:if="${k.di_name=='外科'}">
+                  <img   th:src="${k.photo}" />
+                  <!--<div>-->
+                  <!--<h3><p th:text="${k.id}"></p></h3>-->
+                  <!--</div>-->
+                  <div class="cover">
+                      <b>职称：<span th:text="${k.ro_name}" ></span></b><br>
+                      <b>姓名：<span th:text="${k.NAME}"></span></b><br>
+                      <b>科室:<span th:text="${k.di_name}"></span></b><br>
+                      <b th:text="${k.content}">擅长脑肿瘤、脑外伤和神经内镜治疗</b><br>
+                      <a th:href="@{|/zjjs/${k.id}|}">了解详情</a>
+                  </div>
+              </li>
+            </ul>
+            </div>
+        </div>
+        <div class="list-item" style="display:none">
+        <a class="doctorleft sPrev" href="javascript:;">&nbsp;</a>
+        <a class="doctorright sNext" href="javascript:;">&nbsp;</a>
+        <div class="bd">
+          <ul class="doctor-list">
+              <li th:each="k,st:${session.staff}" th:if="${k.di_name=='妇科'}">
+                  <img   th:src="${k.photo}" />
+                  <!--<div>-->
+                  <!--<h3><p th:text="${k.id}"></p></h3>-->
+                  <!--</div>-->
+                  <div class="cover">
+                      <b>职称：<span th:text="${k.ro_name}" ></span></b><br>
+                      <b>姓名：<span th:text="${k.NAME}"></span></b><br>
+                      <b>科室:<span th:text="${k.di_name}"></span></b><br>
+                      <b th:text="${k.content}">擅长脑肿瘤、脑外伤和神经内镜治疗</b><br>
+                      <a th:href="@{|/zjjs/${k.id}|}">了解详情</a>
+                  </div>
+
+              </li>
+              
+            </ul>
+            </div>
+        </div>
+        <div class="list-item" style="display:none">
+        <a class="doctorleft sPrev" href="javascript:;">&nbsp;</a>
+        <a class="doctorright sNext" href="javascript:;">&nbsp;</a>
+        <div class="bd">
+          <ul class="doctor-list">
+              <li th:each="k,st:${session.staff}" th:if="${k.di_name=='产科'}">
+
+                  <img   th:src="${k.photo}" />
+                  <!--<div>-->
+                  <!--<h3><p th:text="${k.id}"></p></h3>-->
+                  <!--</div>-->
+                  <div class="cover">
+                      <b>职称：<span th:text="${k.ro_name}" ></span></b><br>
+                      <b>姓名：<span th:text="${k.NAME}"></span></b><br>
+                      <b>科室:<span th:text="${k.di_name}"></span></b><br>
+                      <b th:text="${k.content}">擅长脑肿瘤、脑外伤和神经内镜治疗</b><br>
+                      <a th:href="@{|/zjjs/${k.id}|}">了解详情</a>
+                  </div>
+              </li>
+            </ul>
+            </div>
+        </div>
+        <div class="list-item" style="display:none">
+        <a class="doctorleft sPrev" href="javascript:;">&nbsp;</a>
+        <a class="doctorright sNext" href="javascript:;">&nbsp;</a>
+        <div class="bd">
+          <ul class="doctor-list">
+              <li th:each="k,st:${session.staff}" th:if="${k.di_name=='骨科'}" >
+
+                  <img   th:src="${k.photo}" />
+                  <!--<div>-->
+                  <!--<h3><p th:text="${k.id}"></p></h3>-->
+                  <!--</div>-->
+                  <div class="cover">
+                      <b>职称：<span th:text="${k.ro_name}" ></span></b><br>
+                      <b>姓名：<span th:text="${k.NAME}"></span></b><br>
+                      <b>科室:<span th:text="${k.di_name}"></span></b><br>
+                      <b th:text="${k.content}">擅长脑肿瘤、脑外伤和神经内镜治疗</b><br>
+                      <a th:href="@{|/zjjs/${k.id}|}">了解详情</a>
+                  </div>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+       </div>
+  </div>
+</div>
+<script>
+jQuery(".list-item").slide({ mainCell:".bd ul",vis:5,prevCell:".sPrev",nextCell:".sNext",autoPlay:true,effect:"leftLoop"});
+
+/* 外层tab切换 */
+jQuery(".doctor-row").slide({titCell:".hmkmlist li",mainCell:".hmzjbox"});
+</script>
+<!--专家end-->
+
+<!--科室start-->
+<div class="main_b depart-row">
+       <h2>
+          部门介绍
+          <span>DEPARTMENT INTRODUCTION</span>
+      </h2>
+      <div class="main_b_center">
+        <div class="slideGroup">
+          <div class="parHd">
+            <!--<ul>
+              <li><a href="" title="重点科室">重点科室</a></li>
+              <li><a href="" title="手术科室">手术科室</a></li>
+              <li><a href="" title="非手术科室">非手术科室</a></li>
+            </ul>-->
+              <ul >
+                  <tr th:each="k,st:${session.department}" >
+                      <li><a href="javascript:volid(0);" th:title="${k.name}"><b th:text="${k.name}"></b></a></li>
+                  </tr>
+              </ul>
+            <div class="slideBox_btn"><a class="sPrev" href="javascript:void(0)"></a><a class="sNext" href="javascript:void(0)"></a></div>
+          </div>
+          <div class="parBd">
+            <div class="slideBox">
+              <ul class="slideBox_center">
+                  <tr th:each="k,st:${session.division1}" >
+                      <li th:if="${k.de_name=='门诊部'}">
+                          <div class="pic"><a href="" ><img  th:src="@{'/images/ks1.jpg'}" /></a></div>
+                          <div class="slideBox_title">
+                              <a href=""><b th:text="${k.di_name}"></b>  </a>
+                          </div>
+                          <a href="" class="zhezhao">
+                              <span class="zhezhao_title"> <b th:text="${k.di_name}"></b>介绍 </span>
+                              <p>  <b th:text="${k.di_name}"></b>  </p>
+                          </a>
+                      </li>
+
+                  </tr>
+              <!--  <li>
+                  <div class="pic"><a href="" ><img  th:src="@{'/images/ks1.jpg'}" /></a></div>
+                  <div class="slideBox_title">
+                    <a href="">皮肤科1  </a>
+                  </div> 
+                 <a href="" class="zhezhao">
+                 <span class="zhezhao_title"> 皮肤科1介绍 </span>
+                 <p>    </p>
+                  </a>
+               </li>-->
+              </ul>
+            </div>
+              <div class="slideBox">
+                <ul class="slideBox_center">
+                    <tr th:each="k,st:${session.division1}" >
+                        <li th:if="${k.de_name=='急诊部'}">
+                            <div class="pic"><a href="" ><img  th:src="@{'/images/ks1.jpg'}" /></a></div>
+                            <div class="slideBox_title">
+                                <a href=""><b th:text="${k.di_name}"></b>  </a>
+                            </div>
+                            <a href="" class="zhezhao">
+                                <span class="zhezhao_title"> <b th:text="${k.di_name}"></b>介绍 </span>
+                                <p>  <b th:text="${k.di_name}"></b>  </p>
+                            </a>
+                        </li>
+                    </tr>
+                </ul>
+              </div>
+              <div class="slideBox">
+              <ul class="slideBox_center">
+                  <tr th:each="k,st:${session.division1}" >
+                      <li th:if="${k.de_name=='住院部'}">
+                          <div class="pic"><a href="" ><img  th:src="@{'/images/ks1.jpg'}" /></a></div>
+                          <div class="slideBox_title">
+                              <a href=""><b th:text="${k.di_name}"></b>  </a>
+                          </div>
+                          <a href="" class="zhezhao">
+                              <span class="zhezhao_title"> <b th:text="${k.di_name}"></b>介绍 </span>
+                              <p>  <b th:text="${k.di_name}"></b>  </p>
+                          </a>
+                      </li>
+
+                  </tr>
+              </ul>
+            </div>
+          </div>
+             
+        </div>
+        <script type="text/javascript">
+			jQuery(".parBd .slideBox").slide({ mainCell:"ul",vis:4,scroll:4,effect:"leftLoop",interTime:350000,autoPlay:true,trigger:"click"});
+			jQuery(".slideGroup").slide({titCell:".parHd li",mainCell:".parBd",prevCell:".sPrev",nextCell:".sNext",effect:"leftLoop",delayTime:300});
+        </script>
+
+      </div>
+
+    </div>
+<!--科室end-->
+
+<!--底部start-->
+<div class="footer" style="margin-top:0;">
+  <div class="con">
+    <ul>
+	  <li class="w280">
+	    <h1>关于我们</h1>
+		<p><a th:href="@{'/page/about'}">医院简介</a></p>
+		<p><a th:href="@{'/page/zzjg'}">组织架构</a></p>
+		<p><a th:href="@{'/page/ylsb'}">医疗设备</a></p>
+	  </li>
+	  <li class="w460">
+	    <h1>医疗服务</h1>
+          <tr th:each="k,st:${session.division}" align="center">
+        <p class="on"><a th:href="@{|/ksjs/${k.id}|}"><b th:text="${k.NAME}"></b></a></p>
+              </tr>
+
+
+		<div class="clear"></div>
+	  </li>
+	  <li class="w461">
+	    <h1>联系我们</h1>
+        <div>
+          <p>医院地址：[[${session.his.address}]]</p><p>公交路线：[[${session.his.comehere}]]<br></p>
+          <p>路到第四医院站<br></p><p>联系电话：[[${session.his.tel}]]</p><p>[[${session.his.name}]]感谢您的致电！</p>
+		</div>
+	  </li>
+	  <div class="clear"></div>
+	</ul>
+	<div class="copy">
+       © Copyright 2019  D102
+	</div>
+  </div>
+</div>
+<!--底部end-->
+<!--侧边栏start-->
+
+<aside class="aside" id="aside">
+    <ul class="aside-service">
+     <li>
+        <a th:href="@{'/page/ksjs'}">
+          <i class="fa fa-calendar"></i><br>
+          <span>科室查询</span>
+        </a>
+      </li>
+      <li>
+        <a th:href="@{'/page/zjjs'}">
+          <i class="fa fa-user-md"></i><br>
+          <span>医师查询</span>
+        </a>
+      </li>
+      <li>
+        <a th:href="@{'/page/mapdh'}">
+          <i class="fa fa-map-marker"></i><br>
+          <span>医院位置</span>
+        </a>
+      </li>
+    </ul>
+    <div class="gotop" id="gotop">
+      <a href="#header">回到顶部<i class="fa fa-angle-up"></i></a>    
+    </div>
+</aside>
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+    $('#obo_slider').runbanner({
+		className: 'oneByOne1', 	             
+		easeType: 'random',  //动画参数
+		delay: 0,
+		width: 3000,
+		height: 400,
+		tolerance: 2,
+		slideShowDelay: 5000,
+		showButton: true,
+		/*
+		"rollIn", "fadeIn", "fadeInUp", "fadeInDown",
+		"fadeInLeft", "fadeInRight", "fadeInRight",
+		 "bounceIn", "bounceInDown", "bounceInUp", "bounceInLeft",
+		 "bounceInRight", "rotateIn", "rotateInDownLeft", "rotateInDownRight",
+		 "rotateInUpLeft", "rotateInUpRight" (18种动画类型可调用)
+		*/
+		slideShow: true  //为false时不会自动播放
+
+	});  
+})
+</script>
+</body>
+</html>

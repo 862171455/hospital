@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<link rel="shortcut icon" th:href="@{'/page/favicon.ico'}"/>-->
+    <!--<link rel="bookmark" th:href="@{'/page/favicon.ico'}"/>-->
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}"  media="all">
+    <script th:src="@{'/layui/layui.js'}" charset="utf-8"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">我的医疗</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img th:src="@{'/favicon.ico'}"  class="layui-nav-img">
+                    <b>欢迎XX</b>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="" target="_self">修改密码</a></dd>
+                    <dd><a th:href="@{'/page/index'}" target="_self">退出系统</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">门诊</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="" target="right">我的挂号查看</a></dd>
+                        <dd><a href="javascript:;" target="right">我的信息查看</a></dd>
+                        <dd><a href="" target="right">医生信息</a></dd>
+                        <dd><a href="" target="right">我的病历</a></dd>
+                        <dd><a href="" target="right">咨询医生</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">药品</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">全部药品</a></dd>
+                        <dd><a href=""  target="right">我的购物车</a></dd>
+                        <dd><a href=""  target="right">历史购买</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">住院</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">查看住院记录</a></dd>
+                        <dd><a href=""  target="right">查看房间价格</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <iframe name="right" style="width: 100%;height:500px" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        ©
+    </div>
+</div>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['carousel', 'form'], function(){
+        var carousel = layui.carousel
+            ,form = layui.form;
+
+        //图片轮播
+        carousel.render({
+            elem: '#test10'
+            ,width: '778px'
+            ,height: '440px'
+            ,interval: 5000
+        });
+
+
+        //监听开关
+    });
+
+</script>
+</div>
+</div>
+</body>
+</html>

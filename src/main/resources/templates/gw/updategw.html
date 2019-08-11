@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>部门管理</title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        .demo-carousel{height: 200px; line-height: 200px; text-align: center;}
+    </style>
+</head>
+<body>
+<h1>部门列表</h1>
+<table class="layui-hide" id="bmall" lay-filter="text"></table>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script type="text/javascript" th:src="@{'/js/bm/all.js'}"></script>
+<script type="text/html" id="toolbarBm">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-s" lay-event="add">添加</button>
+    </div>
+</script>
+<script type="text/html" id="barBm">
+    <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+</body>
+</html>

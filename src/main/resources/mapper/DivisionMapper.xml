@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.DivisionMapper">
+    <select id="findAlldivision" resultType="map" >
+        SELECT * FROM division
+    </select>
+    <select id="finddivisionbytype" resultType="map" >
+      SELECT department_division.id AS dd_id,department_division.address AS address,
+      division.id AS di_id,division.NAME AS di_name,
+      division.photo AS photo,division.content AS content,
+      departmentt.id AS de_id,departmentt.name AS de_name
+FROM department_division,division,departmentt
+ WHERE department_division.dep_id=departmentt.id AND department_division.div_id=division.id
+    </select>
+    <select id="finddivisionbyid" resultType="map" parameterType="int">
+        SELECT * FROM division where id=#{id}
+    </select>
+</mapper>
