@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.PatientMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Patient">
+    <id column="patient_id" jdbcType="CHAR" property="patientId" />
+    <result column="patient_username" jdbcType="VARCHAR" property="patientUsername" />
+    <result column="patient_pwd" jdbcType="CHAR" property="patientPwd" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="patient_gender" jdbcType="INTEGER" property="patientGender" />
+    <result column="patient_tel" jdbcType="CHAR" property="patientTel" />
+    <result column="patient_IDcard" jdbcType="CHAR" property="patientIdcard" />
+    <result column="prtient_email" jdbcType="VARCHAR" property="prtientEmail" />
+    <result column="patient_area" jdbcType="INTEGER" property="patientArea" />
+    <result column="patient_money" jdbcType="INTEGER" property="patientMoney" />
+    <result column="patient_add" jdbcType="VARCHAR" property="patientAdd" />
+    <result column="patient_e" jdbcType="VARCHAR" property="patientE" />
+    <result column="patient_n" jdbcType="VARCHAR" property="patientN" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    patient_id, patient_username, patient_pwd, patient_name, patient_gender, patient_tel, 
+    patient_IDcard, prtient_email, patient_area, patient_money, patient_add, patient_e, 
+    patient_n
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from patient
+    where patient_id = #{patientId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from patient
+    where patient_id = #{patientId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Patient">
+    insert into patient (patient_id, patient_username, patient_pwd, 
+      patient_name, patient_gender, patient_tel, 
+      patient_IDcard, prtient_email, patient_area, 
+      patient_money, patient_add, patient_e, 
+      patient_n)
+    values (#{patientId,jdbcType=CHAR}, #{patientUsername,jdbcType=VARCHAR}, #{patientPwd,jdbcType=CHAR}, 
+      #{patientName,jdbcType=VARCHAR}, #{patientGender,jdbcType=INTEGER}, #{patientTel,jdbcType=CHAR}, 
+      #{patientIdcard,jdbcType=CHAR}, #{prtientEmail,jdbcType=VARCHAR}, #{patientArea,jdbcType=INTEGER}, 
+      #{patientMoney,jdbcType=INTEGER}, #{patientAdd,jdbcType=VARCHAR}, #{patientE,jdbcType=VARCHAR}, 
+      #{patientN,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Patient">
+    insert into patient
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="patientUsername != null">
+        patient_username,
+      </if>
+      <if test="patientPwd != null">
+        patient_pwd,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="patientGender != null">
+        patient_gender,
+      </if>
+      <if test="patientTel != null">
+        patient_tel,
+      </if>
+      <if test="patientIdcard != null">
+        patient_IDcard,
+      </if>
+      <if test="prtientEmail != null">
+        prtient_email,
+      </if>
+      <if test="patientArea != null">
+        patient_area,
+      </if>
+      <if test="patientMoney != null">
+        patient_money,
+      </if>
+      <if test="patientAdd != null">
+        patient_add,
+      </if>
+      <if test="patientE != null">
+        patient_e,
+      </if>
+      <if test="patientN != null">
+        patient_n,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientId != null">
+        #{patientId,jdbcType=CHAR},
+      </if>
+      <if test="patientUsername != null">
+        #{patientUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPwd != null">
+        #{patientPwd,jdbcType=CHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientGender != null">
+        #{patientGender,jdbcType=INTEGER},
+      </if>
+      <if test="patientTel != null">
+        #{patientTel,jdbcType=CHAR},
+      </if>
+      <if test="patientIdcard != null">
+        #{patientIdcard,jdbcType=CHAR},
+      </if>
+      <if test="prtientEmail != null">
+        #{prtientEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="patientArea != null">
+        #{patientArea,jdbcType=INTEGER},
+      </if>
+      <if test="patientMoney != null">
+        #{patientMoney,jdbcType=INTEGER},
+      </if>
+      <if test="patientAdd != null">
+        #{patientAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="patientE != null">
+        #{patientE,jdbcType=VARCHAR},
+      </if>
+      <if test="patientN != null">
+        #{patientN,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Patient">
+    update patient
+    <set>
+      <if test="patientUsername != null">
+        patient_username = #{patientUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPwd != null">
+        patient_pwd = #{patientPwd,jdbcType=CHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientGender != null">
+        patient_gender = #{patientGender,jdbcType=INTEGER},
+      </if>
+      <if test="patientTel != null">
+        patient_tel = #{patientTel,jdbcType=CHAR},
+      </if>
+      <if test="patientIdcard != null">
+        patient_IDcard = #{patientIdcard,jdbcType=CHAR},
+      </if>
+      <if test="prtientEmail != null">
+        prtient_email = #{prtientEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="patientArea != null">
+        patient_area = #{patientArea,jdbcType=INTEGER},
+      </if>
+      <if test="patientMoney != null">
+        patient_money = #{patientMoney,jdbcType=INTEGER},
+      </if>
+      <if test="patientAdd != null">
+        patient_add = #{patientAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="patientE != null">
+        patient_e = #{patientE,jdbcType=VARCHAR},
+      </if>
+      <if test="patientN != null">
+        patient_n = #{patientN,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where patient_id = #{patientId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Patient">
+    update patient
+    set patient_username = #{patientUsername,jdbcType=VARCHAR},
+      patient_pwd = #{patientPwd,jdbcType=CHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      patient_gender = #{patientGender,jdbcType=INTEGER},
+      patient_tel = #{patientTel,jdbcType=CHAR},
+      patient_IDcard = #{patientIdcard,jdbcType=CHAR},
+      prtient_email = #{prtientEmail,jdbcType=VARCHAR},
+      patient_area = #{patientArea,jdbcType=INTEGER},
+      patient_money = #{patientMoney,jdbcType=INTEGER},
+      patient_add = #{patientAdd,jdbcType=VARCHAR},
+      patient_e = #{patientE,jdbcType=VARCHAR},
+      patient_n = #{patientN,jdbcType=VARCHAR}
+    where patient_id = #{patientId,jdbcType=CHAR}
+  </update>
+
+
+  <select id="findbyUuAndP" parameterType="map" resultType="map">
+      select  patient.* FROM patient where patient_username=#{name} and  patient_pwd=#{pwd}
+  </select>
+  <update id="updatepwd" parameterType="map">
+    UPDATE patient  set patient_pwd=#{password}
+  </update>
+
+  <update id="updateDetails" parameterType="map">
+  update patient
+ set patient_username=#{patient_username},
+     patient_name=#{patient_name},
+     patient_gender=#{patient_gender},
+     patient_tel=#{patient_tel},
+     patient_IDcard=#{patient_IDcard},
+     prtient_email=#{prtient_email},
+     patient_add=#{patient_add}
+     where patient_id=#{patient_id}</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

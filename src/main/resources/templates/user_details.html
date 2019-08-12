@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}" media="all">
+    <script th:src="@{'/layui/layui.js'}" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/city-picker.css'}">
+</head>
+<body>
+<div align="center">个人信息修改</div>
+<form  name="user" class="layui-form" th:action="@{'/user/updatedetails'}" target="post" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="patient_username" autocomplete="off" class="layui-input"  th:value="${session.user.patient_username}">
+        </div>
+    </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">真实姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="patient_name" required lay-verify="required"  autocomplete="off" class="layui-input" th:value="${session.user.patient_name}">
+                </div>
+            </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <input type="radio" name="patient_gender" value="0" title="男"  th:attr="checked=${session.user.patient_gender==0?true:false}">
+            <input type="radio" name="patient_gender" value="1" title="女" th:attr="checked=${session.user.patient_gender==1?true:false}">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">验证手机</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="patient_tel" lay-verify="required|phone" autocomplete="off" class="layui-input" th:value="${session.user.patient_tel}" >
+            </div>
+        </div>
+    </div>
+        <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">验证邮箱</label>
+            <div class="layui-input-inline">
+                <input type="text" name="prtient_email" lay-verify="email" autocomplete="off" class="layui-input" th:value="${session.user.prtient_email}">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">验证身份证</label>
+        <div class="layui-input-inline">
+            <input type="text" name="patient_IDcard" lay-verify="identity" placeholder="" autocomplete="off" class="layui-input" th:value="${session.user.patient_IDcard}">
+        </div>
+    </div>
+    <!--<div class="layui-form-item">-->
+        <!--<label class="layui-form-label">地址</label>-->
+    <!--<div class="city-picker-selector" id="city-picker-selector">-->
+        <!--<div class="selector-item storey province">-->
+            <!--<a href="javascript:;" class="selector-name reveal">北京市</a>-->
+            <!--<input type="hidden" name="userProvinceId" class="input-price val-error" value="110000" data-required="userProvinceId">-->
+            <!--<div class="selector-list listing hide">-->
+                <!--<ul>-->
+                    <!--<li>北京市</li>-->
+                    <!--<li>天津市</li>-->
+                    <!--<li>河北省</li>-->
+                    <!--<li>山西省</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="selector-item storey city">-->
+            <!--<a href="javascript:;" class="selector-name reveal">北京市</a>-->
+            <!--<input type="hidden" name="userCityId" class="input-price val-error" value="110100" data-required="userCityId">-->
+            <!--<div class="selector-list listing hide">-->
+                <!--<ul>-->
+                    <!--<li>北京市</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="selector-item storey district">-->
+            <!--<a href="javascript:;" class="selector-name reveal">海淀区</a>-->
+            <!--<input type="hidden" name="userDistrictId" class="input-price val-error" value="110108" data-required="userDistrictId">-->
+            <!--<div class="selector-list listing hide">-->
+                <!--<ul>-->
+                    <!--<li>东城区</li>-->
+                    <!--<li>西城区</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">具体地址</label>
+        <div class="layui-input-inline">
+            <input type="text" name="patient_add" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input"  th:value="${session.user.patient_add}">
+        </div>
+    </div>
+
+        <br>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit"  class="layui-btn">确认修改</button>
+
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    layui.use(['form', 'layedit'], function(){
+        var form = layui.form
+            ,layer = layui.layer;
+
+    });
+</script>
+<script type="text/javascript" th:src="@{'/js/jquery.min.js'}"></script>
+<script type="text/javascript" th:src="@{'/js/citydata.js'}"></script>
+<script type="text/javascript" th:src="@{'/js/cityPicker-1.0.0.js'}"></script>
+<script type="text/javascript">
+    $(function () {
+
+        //模拟城市-无联动/无搜索
+        var selector = $('#city-picker-selector').cityPicker({
+            dataJson: cityData,
+            renderMode: true,
+            search: false,
+            linkage: false
+        })
+        $('#city-picker-selector').on('choose-province.citypicker', function (event, tagert, storage) {
+            console.log(storage);
+        });
+
+
+
+
+    });
+</script>
+
+
+</html>
