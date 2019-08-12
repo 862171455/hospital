@@ -17,19 +17,19 @@ public class DivisionServiceImpl implements DivisionService {
     @Autowired
 	private DivisionMapper divisionMapper;
  
-	@Cacheable("findAlldivision")
+	//@Cacheable("findAlldivision")
 	@Override
 	public List<Map<String, Object>> findAlldivision() {
 		return divisionMapper.findAlldivision();
 	}
 	
-	@Cacheable("finddivisionbytype")
+	//@Cacheable("finddivisionbytype")
 	@Override
 	public List<Map<String, Object>> finddivisionbytype() {
 		return divisionMapper.finddivisionbytype();
 	}
 	
-	@Cacheable("finddivisionbyid")
+	//@Cacheable("finddivisionbyid")
 	@Override
 	public Map<String, Object> finddivisionbyid(int id) {
 		return divisionMapper.finddivisionbyid(id);

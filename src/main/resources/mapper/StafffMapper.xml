@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.StafffMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Stafff">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="comeage" jdbcType="INTEGER" property="comeage" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="dep_div_id" jdbcType="INTEGER" property="depDivId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, NAME, sex, age, comeage, tel, dep_div_id, role_id, photo, content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stafff
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stafff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Stafff">
+    insert into stafff (id, NAME, sex, 
+      age, comeage, tel, 
+      dep_div_id, role_id, photo, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{comeage,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, 
+      #{depDivId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{photo,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Stafff">
+    insert into stafff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="comeage != null">
+        comeage,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="depDivId != null">
+        dep_div_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="comeage != null">
+        #{comeage,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="depDivId != null">
+        #{depDivId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Stafff">
+    update stafff
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="comeage != null">
+        comeage = #{comeage,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="depDivId != null">
+        dep_div_id = #{depDivId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Stafff">
+    update stafff
+    set NAME = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      comeage = #{comeage,jdbcType=INTEGER},
+      tel = #{tel,jdbcType=VARCHAR},
+      dep_div_id = #{depDivId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
+      photo = #{photo,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="findAllStaff" resultType="map" parameterType="map">
+    select * FROM stafff limit #{start},#{limit}
+  </select>
+  <select id="findstafffcount" resultType="int">
+    select count(*) from stafff
+  </select>
+
+  <delete id="delstafff" parameterType="int">
+    DELETE  FROM stafff WHERE id=#{id};
+  </delete>
+
+  <update id="updatestafff" parameterType="map">
+    update stafff SET NAME=#{NAME},sex=#{sex},age=#{age},comeage=#{comeage},tel=#{tel},
+    content=#{content}
+     where id=#{id}
+  </update>
+  <insert id="addstafff" parameterType="map">
+    insert into stafff values(null,#{NAME},#{sex},#{age},#{comeage},#{tel},1,1,'/images/img/nurse1.jpg',#{content})
+  </insert>
+</mapper>

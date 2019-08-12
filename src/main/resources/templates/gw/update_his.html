@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}" media="all">
+    <script th:src="@{'/layui/layui.js'}" charset="utf-8"></script>
+    <script>
+        layui.use([ 'form', 'layer','jquery' ], function() {
+            var form = layui.form,
+                layer = layui.layer,
+                $ = jQuery = layui.$;
+            form.on('submit(*)',function(){
+                $.ajax({
+                    url:"/updatehis",
+                    type:"post",
+                    data:$("#mybm").serialize(),
+                    success:function(){
+                        //修改完成，刷新父窗口,一刷新弹出层会自动关闭
+                        layer.msg("修改成功");
+                    }
+                });
+                //忽略掉提交事件
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+<form  name="user" class="layui-form"  id="mybm" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">医院名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" autocomplete="off" class="layui-input" th:value="${session.his.name}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-inline">
+            <input type="text" name="address" required lay-verify="required"  autocomplete="off" class="layui-input" th:value="${session.his.address}">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">咨询电话</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="tel" lay-verify="required|phone" autocomplete="off" class="layui-input" th:value="${session.his.tel}" >
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">电话2</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="tell" lay-verify="required|phone" autocomplete="off" class="layui-input"  th:value="${session.his.tell}">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">电话3</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="telll" lay-verify="required|phone" autocomplete="off" class="layui-input" th:value="${session.his.telll}" >
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" th:value="${session.his.email}">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公交路线</label>
+        <div class="layui-input-inline">
+            <input type="text" name="comehere" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input"  th:value="${session.his.comehere}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">介绍</label>
+        <div class="layui-input-inline">
+            <input type="text" name="content" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input"  th:value="${session.his.content}">
+        </div>
+    </div>
+
+    <br>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit   lay-filter="*">修改</button>
+
+        </div>
+    </div>
+    </div>
+</form>
+
+</body>
+<script>
+    layui.use(['form', 'layedit'], function(){
+        var form = layui.form
+            ,layer = layui.layer;
+
+    });
+</script>
+</html>

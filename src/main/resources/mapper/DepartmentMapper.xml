@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.java.dao.DepartmentMapper">
-    <select id="findAllDepartment" resultType="map">
+    <select id="findAllDepartmentt" resultType="map">
        SELECT * FROM departmentt
     </select>
+    <select id="findDepartment" resultType="map" parameterType="map">
+        select * FROM departmentt limit #{start},#{limit}
+    </select>
+    <select id="findDepartmenttcount" resultType="int">
+        select count(*) from departmentt
+    </select>
+
+    <!--<delete id="delDepartmentt" parameterType="int">-->
+        <!--DELETE  FROM stafff WHERE id=#{id};-->
+    <!--</delete>-->
+
+    <!--<update id="updateDepartmentt" parameterType="map">-->
+        <!--update stafff SET NAME=#{NAME},sex=#{sex},age=#{age},comeage=#{comeage},tel=#{tel},-->
+        <!--content=#{content}-->
+        <!--where id=#{id}-->
+    <!--</update>-->
+    <!--<insert id="addDepartmentt" parameterType="map">-->
+        <!--insert into stafff values(null,#{NAME},#{sex},#{age},#{comeage},#{tel},1,1,'/images/img/nurse1.jpg',#{content})-->
+    <!--</insert>-->
 </mapper>

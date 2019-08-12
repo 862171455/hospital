@@ -7,4 +7,6 @@ import java.util.Map;
  */
 public interface HisService {
 	public Map<String,Object> findHis();//加载医院信息
+	public void updateHis(Map<String,Object> map);//修改医院信息
+	
 }

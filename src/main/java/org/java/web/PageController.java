@@ -15,8 +15,8 @@ public class PageController {
 	}
 	@GetMapping("for/{target}")
 	public String forword(@PathVariable("target") String target){
-		
-		if(target.equals("updategw")){
+		if(target.equals("updategw")||target.equals("add_stafff")||target.equals("update_his")||target.equals("update_bm")
+				){
 			return "/gw/"+target;
 		}
 		return target;

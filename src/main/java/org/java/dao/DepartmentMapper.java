@@ -10,5 +10,7 @@ import java.util.Map;
  */
 @Mapper
 public interface DepartmentMapper {
-public List<Map<String,Object>> findAllDepartment();//所有部门
+public List<Map<String,Object>> findAllDepartmentt();//所有部门
+	public List<Map<String,Object>> findDepartment(Map<String,Object> map);//分页查询部门
+	int findDepartmenttcount();//聚合查询所以部门
 }

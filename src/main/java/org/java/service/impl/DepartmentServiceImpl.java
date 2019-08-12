@@ -17,9 +17,19 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	private DepartmentMapper departmentMapper;
 	
-	@Cacheable("findAllDepartment")
+	//@Cacheable("findAllDepartment")
 	@Override
 	public List<Map<String, Object>> findAllDepartment() {
-		return departmentMapper.findAllDepartment();
+		return departmentMapper.findAllDepartmentt();
+	}
+	
+	@Override
+	public List<Map<String, Object>> findDepartment(Map<String, Object> map) {
+		return departmentMapper.findDepartment(map);
+	}
+	
+	@Override
+	public int findDepartmenttcount() {
+		return departmentMapper.findDepartmenttcount();
 	}
 }
