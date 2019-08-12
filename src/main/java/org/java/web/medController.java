@@ -49,4 +49,39 @@ public class medController {
 
         medService.del(dru_no);
     }
+
+    @RequestMapping("/sup")
+    public Map sup(){
+        Map map=new HashMap();
+        List<Map<String,Object>> list = medService.findSupplier();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",list);
+        return map;
+
+
+    }
+    @RequestMapping("/chinese_medicine")
+    public Map chinese_medicine(){
+        Map map=new HashMap();
+        List<Map<String,Object>> list = medService.findChinese_medicine();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",list);
+        return map;
+
+
+    }
+    @RequestMapping("/western_medicine")
+    public Map western_medicine(){
+        Map map=new HashMap();
+        List<Map<String,Object>> list = medService.findWestern_medicine();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",list);
+        return map;
+
+
+    }
+
 }

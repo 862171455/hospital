@@ -47,4 +47,19 @@ public class medServiceImpl implements medService {
     public void del(Integer dru_no) {
         medicineMapper.del(dru_no);
     }
+
+    @Override
+    public List<Map<String, Object>> findSupplier() {
+        return medicineMapper.findSupplier();
+    }
+
+    @Override
+    public List<Map<String, Object>> findChinese_medicine() {
+        return medicineMapper.findChinese_medicine();
+    }
+
+    @Override
+    public List<Map<String, Object>> findWestern_medicine() {
+        return medicineMapper.findWestern_medicine();
+    }
 }

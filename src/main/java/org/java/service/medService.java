@@ -14,4 +14,7 @@ public interface medService {
     public void add(Map map);
     public void update(Map map);
     public void del(Integer dru_no);
+    public List<Map<String, Object>> findSupplier();
+    public List<Map<String, Object>> findChinese_medicine();
+    public List<Map<String, Object>> findWestern_medicine();
 }

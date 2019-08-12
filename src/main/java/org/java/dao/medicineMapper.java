@@ -16,4 +16,7 @@ public interface medicineMapper {
     public void add(Map map);
     public void update(Map map);
     public void del(Integer id);
+    public List<Map<String, Object>> findSupplier();
+    public List<Map<String, Object>> findChinese_medicine();
+    public List<Map<String, Object>> findWestern_medicine();
 }

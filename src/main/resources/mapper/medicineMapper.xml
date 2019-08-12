@@ -33,4 +33,13 @@
     <update id="update" parameterType="map">
         update drug set dru_name=#{dru_name},dru_properties=#{dru_properties},dru_specification=#{dru_specification},dru_date=#{dru_date},dru_factory=#{dru_factory},dru_data_in=#{dru_data_in},dru_release=#{dru_release},dru_price=#{dru_price},dru_drugstore_no=#{dru_drugstore_no},dru_drugnum=#{dru_drugnum} where dru_no=#{dru_no}
     </update>
+    <select id="findSupplier" resultType="map">
+        select * from supplier
+    </select>
+    <select id="findChinese_medicine" resultType="map">
+       SELECT supplier.*, chinese_medicine.* FROM supplier,chinese_medicine WHERE supplier.sup_no=chinese_medicine.chi_supplier_no
+    </select>
+    <select id="findWestern_medicine" resultType="map">
+     SELECT supplier.*, western_medicine.* FROM supplier,western_medicine WHERE supplier.sup_no=western_medicine.wes_supplier_no
+    </select>
 </mapper>
