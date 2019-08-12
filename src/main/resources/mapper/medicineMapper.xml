@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.medicineMapper">
+    <select id="findDrug" resultType="map">
+      SELECT * FROM drug
+        <where>
+            <if test="dru_name!=null and dru_name!=''">
+                and dru_name like '%${dru_name}%'
+            </if>
+            <if test="dru_drugstore_no!=null and dru_drugstore_no!=0">
+                and dru_drugstore_no=#{dru_drugstore_no}
+            </if>
+        </where>
+        LIMIT #{start},#{rows};
+    </select>
+    <select id="drugCount" resultType="int">
+       SELECT COUNT(*) FROM drug
+        <where>
+            <if test="dru_name!=null and dru_name!=''">
+                and dru_name like '%${dru_name}%'
+            </if>
+            <if test="dru_drugstore_no!=null and dru_drugstore_no!=0">
+                and dru_drugstore_no=#{dru_drugstore_no}
+            </if>
+        </where>
+    </select>
+    <insert id="add" parameterType="map">
+        insert into drug values (null,#{dru_name},#{dru_properties},#{dru_specification},#{dru_date},#{dru_factory},#{dru_data_in},#{dru_release},#{dru_price},#{dru_drugstore_no},#{dru_drugnum});
+    </insert>
+<delete id="del" parameterType="int">
+    DELETE FROM drug WHERE dru_no=#{dru_no}
+</delete>
+    <update id="update" parameterType="map">
+        update drug set dru_name=#{dru_name},dru_properties=#{dru_properties},dru_specification=#{dru_specification},dru_date=#{dru_date},dru_factory=#{dru_factory},dru_data_in=#{dru_data_in},dru_release=#{dru_release},dru_price=#{dru_price},dru_drugstore_no=#{dru_drugstore_no},dru_drugnum=#{dru_drugnum} where dru_no=#{dru_no}
+    </update>
+</mapper>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>table模块快速使用</title>
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}" media="all">
+    <script th:src="@{'/layui/layui.js'}"></script>
+    <script th:src="@{'/js/drug.js'}"></script>
+</head>
+<body style="margin-left: 70px;margin-top: 10px">
+<Br>
+<form class="layui-form" id="addForm">
+    <div class="layui-input-inline">
+        <label class="layui-form-label">药品名称</label>
+        <div class="layui-input-block">
+            <input type="text" id name="dru_name" required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">药品用途</label>
+        <div class="layui-input-block">
+            <input type="text" name="dru_properties" required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">药品规格</label>
+        <div class="layui-input-inline">
+            <input type="text" name="dru_specification" required  lay-verify="required"  autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">出厂日期</label>
+        <div class="layui-input-inline">
+            <input type="text" name="dru_date" required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">生产厂家</label>
+        <div class="layui-input-inline">
+            <input type="text" name="dru_factory" required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">入库时间</label>
+        <div class="layui-input-inline">
+            <input type="date" name="dru_data_in"  autocomplete="off" required class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">保质期</label>
+        <div class="layui-input-inline">
+            <input type="text" name="dru_release" required  lay-verify="required"autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">单价</label>
+    <div class="layui-input-inline">
+        <input type="text" name="dru_price" required  lay-verify="required"autocomplete="off" class="layui-input">
+    </div>
+</div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">库编号</label>
+        <div class="layui-input-inline">
+            <input type="number" name="dru_drugstore_no" required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">药品数量</label>
+        <div class="layui-input-inline">
+            <input type="number" name="dru_drugnum" required  lay-verify="required"autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    //Demo
+    layui.use(['form','jquery','layer'], function(){
+        var form = layui.form;
+        var $=layui.$;
+        var layer=layui.layer;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            $.ajax({
+                url:"/add",
+                type:"post",
+                data:$("#addForm").serialize(),
+                success:function () {
+                    window.parent.location.reload();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
