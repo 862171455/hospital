@@ -20,11 +20,11 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img th:src="@{'/favicon.ico'}"  class="layui-nav-img">
-                    <b>欢迎XX</b>
+                    <b>欢迎<b>[[${session.user.patient_username}]]</b></b>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="" target="_self">修改密码</a></dd>
-                    <dd><a th:href="@{'/page/index'}" target="_self">退出系统</a></dd>
+                    <dd><a th:href="@{'/for/update_pwd'}" target="right">修改密码</a></dd>
+                    <dd><a th:href="@{'/outsystem'}" target="_self">退出系统</a></dd>
                 </dl>
             </li>
         </ul>
@@ -38,7 +38,7 @@
                     <a class="" href="javascript:;">门诊</a>
                     <dl class="layui-nav-child">
                         <dd><a href="" target="right">我的挂号查看</a></dd>
-                        <dd><a href="javascript:;" target="right">我的信息查看</a></dd>
+                        <dd><a th:href="@{'/for/user_details'}" target="right">我的信息查看</a></dd>
                         <dd><a href="" target="right">医生信息</a></dd>
                         <dd><a href="" target="right">我的病历</a></dd>
                         <dd><a href="" target="right">咨询医生</a></dd>
@@ -67,7 +67,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <iframe name="right" style="width: 100%;height:500px" frameborder="0"></iframe>
+            <iframe name="right" style="width: 100%;height:580px;" frameborder="0"></iframe>
         </div>
     </div>
 
