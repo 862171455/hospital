@@ -20,7 +20,8 @@ public class PageController {
 			return "/gw/"+target;
 		}
 		if(target.equals("chinese_medicine")||target.equals("western_medicine")||target.equals("supplier")||target.equals("drug")||target.equals("add")||target.equals("edit")||target.equals("detail")
-				||target.equals("chinese_detail")||target.equals("western_detail"))
+				||target.equals("chinese_detail")||target.equals("western_detail")||target.equals("drugstore")||target.equals("drugstore_detail"))
+
 
 
 		{

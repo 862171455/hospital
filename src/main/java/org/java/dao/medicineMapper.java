@@ -19,4 +19,5 @@ public interface medicineMapper {
     public List<Map<String, Object>> findSupplier();
     public List<Map<String, Object>> findChinese_medicine();
     public List<Map<String, Object>> findWestern_medicine();
+    public List<Map<String,Object>> findDrugstore();
 }

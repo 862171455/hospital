@@ -83,5 +83,21 @@ public class medController {
 
 
     }
+    @RequestMapping("/drugstore")
+    public Map drugstore (){
+        Map map=new HashMap();
+        List<Map<String,Object>> list = medService.findDrugstore();
+        for(Map<String,Object> m:list){
+            int sto_count = (int) m.get("sto_count");
+            int dru_drugnum=(int)m.get("dru_drugnum");
+            int sto_surplus=sto_count-dru_drugnum;
+            m.put("sto_surplus",sto_surplus);
+        }
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",list);
+        return map;
 
+
+    }
 }
