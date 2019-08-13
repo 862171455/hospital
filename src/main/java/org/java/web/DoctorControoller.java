@@ -50,7 +50,6 @@ public class DoctorControoller {
 	@ResponseBody
 	@RequestMapping("delStafff/{id}")
 	public void del(@PathVariable("id")  int id){
-		System.out.println(id);
 		staffService.delstafff(id);
 	}
 	@ResponseBody

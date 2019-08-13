@@ -4,7 +4,9 @@ import org.java.service.DepartmentService;
 import org.java.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,5 +43,26 @@ public class DepartmentController {
 		m.put("count",count);
 		String json= JsonUtils.objectToJson(m);
 		return json;
+	}
+	@ResponseBody
+	@RequestMapping("delDepartmentt/{id}")
+	public void del(@PathVariable("id")  int id){
+		System.out.println(id);
+		departmentService.delDepartmentt(id);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("addDepartmentt")
+	public void add(@RequestParam Map<String,Object> map){
+		
+		if(map.get("id").equals("")){/*是否有id*/
+			/*增加*/
+			departmentService.addDepartmentt(map);
+		}else{
+			/*修改*/
+			departmentService.updateDepartmentt(map);
+		}
+		
 	}
 }

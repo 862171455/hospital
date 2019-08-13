@@ -4,7 +4,7 @@ layui.use([ 'form', 'layer','jquery' ], function() {
             $ = jQuery = layui.$;
         form.on('submit(*)',function(){
             $.ajax({
-                url:"/addDepartmentt",
+                url:"/addDivision",
                 type:"post",
                 data:$("#mybm").serialize(),
                 success:function(){

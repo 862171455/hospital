@@ -15,4 +15,24 @@ FROM department_division,division,departmentt
     <select id="finddivisionbyid" resultType="map" parameterType="int">
         SELECT * FROM division where id=#{id}
     </select>
+
+    <select id="finddivision" resultType="map" parameterType="map">
+        select * FROM division limit #{start},#{limit}
+    </select>
+    <select id="finddivisioncount" resultType="int">
+        select count(*) from division
+    </select>
+
+    <delete id="deldivision" parameterType="int">
+        DELETE  FROM division WHERE id=#{id}
+    </delete>
+
+    <update id="updatedivision" parameterType="map">
+        update division SET NAME=#{NAME},div_tel=#{div_tel},
+        content=#{content}
+        where id=#{id}
+    </update>
+    <insert id="adddivision" parameterType="map">
+        insert into division values(null,#{NAME},'/images/ylsb1.jpg',#{content},'1楼房',#{div_tel})
+    </insert>
 </mapper>
