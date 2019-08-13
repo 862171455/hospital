@@ -62,4 +62,9 @@ public class medServiceImpl implements medService {
     public List<Map<String, Object>> findWestern_medicine() {
         return medicineMapper.findWestern_medicine();
     }
+
+    @Override
+    public List<Map<String, Object>> findDrugstore() {
+        return medicineMapper.findDrugstore();
+    }
 }

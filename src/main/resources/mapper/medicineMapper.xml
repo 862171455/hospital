@@ -42,4 +42,7 @@
     <select id="findWestern_medicine" resultType="map">
      SELECT supplier.*, western_medicine.* FROM supplier,western_medicine WHERE supplier.sup_no=western_medicine.wes_supplier_no
     </select>
+    <select id="findDrugstore" resultType="map">
+        SELECT drug.*, drugstore.* FROM drug ,drugstore WHERE drug.dru_drugstore_no=drugstore.sto_no
+    </select>
 </mapper>
