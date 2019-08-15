@@ -3,10 +3,15 @@ layui.use([ 'form', 'layer','jquery' ], function() {
             layer = layui.layer,
             $ = jQuery = layui.$;
         form.on('submit(*)',function(){
+            var f=document.getElementById("mybm");
+            var form = new FormData(f);
+            alert(form);
             $.ajax({
                 url:"/addstafff",
                 type:"post",
-                data:$("#mybm").serialize(),
+                data:form,
+                contentType: false,
+                processData: false,
                 success:function(){
                     //修改完成，刷新父窗口,一刷新弹出层会自动关闭
                     window.parent.location.reload();

@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,15 +57,31 @@ public class DoctorControoller {
 	}
 	@ResponseBody
 	@RequestMapping("addstafff")
-	public void add(@RequestParam Map<String,Object> map){
-		
+	public void add(@RequestParam("photo") MultipartFile photo,
+			@RequestParam Map<String,Object> map
+					) throws IOException {
+		String path = "D:/his/src/main/resources/static/img";
+		//String path=request.getServletContext().getRealPath("/resource/uploads");
+		System.out.println(path);
+		String fname = photo.getOriginalFilename();
+		fname="up"+fname;
+		map.put("photo","/img/"+fname);
+		//在指定目录中，产生一个指定名称的新文件（文件是空的，没有内容）
+		File newFile = new File(path,fname);
+		//判断，保存上传文件的目录是否存在，如果不存在，就产生目录
+		if(!newFile.getParentFile().exists()){
+			newFile.getParentFile().mkdirs(); //创建目录
+		}
+		//将上传文件中的数据，写入到新文件中
+		photo.transferTo(newFile);
+		System.out.println(map);
 		if(map.get("id").equals("")){/*是否有id*/
 			/*增加*/
 			staffService.addstafff(map);
 			
 		}else{
 			/*修改*/
-			staffService.updatestafff(map);
+			//staffService.updatestafff(map);
 		}
 		
 	}

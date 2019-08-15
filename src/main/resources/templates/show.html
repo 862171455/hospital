@@ -20,12 +20,10 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img th:src="@{'/favicon.ico'}"  class="layui-nav-img">
-                    <b>欢迎XX</b>
+                    <b>欢迎[[${session.user.NAME}]]</b>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="" target="right">个体基本资料</a></dd>
-                    <dd><a href="" target="_self">修改密码</a></dd>
-                    <dd><a href="" target="_self">退出系统</a></dd>
+                    <dd><a th:href="@{'/admin/admin_out'}" target="_self">退出系统</a></dd>
                 </dl>
             </li>
         </ul>

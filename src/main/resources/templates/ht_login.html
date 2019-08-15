@@ -20,21 +20,29 @@
 			<div class="login-top">
 				医生后台登录
 			</div>
-			<form th:action="@{'/for/show'}" method="get" >
+			<form  method="post" th:action="@{'/admin/admin_login'}">
+				<div align="center" style="color:#F00">[[${err}]]</div>
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img th:src="@{'/img/name.png'}"/></div>
 				<div class="login-center-input">
-					<input type="text" name="" value="" placeholder="请输入您的用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的用户名'"/>
+					<input type="text" name="username"  placeholder="请输入您的用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的用户名'"/>
 					<div class="login-center-input-text">用户名</div>
 				</div>
 			</div>
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img th:src="@{'/img/password.png'}"/></div>
 				<div class="login-center-input">
-					<input type="password" name="" value="" placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
+					<input type="password" name="pwd"  placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
 					<div class="login-center-input-text">密码</div>
 				</div>
 			</div>
+				<div align="center">
+					<select name="type">
+					<option value ="admin">管理员</option>
+					<option value ="mz">门诊部</option>
+					<option value="zy">住院部</option>
+					<option value="yk">药库</option>
+				</select></div>
 				<div align="center">
 				<div id="mpanel1" >
 				</div></div>
