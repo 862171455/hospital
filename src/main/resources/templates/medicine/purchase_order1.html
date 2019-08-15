@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}" media="all">
+    <script th:src="@{'/layui/layui.js'}"></script>
+</head>
+<script>
+layui.use('form', function(){
+var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+//……
+
+//但是，如果你的HTML是动态生成的，自动渲染就会失效
+//因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+form.render();
+});
+</script>
+<body>
+<h1 align="center"><b>发起采购单</b></h1>
+<form class="layui-form" action="" lay-filter="example">
+    <div class="layui-form-item">
+        <label class="layui-form-label">采购单名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">采购单金额</label>
+        <div class="layui-input-block">
+            <input type="number" name="password" placeholder="请输入金额" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">采购单详情</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

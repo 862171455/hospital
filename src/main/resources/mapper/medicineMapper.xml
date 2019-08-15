@@ -45,4 +45,10 @@
     <select id="findDrugstore" resultType="map">
         SELECT drug.*, drugstore.* FROM drug ,drugstore WHERE drug.dru_drugstore_no=drugstore.sto_no
     </select>
+    <select id="purOrderCount" parameterType="map">
+      SELECT COUNT(*) FROM purchase WHERE  pur_name=#{name} AND pur_pwd=#{pwd};
+    </select>
+    <select id="findOrderId" resultType="map">
+    SELECT * FROM purchase WHERE pur_name=#{cname};
+    </select>
 </mapper>

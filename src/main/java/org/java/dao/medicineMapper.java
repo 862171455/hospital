@@ -20,4 +20,6 @@ public interface medicineMapper {
     public List<Map<String, Object>> findChinese_medicine();
     public List<Map<String, Object>> findWestern_medicine();
     public List<Map<String,Object>> findDrugstore();
+    public int purOrderCount(Map map);
+    public Map  findOrderId(@Param("name")String name);
 }
