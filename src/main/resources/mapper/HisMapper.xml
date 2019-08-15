@@ -9,4 +9,19 @@
     content=#{content}
      where id=1
     </select>
+    <insert id="addyj" parameterType="map">
+        insert into yjfk values(null,#{yj_zt},#{yj_tel},#{yj_sm},#{yj_yj})
+    </insert>
+
+    <select id="findyjfk" resultType="map" parameterType="map">
+        select * FROM yjfk limit #{start},#{limit}
+    </select>
+    <select id="findyjfkcount" resultType="int">
+        select count(*) from yjfk
+    </select>
+
+    <delete id="delyjfk" parameterType="int">
+        DELETE  FROM yjfk WHERE yj_id=#{yj_id}
+    </delete>
+
 </mapper>

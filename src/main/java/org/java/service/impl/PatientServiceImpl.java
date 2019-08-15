@@ -31,7 +31,7 @@ public class PatientServiceImpl implements PatientService {
 	@Transactional
 	@Override
 	public void updateDetails(Map<String, Object> map) {
-		System.out.println(map);
+		
 		patientMapper.updateDetails(map);
 	}
 	

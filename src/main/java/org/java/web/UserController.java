@@ -63,4 +63,6 @@ public class UserController {
 		request.getSession().removeAttribute("user");
 		return "/page/index";
 	}
+	
+	
 }

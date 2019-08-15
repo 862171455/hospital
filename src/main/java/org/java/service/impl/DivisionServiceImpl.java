@@ -3,6 +3,7 @@ package org.java.service.impl;
 import org.java.dao.DivisionMapper;
 import org.java.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,6 @@ public class DivisionServiceImpl implements DivisionService {
 	public List<Map<String, Object>> findAlldivision() {
 		return divisionMapper.findAlldivision();
 	}
-	
 	//@Cacheable("finddivisionbytype")
 	@Override
 	public List<Map<String, Object>> finddivisionbytype() {

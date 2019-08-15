@@ -140,39 +140,29 @@
                 <span>（以下 * 均为必填项）</span>
             </div>
             <div class="Complaints clearfix">
-                <form id="form">
+                <form id="form" th:action="@{'/people/fk'}" method="post">
                     <dl class="clearfix">
                         <dt>
-                            <p>反馈科室：</p>
-                            <label>
-                                <input type="text" id="keshi"></label></dt>
-                        <dd>
                             <p><span>*</span>反馈主题：</p>
                             <label>
-                                <input type="text" id="title"></label></dd>
+                                <input type="text" id="title" name="yj_zt"></label></dt>
                     </dl>
                     <dl class="clearfix">
                         <dt>
                             <p><span>*</span>手机号码：</p>
                             <label>
-                                <input type="text" id="tel"></label></dt>
+                                <input type="text" id="tel" name="yj_tel"></label></dt>
                         <dd>
                             <p><span>*</span>署名：</p>
                             <label>
-                                <input type="text" id="name"></label></dd>
+                                <input type="text" id="name" name="yj_sm"></label></dd>
                     </dl>
                     <ul>
                         <p><span>*</span>反馈意见：</p>
                         <label class="textarea">
-                            <textarea id="content"></textarea></label>
+                            <textarea id="content" name="yj_yj"></textarea></label>
                     </ul>
-                    <div class="vcode clearfix">
-                        <p><span>*</span>验证码：</p>
-                        <p class="firstp" style="width: 233px">
-                            <label>
-                                <input type="text" id="code" maxlength="4" style="width: 130px"></label><img id="codeimg" th:src="@{'/images/checkCode.ashx'}" style="height: 35px;" title="点击图片更换验证码">
-                        </p>
-                    </div>
+
                     <div class="Complaintsbutton">
                         <input type="submit" value="提 交"><input type="reset" value="重 置" class="reset">
                     </div>

@@ -6,8 +6,8 @@ layui.use(['table', 'layer', 'jquery'], function(){
         elem: '#demo'
         ,url: '/drug' //数据接口
         ,page: true //开启分页
-        ,limit:3 //默认每一页显示的条数
-        ,limits:[1,2,3,5,10,20,30,50]//提示的每页条数的列表
+        ,limit:8 //默认每一页显示的条数
+        ,limits:[1,2,3,5,8,10,20,30,50]//提示的每页条数的列表
         ,toolbar:"#addDemo" //显示工具栏
         ,title:"药品信息" //设置导出文件时的标题
         ,loading:true

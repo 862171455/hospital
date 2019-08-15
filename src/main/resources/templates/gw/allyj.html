@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        .demo-carousel{height: 200px; line-height: 200px; text-align: center;}
+    </style>
+</head>
+<body>
+<h1>全部意见</h1>
+<table class="layui-hide" id="bmall" lay-filter="text"></table>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script type="text/javascript" th:src="@{'/js/yj/all.js'}"></script>
+<script type="text/html" id="barBm">
+    <a class="layui-btn layui-btn-sm" lay-event="edit">查看</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+</body>
+</html>

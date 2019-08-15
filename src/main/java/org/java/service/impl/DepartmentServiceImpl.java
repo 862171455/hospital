@@ -3,6 +3,7 @@ package org.java.service.impl;
 import org.java.dao.DepartmentMapper;
 import org.java.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
