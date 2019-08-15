@@ -168,6 +168,6 @@
      where id=#{id}
   </update>
   <insert id="addstafff" parameterType="map">
-    insert into stafff values(null,#{NAME},#{sex},#{age},#{comeage},#{tel},1,1,'/images/img/nurse1.jpg',#{content})
+    insert into stafff values(null,#{NAME},#{sex},#{age},#{comeage},#{tel},1,1,#{photo},#{content})
   </insert>
 </mapper>
