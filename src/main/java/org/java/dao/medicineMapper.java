@@ -21,5 +21,7 @@ public interface medicineMapper {
     public List<Map<String, Object>> findWestern_medicine();
     public List<Map<String,Object>> findDrugstore();
     public int purOrderCount(Map map);
-    public Map  findOrderId(@Param("name")String name);
+    public int managerCount(Map map);
+    public Map  findOrderId(@Param("username")String username);
+    public Map  findManagerId(@Param("username")String username);
 }

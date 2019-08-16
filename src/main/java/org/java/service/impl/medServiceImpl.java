@@ -74,7 +74,17 @@ public class medServiceImpl implements medService {
     }
 
     @Override
-    public Map findOrderId(String name) {
-        return medicineMapper.findOrderId(name);
+    public Map findOrderId(String username) {
+        return medicineMapper.findOrderId(username);
+    }
+
+    @Override
+    public int managerCount(Map map) {
+        return medicineMapper.managerCount(map);
+    }
+
+    @Override
+    public Map findManagerId(String username) {
+        return medicineMapper.findManagerId(username);
     }
 }
