@@ -21,7 +21,7 @@
 				医生后台登录
 			</div>
 			<form  method="post" th:action="@{'/admin/admin_login'}">
-				<div align="center" style="color:#F00">[[${err}]]</div>
+				<div align="center" style="color:#F00" id="err">[[${err}]]</div>
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img th:src="@{'/img/name.png'}"/></div>
 				<div class="login-center-input">
@@ -41,7 +41,7 @@
 					<option value ="admin">管理员</option>
 					<option value ="mz">门诊部</option>
 					<option value="zy">住院部</option>
-					<option value="yk">药库</option>
+					<option value="medicine">药库</option>
 				</select></div>
 				<div align="center">
 				<div id="mpanel1" >
@@ -78,6 +78,16 @@
 
         }
     });
+</script>
+<script>
+    $("[name='username']").change(function(){
+        if($("[name='username']").val()!="") {
+            $('#err').html('');
+
+        }
+    });
+
+
 </script>
 </body>
 </html>

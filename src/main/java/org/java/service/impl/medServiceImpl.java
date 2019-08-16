@@ -67,4 +67,24 @@ public class medServiceImpl implements medService {
     public List<Map<String, Object>> findDrugstore() {
         return medicineMapper.findDrugstore();
     }
+
+    @Override
+    public int purOrderCount(Map map) {
+        return medicineMapper.purOrderCount(map);
+    }
+
+    @Override
+    public Map findOrderId(String username) {
+        return medicineMapper.findOrderId(username);
+    }
+
+    @Override
+    public int managerCount(Map map) {
+        return medicineMapper.managerCount(map);
+    }
+
+    @Override
+    public Map findManagerId(String username) {
+        return medicineMapper.findManagerId(username);
+    }
 }
