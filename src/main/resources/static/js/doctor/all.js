@@ -74,12 +74,15 @@ layui.use(['layer','table','jquery' ],function(){
                       var body = layui.layer.getChildFrame('body');
                       body.find("[name=id]").val(data.id);
                       body.find("[name=NAME]").val(data.NAME);
-                      body.find("[name=sex]").val(data.sex).attr(selected="");
+                      body.find("[name=sex]").val(data.sex);
                       body.find("[name=age]").val(data.age);
                       body.find("[name=comeage]").val(data.comeage);
                       body.find("[name=tel]").val(data.tel);
                       body.find("[name=content]").val(data.content);
-                      body.find("[name=img]").html("<img src='"+data.photo+"'>")
+                      body.find("[name=photo1]").val(data.photo);
+                      body.find("[name=dep_div_id]").val(data.dep_div_id);
+                      body.find("[name=role_id]").val(data.role_id);
+                      body.find("[name=img]").html("<input type='file' onchange='loadImg(1)' id='picture1' name='photo' judge='no' accept='image/*' style='width:30%; height:95% ;opacity: 0; z-index: 99; position: absolute; '/> <img id='imgContent1' style='width:350px;height:250px;z-index: 0' src="+data.photo+" /> <input id='FileName1' name='photo' type='hidden'>")
 
                   },
                   end: function(){

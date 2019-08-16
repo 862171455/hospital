@@ -1,13 +1,12 @@
 package org.java.conf;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Created by GD on 2019/8/15 0015 19:27
  */
-@Configuration
+
 public class WebConfig implements WebMvcConfigurer {
 	
 	@Override
