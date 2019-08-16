@@ -23,9 +23,14 @@
                     <b>欢迎药房[[${map1.pur_type}]]【[[${session.user}]]】登录</b>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a th:href="@{'/admin/admin_out'}" target="_self">退出系统</a></dd>
+                    <dd><a th:href="@{'/pur_message'}" target="right">基本资料</a></dd>
                 </dl>
+
             </li>
+                <li class="layui-nav-item">
+                    <a th:href="@{'/admin/admin_out'}" target="_self">退出系统</a>
+                </li>
+
         </ul>
     </div>
 

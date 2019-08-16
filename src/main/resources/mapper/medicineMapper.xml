@@ -45,10 +45,10 @@
     <select id="findDrugstore" resultType="map">
         SELECT drug.*, drugstore.* FROM drug ,drugstore WHERE drug.dru_drugstore_no=drugstore.sto_no
     </select>
-    <select id="purOrderCount" resultType="int">
+    <select id="purCount" resultType="int">
       SELECT COUNT(*) FROM purchase WHERE  pur_name=#{username} AND pur_pwd=#{pwd};
     </select>
-    <select id="findOrderId" resultType="map">
+    <select id="findPurId" resultType="map">
     SELECT * FROM purchase WHERE pur_name=#{username};
     </select>
     <select id="managerCount" resultType="int">
@@ -56,5 +56,8 @@
     </select>
     <select id="findManagerId" resultType="map">
       SELECT * FROM manager WHERE man_name=#{username};
+    </select>
+    <select id="updatePur">
+        UPDATE  purchase SET pur_pwd  =#{password1} WHERE pur_name=#{name};
     </select>
 </mapper>

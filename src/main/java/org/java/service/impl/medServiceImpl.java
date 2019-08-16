@@ -69,13 +69,13 @@ public class medServiceImpl implements medService {
     }
 
     @Override
-    public int purOrderCount(Map map) {
-        return medicineMapper.purOrderCount(map);
+    public int purCount(Map map) {
+        return medicineMapper.purCount(map);
     }
 
     @Override
-    public Map findOrderId(String username) {
-        return medicineMapper.findOrderId(username);
+    public Map findPurId(String username) {
+        return medicineMapper.findPurId(username);
     }
 
     @Override
@@ -86,5 +86,10 @@ public class medServiceImpl implements medService {
     @Override
     public Map findManagerId(String username) {
         return medicineMapper.findManagerId(username);
+    }
+
+    @Override
+    public void updatePur(String name,String password1) {
+        medicineMapper.updatePur(name,password1);
     }
 }

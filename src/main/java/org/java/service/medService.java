@@ -18,8 +18,9 @@ public interface medService {
     public List<Map<String, Object>> findChinese_medicine();
     public List<Map<String, Object>> findWestern_medicine();
     public List<Map<String,Object>> findDrugstore();
-    public int purOrderCount(Map map);
-    public Map findOrderId(String username);
+    public int purCount(Map map);
+    public Map findPurId(String username);
     public int managerCount(Map map);
     public Map  findManagerId(String username);
+    public void updatePur(String name,String password1);
 }

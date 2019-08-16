@@ -20,8 +20,9 @@ public interface medicineMapper {
     public List<Map<String, Object>> findChinese_medicine();
     public List<Map<String, Object>> findWestern_medicine();
     public List<Map<String,Object>> findDrugstore();
-    public int purOrderCount(Map map);
+    public int purCount(Map map);
     public int managerCount(Map map);
-    public Map  findOrderId(@Param("username")String username);
+    public Map  findPurId(@Param("username")String username);
     public Map  findManagerId(@Param("username")String username);
+    public void updatePur(@Param("name") String name,@Param("password1") String password1);
 }
