@@ -62,10 +62,10 @@ public class DoctorControoller {
 					) throws IOException {
 		String path = "D:/his/src/main/resources/static/img";
 		//String path=request.getServletContext().getRealPath("/resource/uploads");
-		System.out.println(path);
+		
 		String fname = photo.getOriginalFilename();
 		fname="up"+fname;
-		map.put("photo","/img/"+fname);
+		
 		//在指定目录中，产生一个指定名称的新文件（文件是空的，没有内容）
 		File newFile = new File(path,fname);
 		//判断，保存上传文件的目录是否存在，如果不存在，就产生目录
@@ -74,14 +74,29 @@ public class DoctorControoller {
 		}
 		//将上传文件中的数据，写入到新文件中
 		photo.transferTo(newFile);
+		String dphoto="/images/doc1.jpg";//默认图片
 		System.out.println(map);
 		if(map.get("id").equals("")){/*是否有id*/
 			/*增加*/
+			if(fname.equals("up")){
+				map.put("photo",dphoto);
+			}else{
+				map.put("photo","/img/"+fname);
+			}
 			staffService.addstafff(map);
 			
 		}else{
 			/*修改*/
-			//staffService.updatestafff(map);
+			if(fname.equals("up")){
+//				String x= (String) map.get("p");
+//				String [] b = x.split("9999");
+//				System.out.println(b[1]);
+//				map.put("photo",b[1]);
+				map.put("photo",map.get("photo1"));
+			}else{
+				map.put("photo","/img/"+fname);
+			}
+			staffService.updatestafff(map);
 		}
 		
 	}

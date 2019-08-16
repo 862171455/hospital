@@ -163,11 +163,12 @@
   </delete>
 
   <update id="updatestafff" parameterType="map">
-    update stafff SET NAME=#{NAME},sex=#{sex},age=#{age},comeage=#{comeage},tel=#{tel},
+    update stafff SET NAME=#{NAME},sex=#{sex},age=#{age},comeage=#{comeage},tel=#{tel},photo=#{photo},dep_div_id=#{dep_div_id},
+    role_id=#{role_id},
     content=#{content}
      where id=#{id}
   </update>
   <insert id="addstafff" parameterType="map">
-    insert into stafff values(null,#{NAME},#{sex},#{age},#{comeage},#{tel},1,1,#{photo},#{content})
+    insert into stafff values(null,#{NAME},#{sex},#{age},#{comeage},#{tel},#{dep_div_id},#{role_id},#{photo},#{content})
   </insert>
 </mapper>
