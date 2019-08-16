@@ -206,7 +206,10 @@
      patient_add=#{patient_add}
      where patient_id=#{patient_id}</update>
 
-
+<insert id="addPatient" parameterType="map">
+  INSERT INTO patient(patient_id,patient_username,patient_pwd,patient_tel)
+  VALUES(UUID(),#{username},#{pwd},#{tel});
+</insert>
 
 
 

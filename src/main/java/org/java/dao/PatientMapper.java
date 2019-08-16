@@ -23,4 +23,6 @@ public interface PatientMapper {
     Map<String,Object> findbyUuAndP(Map<String,Object> map);//病人账号密码登录
     void updatepwd(Map<String,Object> map);//密码修改
     void updateDetails(Map<String,Object> map);//信息修改
+    void addPatient(Map<String,Object> map);//患者注册
+    
 }

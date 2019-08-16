@@ -35,6 +35,12 @@ public class PatientServiceImpl implements PatientService {
 		patientMapper.updateDetails(map);
 	}
 	
+	@Transactional
+	@Override
+	public void addPatient(Map<String, Object> map) {
+		patientMapper.addPatient(map);
+		
+	}
 	
 	
 }
