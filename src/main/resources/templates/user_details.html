@@ -31,9 +31,9 @@
 
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">验证手机</label>
+            <label class="layui-form-label">手机</label>
             <div class="layui-input-inline">
-                <input type="tel" name="patient_tel" lay-verify="required|phone" autocomplete="off" class="layui-input" th:value="${session.user.patient_tel}" >
+                <input type="tel" name="patient_tel" lay-verify="required|phone" autocomplete="off" class="layui-input" th:value="${session.user.patient_tel}" readonly="readonly" >
             </div>
         </div>
     </div>

@@ -211,6 +211,14 @@
   VALUES(UUID(),#{username},#{pwd},#{tel});
 </insert>
 
+  <select id="findalltel"  resultType="map">
+    select  patient.patient_tel FROM patient ;
+  </select>
+
+  <select id="findalluser"  resultType="map">
+    select  patient.patient_username FROM patient ;
+  </select>
+
 
 
 </mapper>
