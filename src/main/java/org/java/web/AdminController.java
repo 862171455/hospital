@@ -52,14 +52,14 @@ public class AdminController {
 
 			int count=medService.managerCount(map);
 			if (count == 0) {
-				int count1 = medService.purOrderCount(map);
+				int count1 = medService.purCount(map);
 				if (count1 == 0) {
 					String err="账号密码错误";
 					request.setAttribute("err",err);
 					return "/ht_login";
 				} else {
 					ses.setAttribute("user", map.get("username"));
-					Map map1 = medService.findOrderId(map.get("username").toString());
+					Map map1 = medService.findPurId(map.get("username").toString());
 					model.addAttribute("map1", map1);
 					return "/medicine/purchase_show";
 				}
