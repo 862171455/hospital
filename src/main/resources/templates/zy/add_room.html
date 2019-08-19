@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+    <script type="text/javascript" th:src="@{'/js/jquery.min.js'}"></script>
+    <script type="text/javascript" th:src="@{'/js/room/update.js'}"></script>
+</head>
+<body>
+<form class="layui-form"  id="mybm">
+    <div class="layui-form-item">
+        <input type="hidden" name="room_id" />
+
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="room_name" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">楼层</label>
+        <div class="layui-input-block">
+            <select name="room_lc" lay-filter="aihao">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">介绍</label>
+        <div class="layui-input-block">
+            <input type="text" name="room_con" lay-verify="title" autocomplete="off" placeholder="介绍" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit   lay-filter="*">确定</button>
+            <button type="button" class="layui-btn layui-btn-primary" onclick="myclose()">关闭</button>
+        </div>
+    </div>
+</form>
+
+</body>
+
+
+</html>
