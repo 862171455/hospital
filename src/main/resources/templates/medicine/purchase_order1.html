@@ -19,24 +19,30 @@ form.render();
 </script>
 <body>
 <h1 align="center"><b>发起采购单</b></h1>
-<form class="layui-form" action="" lay-filter="example">
+<form class="layui-form" th:action="@{'/createOrder'}" lay-filter="example">
     <div class="layui-form-item">
         <label class="layui-form-label">采购单名称</label>
         <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input">
+            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">采购单金额</label>
         <div class="layui-input-block">
-            <input type="number" name="password" placeholder="请输入金额" autocomplete="off" class="layui-input">
+            <input type="number" name="price" placeholder="请输入金额" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">供应商编号</label>
+        <div class="layui-input-block">
+            <input type="number" name="supplierId" placeholder="请输入内容" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">采购单详情</label>
         <div class="layui-input-block">
-            <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>
+            <textarea placeholder="请输入内容" class="layui-textarea" name="content"></textarea>
         </div>
     </div>
     <div class="layui-form-item">
