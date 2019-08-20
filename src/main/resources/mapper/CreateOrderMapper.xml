@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.CreateOrderMapper">
+    <insert id="createOrder" parameterType="map">
+insert into purchase_order1 values(#{id},#{name},#{price},#{content},#{createTime},#{status},#{userId},#{processInstanceId},#{endtime},#{supplierId})
+    </insert>
+    <select id="findProcessInstanceId" resultType="map">
+select * from purchase_order1 where processInstance_id=#{processInstanceId}
+
+</select>
+</mapper>

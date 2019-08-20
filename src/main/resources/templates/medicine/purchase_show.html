@@ -49,12 +49,19 @@
                         <dd><a th:href="@{'/for/drugstore'}" target="right">药库详情</a></dd>
                         <dd><a th:href="@{'/for/chinese_medicine'}" target="right">中药详情</a></dd>
                         <dd><a th:href="@{'/for/western_medicine'}" target="right">西药详情</a></dd>
-                        <dd><a th:href="@{'/for/purchase_order1'}"  target="right">发起采购</a></dd>
-                        <dd><a href=""  target="right">出库统计</a></dd>
-                        <dd><a href=""  target="right">入库统计</a></dd>
                         <dd><a th:href="@{'/for/supplier'}"  target="right">供应商信息</a></dd>
                     </dl>
                 </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">采购流程</a>
+                <dl class="layui-nav-child">
+                <dd><a th:href="@{'/for/purchase_order1'}"  target="right">发起采购</a></dd>
+                <dd><a th:href="@{'/showTask'}" target="right">处理采购单</a></dd>
+                <dd><a href=""  target="right">出库统计详情</a></dd>
+                <dd><a href=""  target="right">入库统计详情</a></dd>
+                </dl>
+            </li>
+
 
             </ul>
         </div>
