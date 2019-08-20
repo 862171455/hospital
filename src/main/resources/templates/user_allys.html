@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        .demo-carousel{height: 200px; line-height: 200px; text-align: center;}
+    </style>
+</head>
+<body>
+<h1>医生列表</h1>
+<table class="layui-hide" id="bmall" lay-filter="text"></table>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script type="text/javascript" th:inline="none" >
+    layui.use(['layer','table','jquery' ],function(){
+        var table  = layui.table,
+            layer=layui.layer,
+            $ = jQuery = layui.$;
+        table.render({
+            elem:'#bmall'//要绑定的数据表格
+            ,url: '/loadAllDoctor' //数据接口
+            ,height: 'full' //高度最大化
+            ,page: true //开启分页
+            ,skin: 'sm' //行边框风格
+            ,even: true //开启隔行背景
+            ,title:"所有医生" //标题
+            ,text:"数据显示异常"
+            ,page:true//分页
+            ,limits:[1,2,3,5,10,20,30]//显示条数列表
+            ,toolbar:"#toolbarBm" //显示工具栏
+            ,cols:[[
+                {field:"id", align: "center",title:"编号",width:"15%", sort: true},
+                {field:"NAME", align: "center",title:"名称",width:"10%", sort: true},
+                {field:"sex", align: "center",title:"性别",width:"10%"},
+                {field:"age", align: "center",title:"年龄",width:"15%"},
+                {field:"comeage", align: "center",title:"工作年龄",width:"15%"},
+                {field:"tel", align: "center",title:"电话号码",width:"10%"},
+                {field: 'op', title: '操作', width: "20%", align:"center",toolbar:"#barBm"}
+            ]]
+        });
+
+
+        //监听行
+        table.on('tool(text)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+          if(layEvent === 'edit'){
+                layer.open({
+                    type: 2, //弹出层的类型
+                    anim: 3, //进入的动画方式
+                    title: '医生信息',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['480px', '90%'],
+                    content: 'user_ysxq',//这里content是一个普通的String
+                    success: function(layero, index){
+                        var body = layui.layer.getChildFrame('body');
+                        body.find("[name=id]").val(data.id);
+                        body.find("[name=NAME]").val(data.NAME);
+                        body.find("[name=sex]").val(data.sex);
+                        body.find("[name=age]").val(data.age);
+                        body.find("[name=comeage]").val(data.comeage);
+                        body.find("[name=tel]").val(data.tel);
+                        body.find("[name=content]").val(data.content);
+                        body.find("[name=photo1]").val(data.photo);
+                        body.find("[name=dep_div_id]").val(data.dep_div_id);
+                        body.find("[name=role_id]").val(data.role_id);
+                        body.find("[name=img]").html("<input type='file' onchange='loadImg(1)' id='picture1' name='photo' judge='no' accept='image/*' style='width:30%; height:95% ;opacity: 0; z-index: 99; position: absolute; '/> <img id='imgContent1' style='width:350px;height:250px;z-index: 0' src="+data.photo+" /> <input id='FileName1' name='photo' type='hidden'>")
+
+                    },
+                    end: function(){
+                        table.reload("tb");//重新加载数据
+                    }
+                });
+            }
+        });
+    });//layui.use结束标志
+
+</script>
+
+<script type="text/html" id="barBm">
+    <a class="layui-btn layui-btn-sm" lay-event="edit">查看详情</a>
+</script>
+</body>
+</html>

@@ -2,13 +2,11 @@ package org.java.web;
 
 import org.java.service.medService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -22,6 +20,13 @@ import java.util.Map;
 public class medController {
     @Autowired
     private medService medService;
+    
+    @RequestMapping("alldrug")
+    @ResponseBody
+    public List<Map<String,Object>> Alldrug(){
+        List<Map<String,Object>> list = medService.findallDrug();
+        return list;
+        }
     @RequestMapping("drug")
     @ResponseBody
     public Map drug(Integer page,Integer limit,String dru_name,@RequestParam(name = "dru_drugstore_no",defaultValue = "0") Integer dru_drugstore_no){

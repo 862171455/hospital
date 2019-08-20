@@ -45,7 +45,7 @@
                     <dl class="layui-nav-child">
                         <dd><a th:href="@{'/for/user_guahao'}" target="right">挂号</a></dd>
                         <dd><a th:href="@{'/for/user_details'}" target="right">我的信息查看</a></dd>
-                        <dd><a href="" target="right">医生信息</a></dd>
+                        <dd><a th:href="@{'/for/user_allys'}" target="right">医生信息</a></dd>
                         <dd><a href="" target="right">我的病历</a></dd>
                         <dd><a href="" target="right">咨询医生</a></dd>
                     </dl>
@@ -54,7 +54,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">药品</a>
                     <dl class="layui-nav-child">
-                        <dd><a href=""  target="right">全部药品</a></dd>
+                        <dd><a th:href="@{'/for/user_allyao'}"  target="right">全部药品</a></dd>
                         <dd><a href=""  target="right">我的购物车</a></dd>
                         <dd><a href=""  target="right">历史购买</a></dd>
                     </dl>
@@ -63,7 +63,7 @@
                     <a href="javascript:;">住院</a>
                     <dl class="layui-nav-child">
                         <dd><a href=""  target="right">查看住院记录</a></dd>
-                        <dd><a href=""  target="right">查看房间价格</a></dd>
+                        <dd><a th:href="@{'/for/user_room'}"  target="right">查看房间床位价格</a></dd>
                     </dl>
                 </li>
             </ul>

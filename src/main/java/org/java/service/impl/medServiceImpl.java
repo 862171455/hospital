@@ -16,8 +16,13 @@ import java.util.Map;
 public class medServiceImpl implements medService {
     @Autowired
     private medicineMapper medicineMapper;
-
-
+    
+    
+    @Override
+    public List<Map<String, Object>> findallDrug() {
+        return medicineMapper.findallDrug();
+    }
+    
     @Override
     public int drugCount(String dru_name,Integer dru_drugstore_no) {
         return medicineMapper.drugCount(dru_name,dru_drugstore_no);

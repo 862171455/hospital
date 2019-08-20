@@ -20,4 +20,5 @@ public interface AdminerMapper {
     int updateByPrimaryKey(Adminer record);
     
     Map<String,Object> findadminer(Map<String,Object> map);//根据账号密码查医生id
+    void addadminer(Map<String,Object> map);
 }

@@ -44,7 +44,7 @@ public class MD5Demo {
 
 
 
-    private String pwd ="123";//原始密码
+    private String pwd ="123456";//原始密码
     
     
     @Test

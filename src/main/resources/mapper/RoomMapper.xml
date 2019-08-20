@@ -108,4 +108,7 @@
   <insert id="addroom" parameterType="map">
     insert into room values(null,#{room_lc},#{room_name},#{room_con},1)
   </insert>
+  <select id="findroom" resultType="map" >
+    select room.room_id,room.room_name FROM room
+  </select>
 </mapper>

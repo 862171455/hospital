@@ -40,6 +40,7 @@ public class UserController {
 		System.out.println(map.toString());
 		String pwd= MD5Demo.tomd5(map.get("pwd").toString());
 		map.put("pwd",pwd);//md5加密后
+		System.out.println(map);
 		Map<String, Object> user = patientService.findbyUuAndP(map);//查用户
 		if(user==null){
 			String err="账号或者密码错误";

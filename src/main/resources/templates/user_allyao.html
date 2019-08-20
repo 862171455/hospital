@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>漳州第四医院</title>
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/base.css'}">
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/main.css'}">
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/font-awesome.min.css'}">
+    <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+    <script th:src="@{'/js/jquery-1.4.4.js'}"></script>
+    <script th:src="@{'/js/fun.js'}"></script>
+    <script th:src="@{'/js/smoothscroll.min.js'}"></script>
+    <script th:src="@{'/js/jquery.cycle.all.js'}"></script>
+    <script th:src="@{'/js/jquery.SuperSlide.2.1.1.js'}"></script>
+    <script th:src="@{'/js/index.js'}"></script>
+    <script th:src="@{'/js/jquery-runbanner.js'}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/banner.css'}">
+</head>
+<body>
+<div class="equipmentlist" >
+    <ul class='clearfix' id="l">
+    </ul>
+</div>
+</body>
+<script>
+    $.ajax({
+        url: "/alldrug",
+        type: "post",
+        async: false,
+        dataType: "json",//后台返回的是一个json格式的数据
+        success: function (data) {
+            //data，即为返回的json,它本身的类型是map
+            //如果json的类型是map,循环取到的内容分别为：key(对应map中的键),value(对应map中的值)
+            $.each(data, function (index, map) {
+alert(map.dru_name)
+                $("<li> <a href='javascript:;'> <img src='"+map.dru_photo+"'><span>"+map.dru_name+"</span> </a> </li>").appendTo("#l");
+            });
+        }
+    });
+</script>
+</html>

@@ -80,7 +80,7 @@
     where bed_id = #{bedId,jdbcType=INTEGER}
   </update>
   <select id="findAllbed" resultType="map" parameterType="map">
-    select beed.*,room.room_name FROM beed,room
+    select beed.*,room.* FROM beed,room
         WHERE beed.bed_room_id=room.room_id limit #{start},#{limit}
   </select>
   <select id="findbedcount" resultType="int">

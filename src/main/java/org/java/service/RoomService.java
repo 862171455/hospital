@@ -12,4 +12,5 @@ public interface RoomService {
 	void delroom(int id);//按主键删除
 	void updateroom(Map<String,Object> map);
 	void addroom(Map<String,Object> map);
+	List<Map<String,Object>> findroom();
 }

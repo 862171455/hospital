@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
+    <title>Title</title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+    <script type="text/javascript" th:src="@{'/js/jquery.min.js'}"></script>
+    <script type="text/javascript" th:src="@{'/js/doctor/update.js'}"></script>
+</head>
+<body>
+<form class="layui-form"  id="mybm" enctype="multipart/form-data">
+    <div class="layui-form-item">
+        <input type="hidden" name="id" />
+        <input type="hidden" name="photo1" />
+
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left: 10px">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="position: relative;margin-left: 30px" name="img" align="center" id="photo">
+
+                <img id="imgContent1" style="width:350px;height:250px;z-index: 0"
+                     th:src="@{/images/doc1.jpg}"/>
+
+            </div>
+        </div>
+
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="NAME" lay-verify="title" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <select name="sex" lay-filter="aihao">
+                <option value="男">男</option>
+                <option value="女" >女</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">职位</label>
+        <div class="layui-input-block">
+            <select name="role_id" lay-filter="aihao">
+                <option value="1">院长</option>
+                <option value="2">专家</option>
+                <option value="3">医生</option>
+                <option value="4">护士</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">科室</label>
+        <div class="layui-input-block">
+            <select name="dep_div_id" lay-filter="aihao">
+                <option value="1">内科</option>
+                <option value="2">外科</option>
+                <option value="3">妇科</option>
+                <option value="4">产科</option>
+                <option value="5">骨科</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-input-block">
+            <input type="text" name="age" lay-verify="title" autocomplete="off" placeholder="请输入年龄" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作经验</label>
+        <div class="layui-input-block">
+            <input type="text" name="comeage" lay-verify="title" autocomplete="off" placeholder="请输入工作年龄" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" lay-verify="title" autocomplete="off" placeholder="请输入电话" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">介绍</label>
+        <div class="layui-input-block">
+            <input type="text" name="content" lay-verify="title" autocomplete="off" placeholder="介绍" class="layui-input">
+        </div>
+    </div>
+
+</form>
+
+</body>
+<script th:src="@{'/js/jquery-3.2.1.min.js'}" charset="utf-8"></script>
+
+</html>

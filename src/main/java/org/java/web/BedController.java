@@ -1,6 +1,7 @@
 package org.java.web;
 
 import org.java.service.BeedService;
+import org.java.service.RoomService;
 import org.java.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class BedController {
 	
 	@Autowired
 	private BeedService beedService;
+	
+	@Autowired
+	private RoomService roomService;
 	
 	@ResponseBody
 	@RequestMapping("loadAllbeed")
@@ -60,6 +64,13 @@ public class BedController {
 	public void del(@PathVariable("id")  int id){
 		
 		beedService.delbed(id);
+	}
+	
+	@ResponseBody
+	@RequestMapping("findroom_bed")
+	public List<Map<String,Object>> findroom(){
+	return	roomService.findroom();
+	
 	}
 	
 	

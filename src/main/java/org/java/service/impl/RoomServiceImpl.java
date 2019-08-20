@@ -44,4 +44,10 @@ public class RoomServiceImpl implements RoomService{
 	public void addroom(Map<String, Object> map) {
 		roomMapper.addroom(map);
 	}
+	
+	@Override
+	public List<Map<String, Object>> findroom() {
+		
+		return roomMapper.findroom();
+	}
 }

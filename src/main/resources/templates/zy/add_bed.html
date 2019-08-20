@@ -6,7 +6,32 @@
     <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
     <script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
     <script type="text/javascript" th:src="@{'/js/jquery.min.js'}"></script>
-    <script type="text/javascript" th:src="@{'/js/bed/update.js'}"></script>
+    <!--<script type="text/javascript" th:src="@{'/js/bed/update.js'}"></script>-->
+    <script type="text/javascript" th:inline="none">
+        layui.use([ 'form', 'layer','jquery' ], function() {
+            var form = layui.form;
+            var layer = layui.layer;
+            var $ = layui.$;
+            $.ajax({
+                url: "/findroom_bed",
+                type: "post",
+                async: false,
+                dataType: "json",//后台返回的是一个json格式的数据
+                success: function (data) {
+                    //data，即为返回的json,它本身的类型是map
+                    //如果json的类型是map,循环取到的内容分别为：key(对应map中的键),value(对应map中的值)
+                    $.each(data, function (index, map) {
+                        $("<option value='" + map.room_id + "'>" + map.room_name + "</option>").appendTo("#room");
+                    });
+                    form.render('select');//菜单渲染 把内容加载进去
+                }
+
+            });
+            form.render();
+            form.render('select' ,'test'); //刷新select选择框渲染//菜单渲染 把内容加载进去
+        });
+
+    </script>
 </head>
 <body>
 <form class="layui-form"  id="mybm">
@@ -15,15 +40,8 @@
 
         <label class="layui-form-label">房间编号</label>
         <div class="layui-input-block">
-            <select name="bed_room_id" lay-filter="aihao">
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
+            <select name="bed_room_id" lay-filter="aihao" id="room">
+
             </select>
         </div>
     </div>

@@ -82,4 +82,5 @@
   <select id="findadminer" parameterType="map" resultType="map">
     select stafff_id FROM adminer where username=#{username} and  password=#{pwd}
   </select>
+
 </mapper>

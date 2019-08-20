@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        .demo-carousel{height: 200px; line-height: 200px; text-align: center;}
+    </style>
+</head>
+<body>
+<h1>床位</h1>
+<table class="layui-hide" id="bmall" lay-filter="text"></table>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script type="text/javascript" th:inline="none">
+    layui.use(['layer','table','jquery','form' ],function(){
+        var table  = layui.table,
+            layer=layui.layer,
+            form = layui.form,
+            $ = jQuery = layui.$;
+        table.render({
+            elem:'#bmall'//要绑定的数据表格
+            ,url: '/loadAllbeed' //数据接口
+            ,height: 'full' //高度最大化
+            ,page: true //开启分页
+            ,skin: 'sm' //行边框风格
+            ,even: true //开启隔行背景
+            ,title:"" //标题
+            ,text:"数据显示异常"
+            ,page:true//分页
+            ,limits:[1,2,3,5,10,20,30]//显示条数列表
+            ,toolbar:"#toolbarBm" //显示工具栏
+            ,cols:[[
+                {field:"bed_id", align: "center",title:"房间编号",width:"8%", sort: true},
+                {field:"room_lc", align: "center",title:"房间楼层",width:"8%", sort: true},
+                {field:"room_con", align: "center",title:"房间简介",width:"8%",},
+                {field:"bed_id", align: "center",title:"床位编号",width:"8%", sort: true},
+                {field:"room_name", align: "center",title:"房间名称",width:"17%", sort: true},
+                {field:"bed_type", align: "center",title:"是否被使用", templet: '#checkboxTpl', width:"18%" },
+                {field:"bed_money", align: "center",title:"每月/元",width:"20%"},
+
+            ]]
+        });
+
+    });//layui.use结束标志
+
+</script>
+
+<script type="text/html" id="checkboxTpl">
+    <input type="checkbox" name="bed_type" value="{{d.bed_id}}"  disabled lay-skin="switch" lay-text="有人|空床" lay-filter="lockDemo" {{ d.bed_type == 1 ? 'checked' : '' }}>
+</script>
+</body>
+</html>

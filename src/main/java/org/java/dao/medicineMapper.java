@@ -11,7 +11,8 @@ import java.util.Map;
  */
 @Mapper
 public interface medicineMapper {
-    public int drugCount(@Param("dru_name") String dru_name,@Param("dru_drugstore_no") int dru_drugstore_no);
+    List<Map<String,Object>> findallDrug();
+     public int drugCount(@Param("dru_name") String dru_name,@Param("dru_drugstore_no") int dru_drugstore_no);
     public List<Map<String, Object>> findDrug(@Param("start") int start, @Param("rows") int rows,@Param("dru_name") String dru_name,@Param("dru_drugstore_no") int dru_drugstore_no);
     public void add(Map map);
     public void update(Map map);
