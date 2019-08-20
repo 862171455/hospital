@@ -3,6 +3,7 @@ package org.java.dao;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,4 +13,5 @@ import java.util.Map;
 public interface CreateOrderMapper {
     public void createOrder(Map map);
     public Map<String,Object> findProcessInstanceId(@Param("processInstanceId") String  processInstanceId);
+    public List<Map<String, Object>> findOrder_supplier();
 }

@@ -10,6 +10,12 @@
     <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}"  media="all">
     <script th:src="@{'/layui/layui.js'}" charset="utf-8"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <script th:inline="javascript">
+        var name = [[${session.user.patient_name}]];
+        if(name=="null"){
+            alert("请编辑你的基本信息");
+        }
+    </script>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">

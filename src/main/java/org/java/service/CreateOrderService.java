@@ -9,5 +9,7 @@ import java.util.Map;
 public interface CreateOrderService {
     public void createOrder(Map map);
     public List<Map<String,Object>> showTask(String user);
+    public List<Map<String,Object>> showProcessInstance();
+    public List<Map<String, Object>> findOrder_supplier();
     //返回的所有，正在运行中的流程实例
 }

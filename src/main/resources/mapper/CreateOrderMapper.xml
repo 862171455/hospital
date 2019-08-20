@@ -8,4 +8,7 @@ insert into purchase_order1 values(#{id},#{name},#{price},#{content},#{createTim
 select * from purchase_order1 where processInstance_id=#{processInstanceId}
 
 </select>
+    <select id="findOrder_supplier" resultType="map">
+        SELECT supplier.* FROM supplier , purchase_order1 WHERE supplier.sup_no=purchase_order1.ord_supplier_no
+    </select>
 </mapper>

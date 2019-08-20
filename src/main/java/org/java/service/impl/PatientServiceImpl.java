@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,6 +36,22 @@ public class PatientServiceImpl implements PatientService {
 		patientMapper.updateDetails(map);
 	}
 	
+	@Transactional
+	@Override
+	public void addPatient(Map<String, Object> map) {
+		patientMapper.addPatient(map);
+		
+	}
+	
+	@Override
+	public List<Map<String, Object>> findalltel() {
+		return patientMapper.findalltel();
+	}
+	
+	@Override
+	public List<Map<String, Object>> findalluser() {
+		return patientMapper.findalluser();
+	}
 	
 	
 }

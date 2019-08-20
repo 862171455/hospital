@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{'/layui/css/layui.css'}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+    <script type="text/javascript" th:src="@{'/js/jquery.min.js'}"></script>
+    <script type="text/javascript" th:src="@{'/js/bed/update.js'}"></script>
+</head>
+<body>
+<form class="layui-form"  id="mybm">
+    <div class="layui-form-item">
+        <input type="hidden" name="bed_id" />
+
+        <label class="layui-form-label">房间编号</label>
+        <div class="layui-input-block">
+            <select name="bed_room_id" lay-filter="aihao">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">床位单价</label>
+        <div class="layui-input-block">
+            <input type="text" name="bed_money" lay-verify="title" autocomplete="off" oninput = "value=value.replace(/[^\d]/g,'')" class="layui-input">
+        </div>
+    </div>
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit   lay-filter="*">确定</button>
+            <button type="button" class="layui-btn layui-btn-primary" onclick="myclose()">关闭</button>
+        </div>
+    </div>
+</form>
+
+</body>
+
+
+</html>

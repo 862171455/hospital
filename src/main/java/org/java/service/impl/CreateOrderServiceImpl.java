@@ -4,6 +4,7 @@ import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.runtime.ProcessInstanceQuery;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.apache.logging.log4j.core.helpers.UUIDUtil;
@@ -38,11 +39,9 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         String id = UUIDUtil.getTimeBasedUUID().toString();
         //指定ProcessDefinitionKey,用于启动流程实例
         String processDefinitionKey = "myProcess";
-        System.out.println(processDefinitionKey);
 
         //从map中，取得用户名，该用户即为流程实例的发起者
         String userId = map.get("userId").toString();
-        System.out.println(userId);
         //设置流程实例的发起者
         identityService.setAuthenticatedUserId(userId);
 
@@ -76,5 +75,27 @@ public class CreateOrderServiceImpl implements CreateOrderService {
 
         }
         return list;
+    }
+
+    @Override
+    public List<Map<String, Object>> showProcessInstance() {
+        ProcessInstanceQuery query = runtimeService.createProcessInstanceQuery();
+        List<ProcessInstance> instance = query.list();
+        List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
+        for(ProcessInstance p:instance){
+            String InstanceId = p.getProcessInstanceId();
+            Map<String,Object> map = createOrderMapper.findProcessInstanceId(InstanceId);
+            map.put("processInstanceId", p.getProcessInstanceId());
+            map.put("processDefinitionId", p.getProcessDefinitionId());
+            map.put("activityId", p.getActivityId());//任务运行哪一个阶段
+            list.add(map);
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Map<String, Object>> findOrder_supplier() {
+        return createOrderMapper.findOrder_supplier();
     }
 }
