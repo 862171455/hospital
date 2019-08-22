@@ -14,4 +14,7 @@ public interface StaffService {
 	public void delstafff(int id);//id删除员工
 	public void updatestafff(Map<String,Object> map);//修改员工
 	public void addstafff(Map<String,Object> map);//增加员工
+	List<Map<String,Object>> findallys(int id);//科室查专家
+	Map<String,Object> findysmz(Map<String,Object> map);//门诊的医生登录
+	Map<String,Object> findyszy(Map<String,Object> map);//住院的医生登录
 }

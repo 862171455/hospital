@@ -11,5 +11,18 @@ WHERE stafff.dep_div_id=department_division.id AND department_division.div_id=di
         WHERE stafff.dep_div_id=department_division.id AND department_division.div_id=division.id AND stafff.role_id=rolee.id and stafff.id=#{id}
         ;
     </select>
+    <select id="findallys" resultType="map" parameterType="int">
+        SELECT   stafff.id AS ys_id,stafff.NAME aS ys_name,stafff.gh_money,division.NAME,department_division.* FROM stafff,division,department_division
+  WHERE stafff.dep_div_id=department_division.id
+ AND department_division.div_id=division.id and division.id=#{id}
+    </select>
 
+    <select id="findysmz" resultType="map" parameterType="map">
+        SELECT stafff.* FROM stafff,department_division,departmentt WHERE stafff.dep_div_id=department_division.id
+ AND department_division.dep_id=departmentt.id AND departmentt.id in (1,2) AND stafff.NAME=#{username} AND stafff.pwd=#{pwd}
+    </select>
+    <select id="findyszy" resultType="map" parameterType="map">
+        SELECT stafff.* FROM stafff,department_division,departmentt WHERE stafff.dep_div_id=department_division.id
+ AND department_division.dep_id=departmentt.id AND departmentt.id=3 AND stafff.NAME=#{username} AND stafff.pwd=#{pwd}
+    </select>
 </mapper>

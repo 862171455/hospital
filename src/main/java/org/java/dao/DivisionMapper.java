@@ -19,4 +19,5 @@ public interface DivisionMapper {
 	public void updatedivision(Map<String,Object> map);//修改
 	public  void  adddivision(Map<String,Object> map);//增加
 	
+	
 }

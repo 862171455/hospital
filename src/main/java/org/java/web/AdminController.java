@@ -42,10 +42,28 @@ public class AdminController {
 			
 		}
 		if (map.get("type").equals("mz")) {
-			System.out.println("mz");
+			Map<String, Object> adminer = staffService.findysmz(map);
+				System.out.println(adminer);
+				if(adminer!=null){
+					request.getSession().setAttribute("user",adminer);
+					return "/showmz";
+				}else{
+					String err="账号密码错误";
+					request.setAttribute("err",err);
+					return "/ht_login";
+				}
 		}
 		if (map.get("type").equals("zy")) {
-			System.out.println("zy");
+			Map<String, Object> adminer = staffService.findyszy(map);
+			System.out.println(adminer);
+			if(adminer!=null){
+				request.getSession().setAttribute("user",adminer);
+				return "/showzy";
+			}else{
+				String err="账号密码错误";
+				request.setAttribute("err",err);
+				return "/ht_login";
+			}
 		}
 		if (map.get("type").equals("medicine")) {
 
