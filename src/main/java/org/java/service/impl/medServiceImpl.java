@@ -42,6 +42,11 @@ public class medServiceImpl implements medService {
     }
 
     @Override
+    public void supplier_add(Map map) {
+        medicineMapper.supplier_add(map);
+    }
+
+    @Override
     @Transactional
     public void update(Map map) {
         medicineMapper.update(map);
@@ -89,11 +94,17 @@ public class medServiceImpl implements medService {
     }
 
     @Override
+    public int supplierCount(Map map) {
+        return medicineMapper.supplierCount(map);
+    }
+
+    @Override
     public Map findManagerId(String username) {
         return medicineMapper.findManagerId(username);
     }
 
     @Override
+    @Transactional
     public void updatePur(String name,String password1) {
         medicineMapper.updatePur(name,password1);
     }

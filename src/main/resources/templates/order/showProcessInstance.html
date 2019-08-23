@@ -66,8 +66,10 @@
             <td th:text="${#dates.format(k.createtime,'yyyy-MM-dd')}"></td>
             <Td style="color: pink">
                 <span th:switch="${k.activityId}">
-                    <span th:case="createOrder"}>提交采购单</span>
-                    <span th:case="createOrder1"}>提交采购单1</span>
+                    <span th:case="createOrder">提交采购单</span>
+                    <span th:case="managerAudit">药房管理人员审核</span>
+                    <span th:case="supplierAudit">供应商审核</span>
+                    <span th:case="storage">采购入库</span>
                 </span>
 
             </Td>

@@ -31,15 +31,16 @@ public class AdminController {
 	public String admin_login(@RequestParam Map<String, Object> map, HttpSession ses,Model model) {
 		if (map.get("type").equals("admin")) {
 			int i = adminerService.findadminer(map);
-			if(i!=0){Map<String, Object> adminer = staffService.findAllStaffbyid(i);
+			if (i != 0) {
+				Map<String, Object> adminer = staffService.findAllStaffbyid(i);
 				System.out.println(adminer);
-				request.getSession().setAttribute("user",adminer);
+				request.getSession().setAttribute("user", adminer);
 				return "/show";
 			}
-			String err="账号密码错误";
-			request.setAttribute("err",err);
+			String err = "账号密码错误";
+			request.setAttribute("err", err);
 			return "/ht_login";
-			
+
 		}
 		if (map.get("type").equals("mz")) {
 			System.out.println("mz");
@@ -48,21 +49,27 @@ public class AdminController {
 			System.out.println("zy");
 		}
 		if (map.get("type").equals("medicine")) {
-
-
-			int count=medService.managerCount(map);
+			int count = medService.managerCount(map);
 			if (count == 0) {
 				int count1 = medService.purCount(map);
 				if (count1 == 0) {
-					String err="账号密码错误";
-					request.setAttribute("err",err);
-					return "/ht_login";
+					int count2 = medService.supplierCount(map);
+					if (count2 == 0) {
+						String err = "账号密码错误";
+						request.setAttribute("err", err);
+						return "/ht_login";
+					} else {
+						ses.setAttribute("user", map.get("username"));
+						return "/medicine/supplier_show";
+					}
 				} else {
 					ses.setAttribute("user", map.get("username"));
 					Map map1 = medService.findPurId(map.get("username").toString());
 					model.addAttribute("map1", map1);
 					return "/medicine/purchase_show";
 				}
+
+
 			} else {
 				ses.setAttribute("user", map.get("username"));
 				Map map1 = medService.findManagerId(map.get("username").toString());
@@ -71,14 +78,9 @@ public class AdminController {
 			}
 
 
-
-
-
 		}
-		
 		return "redirect:/for/show";
 	}
-	
 	@RequestMapping("/admin/admin_out")
 	public String outsystem(){
 		request.getSession().removeAttribute("user");

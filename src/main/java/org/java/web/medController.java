@@ -71,6 +71,15 @@ public class medController {
 
 
     }
+    @RequestMapping("/allSup")
+    @ResponseBody
+    public List<Map<String,Object>> allSup(){
+
+        List<Map<String,Object>> list = medService.findSupplier();
+        return list;
+
+
+    }
     @RequestMapping("/chinese_medicine")
     @ResponseBody
     public Map chinese_medicine(){
@@ -130,4 +139,9 @@ public class medController {
         return "/ht_login";
     }
 
+    @RequestMapping("/supplier_add")
+     @ResponseBody
+        public void supplier_add(@RequestParam Map map){
+            medService.supplier_add(map);
+    }
 }
