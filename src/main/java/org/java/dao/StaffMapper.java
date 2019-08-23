@@ -12,4 +12,7 @@ import java.util.Map;
 public interface StaffMapper {
 	public List<Map<String,Object>> findAllStaff();//所有的专家
 	public Map<String,Object> findAllStaffbyid(int id);//所有的专家
+	List<Map<String,Object>> findallys(int id);//科室查专家
+	Map<String,Object> findysmz(Map<String,Object> map);//门诊的医生登录
+	Map<String,Object> findyszy(Map<String,Object> map);//住院的医生登录
 }

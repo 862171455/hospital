@@ -139,6 +139,15 @@
 			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
 			<version>1.1.0</version>
 		</dependency>
+<!--支付宝沙箱-->
+		<!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
+		<dependency>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+
 
 
 	</dependencies>

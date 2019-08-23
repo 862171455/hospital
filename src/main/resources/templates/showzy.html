@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<link rel="shortcut icon" th:href="@{'/page/favicon.ico'}"/>-->
+    <!--<link rel="bookmark" th:href="@{'/page/favicon.ico'}"/>-->
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}"  media="all">
+    <script th:src="@{'/layui//layui.js'}" charset="utf-8"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">xx医疗后台管理界面</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img th:src="@{'/favicon.ico'}"  class="layui-nav-img">
+                    <b>欢迎[[${session.user.NAME}]]</b>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a th:href="@{'/admin/admin_out'}" target="_self">退出系统</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">工作</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">拾取任务</a></dd>
+                        <dd><a href=""  target="right">处理任务</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">住院管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="" target="right">办理入院信息</a></dd>
+                        <dd><a th:href="@{'/for/room'}"  target="right">房间管理</a></dd>
+                        <dd><a th:href="@{'/for/bed'}"  target="right">床位管理</a></dd>
+                        <dd><a href=""  target="right">住院患者信息</a></dd>
+                        <dd><a href=""  target="right">出院患者信息</a></dd>
+                        <dd><a href=""  target="right">费用查询</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <iframe name="right" style="width: 100%;height:580px" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        ©
+    </div>
+</div>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['carousel', 'form'], function(){
+        var carousel = layui.carousel
+            ,form = layui.form;
+
+        //图片轮播
+        carousel.render({
+            elem: '#test10'
+            ,width: '778px'
+            ,height: '440px'
+            ,interval: 5000
+        });
+
+
+        //监听开关
+    });
+
+</script>
+</div>
+</div>
+</body>
+</html>

@@ -3,10 +3,128 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}" media="all">
+    <script type="text/javascript" th:src="@{'/js/jquery.min.js'}"></script>
     <script th:src="@{'/layui/layui.js'}" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" th:href="@{'/css/city-picker.css'}">
 </head>
 <body>
-1111111111
+<form class="layui-form"  id="mybm" lay-filter="example" name=alipayment th:action="@{/user/brguahao}" method="get" target="_blank">
+    <div class="layui-form-item">
+        <label class="layui-form-label">科室</label>
+        <div class="layui-input-block">
+            <select name="reg_type" lay-filter="ks" id="ks">
+
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">医生</label>
+        <div class="layui-input-block">
+            <select name="reg_zzys" lay-filter="ys" id="ys">
+
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-inline">
+        <label class="layui-form-label">费用</label>
+        <div class="layui-input-inline">
+            <input type="text" name="reg_money"  autocomplete="off" class="layui-input"  readonly="readonly" id="fy">
+        </div>
+        <div class="layui-form-mid layui-word-aux">元</div>
+    </div>
+</div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <input type="submit" class="layui-btn" lay-submit   lay-filter="sum" ></input>
+
+        </div>
+    </div>
+
+</form>
+
 </body>
+<script type="text/javascript" th:inline="none">
+    layui.use([ 'form', 'layer','jquery' ], function() {
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = layui.$;
+        $.ajax({
+            url: "/findregks",
+            type: "post",
+            async: false,
+            dataType: "json",//后台返回的是一个json格式的数据
+            success: function (data) {
+                //data，即为返回的json,它本身的类型是map
+                //如果json的类型是map,循环取到的内容分别为：key(对应map中的键),value(对应map中的值)
+                $.each(data, function (index, map) {
+                    $("<option value='" + map.id + "'>" + map.NAME + "</option>").appendTo("#ks");
+                });
+                form.render('select');
+
+            }
+
+        });
+        form.on('select(ks)', function(data){
+            $("#ys")[0].options.length=0;
+            var pid = data.value;
+
+
+            //通过ajax请求，加载
+            $.ajax({
+                url:"/findregys/"+pid,
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                    $.each(data,function(index,map){
+                        $("<option value='"+map.ys_id+"'>"+map.ys_name+"</option>").appendTo("#ys");
+
+                    });
+                    form.render('select');
+                }
+
+            });
+
+
+        });
+        form.on('select(ys)', function(data){
+            var pid = data.value;
+            //通过ajax请求，加载
+            $.ajax({
+                url:"/findregmoney/"+pid,
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                    form.val('example', {
+                        "reg_money": data.gh_money // "name": "value"
+                    })
+                    form.render('select');
+                }
+            });
+        });
+        // form.on('submit(sum)',function(){
+        //     $.ajax({
+        //         url:"/user/brguahao",
+        //         type:"post",
+        //         data:$("#mybm").serialize(),
+        //         dataType:"json",
+        //         success:function(){
+        //
+        //             alert("141")
+        //
+        //         }
+        //     });
+        //
+        //
+        // });
+
+    });
+
+
+
+
+
+</script>
+
 </html>

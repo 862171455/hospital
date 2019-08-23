@@ -59,4 +59,19 @@ public class StaffServiceImpl implements StaffService {
 	public void addstafff(Map<String, Object> map) {
 		stafffMapper.addstafff(map);
 	}
+	
+	@Override
+	public List<Map<String, Object>> findallys(int id) {
+		return staffMapper.findallys(id);
+	}
+	
+	@Override
+	public Map<String, Object> findysmz(Map<String, Object> map) {
+		return staffMapper.findysmz(map);
+	}
+	
+	@Override
+	public Map<String, Object> findyszy(Map<String, Object> map) {
+		return staffMapper.findyszy(map);
+	}
 }
