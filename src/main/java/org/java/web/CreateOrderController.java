@@ -188,16 +188,18 @@ public class CreateOrderController {
         return "redirect:/showTask";
 
     }
-    @RequestMapping("/storage/{taskId}/{name}/{price}/{content}/{assignee}")
+    @RequestMapping("/storage/{taskId}/{name}/{price}/{content}/{assignee}/{count}")
     public String storage(@PathVariable("taskId") String taskId,@PathVariable("name") String name,
                           @PathVariable("price") String price,@PathVariable("content") String content,
-                          @PathVariable("assignee") String assignee ){
+                          @PathVariable("assignee") String assignee,@PathVariable("count") String count
+                          ){
         taskService.complete(taskId);
         Map<String,Object> map =new HashMap<>();
         map.put("name",name);
         map.put("price",price);
         map.put("content",content);
         map.put("assignee",assignee);
+        map.put("count",count);
         createOrderService.Stock_In(map);
         return "redirect:/showTask";
 

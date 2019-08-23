@@ -45,6 +45,7 @@
             <th>编号</th>
             <th>采购单名称</th>
             <th>入库金额</th>
+            <th>采购数量</th>
             <th>采购内容</th>
             <th>入库时间</th>
             <Th>采购单经办人</Th>
@@ -55,6 +56,7 @@
             <td th:text="${sk.count}"></td>
             <td th:text="${k.in_name}"></td>
             <td th:text="${k.in_price}"></td>
+            <td th:text="${k.in_count}"></td>
             <td th:text="${k.in_content}"></td>
             <td th:text="${#dates.format(k.in_data,'yyyy/MM/dd HH:mm:ss')}"></td>
             <td th:text="${k.user_id}"></td>

@@ -48,6 +48,7 @@
             <th>任务开始时间</th>
             <th>采购单名称</th>
             <Th>采购金额</Th>
+            <th>采购数量</th>
             <th>采购详情</th>
             <Th>任务经办人</Th>
             <th>供应商单位</th>
@@ -63,6 +64,7 @@
             <td th:text="${#dates.format(k.createtime,'yyyy-MM-dd')}"></td>
             <td th:text="${k.name}"></td>
             <td th:text="${k.price}"></td>
+            <td th:text="${k.count}"></td>
             <td th:text="${k.content}"></td>
             <td th:text="${k.user_id}"></td>
             <td th:text="${k.sup_unit}"></td>
@@ -79,7 +81,7 @@
                     <a th:href="@{|/audit/${k.taskId}/${k.id}/${k.taskDefKey}|}">供应商审核</a>
                 </span>
                 <span th:if ="${k.taskDefKey eq 'storage'}">
-                    <a th:href="@{|/storage/${k.taskId}/${k.name}/${k.price}/${k.content}/${k.assignee}|}">采购入库</a>
+                    <a th:href="@{|/storage/${k.taskId}/${k.name}/${k.price}/${k.content}/${k.assignee}/${k.count}|}">采购入库</a>
                 </span>
             </Td>
             </tr>
