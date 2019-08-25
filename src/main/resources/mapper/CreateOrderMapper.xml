@@ -25,4 +25,7 @@ supplier.sup_no=purchase_order1.ord_supplier_no
     <select id="findStock_In" resultType="map">
         SELECT * FROM Stock_In
     </select>
+    <update id="updateDrug" parameterType="map">
+        UPDATE  drug SET dru_drugnum=dru_drugnum+#{count} WHERE dru_name=#{name}
+    </update>
 </mapper>

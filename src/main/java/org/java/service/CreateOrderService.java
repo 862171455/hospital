@@ -19,5 +19,6 @@ public interface CreateOrderService {
     public void OrderSumit(Map<String,Object> map);
     public void Stock_In(Map<String,Object> map);
     public List<Map<String,Object>> findStock_In();
+    public void updateDrug(Map map);
 
 }

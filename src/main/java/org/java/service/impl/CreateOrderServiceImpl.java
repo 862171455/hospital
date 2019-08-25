@@ -186,4 +186,9 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         return createOrderMapper.findStock_In();
     }
 
+    @Override
+    public void updateDrug(Map map) {
+        createOrderMapper.updateDrug(map);
+    }
+
 }

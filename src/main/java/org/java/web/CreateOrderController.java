@@ -200,6 +200,7 @@ public class CreateOrderController {
         map.put("content",content);
         map.put("assignee",assignee);
         map.put("count",count);
+        createOrderService.updateDrug(map);
         createOrderService.Stock_In(map);
         return "redirect:/showTask";
 
