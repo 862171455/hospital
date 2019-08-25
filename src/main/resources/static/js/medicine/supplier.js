@@ -31,5 +31,27 @@ layui.use(['table', 'layer', 'jquery'], function(){
             ,{field:'sup_phone', title: '供应商联系电话', width: "20%", sort: true,align:"center"}
 
         ]]
+
+    });
+    table.on('toolbar(test)', function(obj){
+        var checkStatus = table.checkStatus(obj.config.id)
+            ,data = checkStatus.data; //获取选中的数据
+        switch(obj.event) {
+            case 'add':
+                layer.open({
+                    type: 2,
+                    shade: [0.8, '#393D49'],
+                    area: ['500px', '400px'],
+                    maxmin: false,
+                    anim: 6,
+                    title: "添加供应商",
+                    content: '/for/supplier_add',
+                    zIndex: layer.zIndex, //重点1
+                    success: function(layero){
+                        layer.setTop(layero); //重点2
+                    }
+                });
+                break;
+        }
     });
 });

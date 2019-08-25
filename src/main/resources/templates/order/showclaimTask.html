@@ -24,12 +24,12 @@
 </head>
 <body>
 <blockquote class="layui-elem-quote">
-   
+
     <a class="layui-btn layui-btn-normal" href="table.html" target="_blank"></a>
 </blockquote>
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>处理采购单</legend>
+    <legend>拾取采购单</legend>
 </fieldset>
 
 <div class="layui-form">
@@ -44,52 +44,32 @@
         <tr>
             <th>编号</th>
             <th>任务名称</th>
-            <th>任务办理人</th>
             <th>任务开始时间</th>
             <th>采购单名称</th>
             <Th>采购金额</Th>
-            <th>采购数量</th>
             <th>采购详情</th>
             <Th>任务经办人</Th>
-            <th>供应商单位</th>
-            <th>供应商地址</th>
-            <th>办理任务</th>
+            <th>拾取任务</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="k,sk:${list}">
             <td th:text="${sk.count}"></td>
             <td th:text="${k.taskName}"></td>
-            <td th:text="${k.assignee}"></td>
             <td th:text="${#dates.format(k.createtime,'yyyy-MM-dd')}"></td>
             <td th:text="${k.name}"></td>
             <td th:text="${k.price}"></td>
-            <td th:text="${k.count}"></td>
             <td th:text="${k.content}"></td>
             <td th:text="${k.user_id}"></td>
-            <td th:text="${k.sup_unit}"></td>
-            <td th:text="${k.sup_address}"></td>
-
             <Td>
-                <span th:if ="${k.taskDefKey eq 'createOrder'}">
-                    <a th:href="@{|/submitOrder/${k.taskId}|}">提交采购单</a>
-                </span>
-                <span th:if ="${k.taskDefKey eq 'managerAudit'}">
-                    <a th:href="@{|/audit/${k.taskId}/${k.id}/${k.taskDefKey}|}">药房管理人员审核</a>
-                </span>
-                <span th:if ="${k.taskDefKey eq 'supplierAudit'}">
-                    <a th:href="@{|/audit/${k.taskId}/${k.id}/${k.taskDefKey}|}">供应商审核</a>
-                </span>
-                <span th:if ="${k.taskDefKey eq 'storage'}">
-                    <a th:href="@{|/storage/${k.taskId}/${k.name}/${k.price}/${k.content}/${k.assignee}/${k.count}|}">采购入库</a>
-                </span>
+                <a th:href="@{|/claim/${k.taskId}|}">拾取任务</a>
             </Td>
-            </tr>
-        
+
+        </tr>
+
         </tbody>
     </table>
 </div>
 
 </body>
 </html>
-  

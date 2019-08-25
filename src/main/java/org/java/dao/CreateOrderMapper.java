@@ -13,5 +13,10 @@ import java.util.Map;
 public interface CreateOrderMapper {
     public void createOrder(Map map);
     public Map<String,Object> findProcessInstanceId(@Param("processInstanceId") String  processInstanceId);
-    public List<Map<String, Object>> findOrder_supplier();
+    public  Map<String,Object> findOrder(@Param("id") String id);
+    public void OrderSumit(Map<String,Object> map);
+    public void Stock_In(Map<String,Object> map);
+    public List<Map<String,Object>> findStock_In();
+    public void updateDrug(Map map);
+
 }

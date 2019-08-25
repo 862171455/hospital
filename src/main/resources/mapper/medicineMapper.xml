@@ -30,6 +30,9 @@
     <insert id="add" parameterType="map">
         insert into drug values (null,#{dru_name},#{dru_properties},#{dru_specification},#{dru_date},#{dru_factory},#{dru_data_in},#{dru_release},#{dru_price},#{dru_drugstore_no},#{dru_drugnum});
     </insert>
+    <insert id="supplier_add" parameterType="map">
+        insert into supplier values (null,#{sup_unit},#{sup_address},#{sup_people},#{sup_email},#{sup_phone});
+    </insert>
 <delete id="del" parameterType="int">
     DELETE FROM drug WHERE dru_no=#{dru_no}
 </delete>
@@ -49,19 +52,22 @@
         SELECT drug.*, drugstore.* FROM drug ,drugstore WHERE drug.dru_drugstore_no=drugstore.sto_no
     </select>
     <select id="purCount" resultType="int">
-      SELECT COUNT(*) FROM purchase WHERE  pur_name=#{username} AND pur_pwd=#{pwd};
+      SELECT COUNT(*) FROM purchase WHERE  pur_admin=#{username} AND pur_pwd=#{pwd};
     </select>
     <select id="findPurId" resultType="map">
-    SELECT * FROM purchase WHERE pur_name=#{username};
+    SELECT * FROM purchase WHERE pur_admin=#{username};
     </select>
     <select id="managerCount" resultType="int">
-          SELECT COUNT(*) FROM manager WHERE  man_name =#{username} AND man_pwd=#{pwd};
+          SELECT COUNT(*) FROM manager WHERE  man_admin =#{username} AND man_pwd=#{pwd};
     </select>
     <select id="findManagerId" resultType="map">
-      SELECT * FROM manager WHERE man_name=#{username};
+      SELECT * FROM manager WHERE man_admin=#{username};
     </select>
     <select id="updatePur">
-        UPDATE  purchase SET pur_pwd  =#{password1} WHERE pur_name=#{name};
+        UPDATE  purchase SET pur_pwd  =#{password1} WHERE pur_admin=#{name};
+    </select>
+    <select id="supplierCount" resultType="int">
+          SELECT COUNT(*) FROM supplier WHERE  sup_admin=#{username} AND sup_pwd=#{pwd};
     </select>
     <select id="findyaobyid" parameterType="int" resultType="map">
        SELECT * from drug WHERE dru_no=#{id}
