@@ -26,4 +26,5 @@ public interface medicineMapper {
     public Map  findPurId(@Param("username")String username);
     public Map  findManagerId(@Param("username")String username);
     public void updatePur(@Param("name") String name,@Param("password1") String password1);
+    public Map findyaobyid(int id);
 }

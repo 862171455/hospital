@@ -34,7 +34,7 @@
             //data，即为返回的json,它本身的类型是map
             //如果json的类型是map,循环取到的内容分别为：key(对应map中的键),value(对应map中的值)
             $.each(data, function (index, map) {
-                $("<li> <a href='javascript:;'> <img src='"+map.dru_photo+"'><div><span>"+map.dru_name+"</span></div><div><span>"+map.dru_price+"元</span></div> </a> </li>").appendTo("#l");
+                $("<li> <a href='/yao/"+map.dru_no+"'> <img src='"+map.dru_photo+"'><div><span>"+map.dru_name+"</span></div><div><span>"+map.dru_price+"元</span></div> </a> </li>").appendTo("#l");
             });
         }
     });

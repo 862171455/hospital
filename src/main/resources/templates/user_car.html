@@ -1,0 +1,77 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        table,th,tr,td{
+            border: 1px black solid;
+            border-collapse: collapse;
+            align:"center";
+        }
+        a{
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover{
+            color:red;
+        }
+        span{
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        img{
+            width:120px;
+            height:90px;
+        }
+
+    </style>
+    <script th:src="@{'/js/jquery.js'}"></script>
+
+</head>
+<body style="margin: 0px">
+<div align="center"><h1>显示购物车</h1></div>
+<hr>
+<table width="60%" align="center">
+    <Tr>
+        <Th>编号</Th>
+        <Th>药品名称</Th>
+        <Th>单价</Th>
+        <Th>数量</Th>
+        <Th>小计</Th>
+        <Th>移除商品</Th>
+    </Tr>
+        <Tr align="center" th:each="k:${list}">
+            <Td th:text="${k.yaocar_id}"></Td>
+            <Td th:text="${k.dru_name}"></Td>
+            <Td th:text="${k.dru_price}"></Td>
+            <Td th:text="${k.yaocar_num}"></Td>
+            <Td th:text="${k.dru_price*k.yaocar_num}"></Td>
+            <Td>
+                <A th:href="@{|/user/delyao/${k.yaocar_yao}|}" onclick="return confirm('你确定要移除购物车吗?')">移除购物车</A>
+            </Td>
+        </Tr>
+
+</table>
+<hr>
+<div align="center">
+<form th:action="@{'/pay/aibbyao'}" method="post" target="_parent">
+    总额：<input type="text" readonly="readonly" name="money" value="" id="money">
+    <input type="submit" value="支付">
+</form>
+</div>
+&nbsp;
+<a th:href="@{'/for/user_allyao'}">继续购物</a>
+&nbsp;
+<A th:href="@{'/user/delallyao'}" onclick="return confirm('你确定要清空购物车吗?')">清空购物车</a>
+</body>
+<script th:inline="javascript">
+    var sum=0;
+    $.each([[${list}]], function (index, map) {
+        sum+=map.dru_price*map.yaocar_num
+    });
+    $("#money").val(sum);
+</script>
+</html>

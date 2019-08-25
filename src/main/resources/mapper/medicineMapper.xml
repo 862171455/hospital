@@ -63,4 +63,7 @@
     <select id="updatePur">
         UPDATE  purchase SET pur_pwd  =#{password1} WHERE pur_name=#{name};
     </select>
+    <select id="findyaobyid" parameterType="int" resultType="map">
+       SELECT * from drug WHERE dru_no=#{id}
+    </select>
 </mapper>

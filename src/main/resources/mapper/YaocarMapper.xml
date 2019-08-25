@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.YaocarMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Yaocar">
+    <id column="yaocar_id" jdbcType="INTEGER" property="yaocarId" />
+    <result column="yaocar_num" jdbcType="INTEGER" property="yaocarNum" />
+    <result column="yaocar_br" jdbcType="INTEGER" property="yaocarBr" />
+    <result column="yaocar_yao" jdbcType="INTEGER" property="yaocarYao" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yaocar_id, yaocar_num, yaocar_br, yaocar_yao
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yaocar
+    where yaocar_id = #{yaocarId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yaocar
+    where yaocar_id = #{yaocarId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Yaocar">
+    insert into yaocar (yaocar_id, yaocar_num, yaocar_br, 
+      yaocar_yao)
+    values (#{yaocarId,jdbcType=INTEGER}, #{yaocarNum,jdbcType=INTEGER}, #{yaocarBr,jdbcType=INTEGER}, 
+      #{yaocarYao,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Yaocar">
+    insert into yaocar
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yaocarId != null">
+        yaocar_id,
+      </if>
+      <if test="yaocarNum != null">
+        yaocar_num,
+      </if>
+      <if test="yaocarBr != null">
+        yaocar_br,
+      </if>
+      <if test="yaocarYao != null">
+        yaocar_yao,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yaocarId != null">
+        #{yaocarId,jdbcType=INTEGER},
+      </if>
+      <if test="yaocarNum != null">
+        #{yaocarNum,jdbcType=INTEGER},
+      </if>
+      <if test="yaocarBr != null">
+        #{yaocarBr,jdbcType=INTEGER},
+      </if>
+      <if test="yaocarYao != null">
+        #{yaocarYao,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Yaocar">
+    update yaocar
+    <set>
+      <if test="yaocarNum != null">
+        yaocar_num = #{yaocarNum,jdbcType=INTEGER},
+      </if>
+      <if test="yaocarBr != null">
+        yaocar_br = #{yaocarBr,jdbcType=INTEGER},
+      </if>
+      <if test="yaocarYao != null">
+        yaocar_yao = #{yaocarYao,jdbcType=INTEGER},
+      </if>
+    </set>
+    where yaocar_id = #{yaocarId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Yaocar">
+    update yaocar
+    set yaocar_num = #{yaocarNum,jdbcType=INTEGER},
+      yaocar_br = #{yaocarBr,jdbcType=INTEGER},
+      yaocar_yao = #{yaocarYao,jdbcType=INTEGER}
+    where yaocar_id = #{yaocarId,jdbcType=INTEGER}
+  </update>
+  <insert id="addyaocar" parameterType="map">
+    INSERT  into yaocar values(null,#{number},#{userid},#{yaoid},null,1)
+  </insert>
+  <select id="showcar" parameterType="map" resultType="map">
+    SELECT * FROM yaocar,drug WHERE dru_no=yaocar_yao AND yaocar_kj=1 AND yaocar_br=#{userid}
+  </select>
+  <select id="findcf" parameterType="map" resultType="map">
+    select * FROM  yaocar where yaocar_kj=1 and yaocar_br=#{userid} and yaocar_yao=#{yaoid}
+  </select>
+  <update id="updatenum" parameterType="map">
+    UPDATE  yaocar SET yaocar_num=yaocar_num+#{number} where yaocar_br=#{userid} and yaocar_yao=#{yaoid}
+  </update>
+  <delete id="delyao" parameterType="map">
+    DELETE from yaocar WHERE yaocar_br=#{userid} and yaocar_yao=#{yaoid}
+  </delete>
+  <delete id="delallyao" parameterType="map">
+    DELETE from yaocar WHERE yaocar_br=#{userid}
+  </delete>
+</mapper>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{'/js/jquery.js'}"></script>
+</head>
+<body>
+药物详情
+<br>
+药品名称:[[${map.dru_name}]]
+<br>
+药品规格:[[${map.dru_specification}]]
+<br>
+生产时间:[[${map.dru_date}]]
+<br>
+药品价格:[[${map.dru_price}]]元
+<br>
+药品库存数量:[[${map.dru_drugnum}]]盒
+
+<br>
+<form th:action="@{'/user/buyya'}" method="post" >
+    <input type="text" name="yaoid" th:value="${map.dru_no}" hidden="hidden"/>
+    <input type="number" name="number" required
+           autofocus min="1" th:max="${map.dru_drugnum}" value="1" id="num2"/>
+    <input type="submit" value="购买" id="sub">
+</form>
+<script>
+</script>
+</body>
+</html>

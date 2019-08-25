@@ -22,4 +22,5 @@ public interface medService {
     public int managerCount(Map map);
     public Map  findManagerId(String username);
     public void updatePur(String name,String password1);
+    public Map findyaobyid(int id);
 }

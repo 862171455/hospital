@@ -1,13 +1,16 @@
 package org.java.web;
 
+import org.java.service.YaocarService;
 import org.java.service.medService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +24,8 @@ public class medController {
     @Autowired
     private medService medService;
     
+    @Autowired
+	private YaocarService yaocarService;
     @RequestMapping("alldrug")
     @ResponseBody
     public List<Map<String,Object>> Alldrug(){
@@ -129,5 +134,56 @@ public class medController {
         session.removeAttribute("user");
         return "/ht_login";
     }
+    @RequestMapping("yao/{id}")
+    public String yaobyid(@PathVariable("id")  int id, HttpSession ses, Model model){
+        Map<String,Object> map=medService.findyaobyid(id);
+        System.out.println(map);
+        model.addAttribute("map",map);
+        return "/user_byyao";
+        
+    }
+    
+    @RequestMapping("user/buyya")
+    public String yaobyid(@RequestParam Map<String,Object> map, HttpServletRequest request){
+		
+		 Map<String,Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
+		System.out.println(user);
+		map.put("userid",user.get("patient_id"));
+		System.out.println(map);
+		if(yaocarService.findcf(map)!=null){
+			yaocarService.updatenum(map);
+		}else{
+			yaocarService.addyaocar(map);
+		}
+		
+		return "redirect:/user/showcar";
+    }
+	
+	
+	@RequestMapping("user/showcar")
+	public String showcar(@RequestParam Map<String,Object> map, HttpServletRequest request){
+		Map<String,Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
+		map.put("userid",user.get("patient_id"));
+		List<Map> showcar = yaocarService.showcar(map);
+		request.setAttribute("list",showcar);
+		System.out.println(showcar);
+		return "user_car";
+	}
+	@RequestMapping("user/delyao/{id}")
+	public String removeyao(@RequestParam Map<String,Object> map, @PathVariable("id")  int id,HttpServletRequest request){
+		Map<String,Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
+		map.put("userid",user.get("patient_id"));
+		map.put("yaoid",id);
+		System.out.println(map);
+		yaocarService.delyao(map);
+		return "redirect:/user/showcar";
+	}
+	@RequestMapping("user/delallyao")
+	public String removeallyao(@RequestParam Map<String,Object> map,HttpServletRequest request){
+		Map<String,Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
+		map.put("userid",user.get("patient_id"));
+		yaocarService.delallyao(map);
+		return "redirect:/user/showcar";
+	}
 
 }

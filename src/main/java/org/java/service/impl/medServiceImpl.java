@@ -97,4 +97,9 @@ public class medServiceImpl implements medService {
     public void updatePur(String name,String password1) {
         medicineMapper.updatePur(name,password1);
     }
+    
+    @Override
+    public Map findyaobyid(int id) {
+        return medicineMapper.findyaobyid(id);
+    }
 }
