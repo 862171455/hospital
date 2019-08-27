@@ -191,4 +191,29 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         createOrderMapper.updateDrug(map);
     }
 
+    @Override
+    public void registerOrder(Map map) {
+        //任务1：启动流程实例
+        //使用uuid产生一个值，既作为：流程实例的BusinessKey,同时，也作为业务表的主键，让它们之间建立关联
+        //指定ProcessDefinitionKey,用于启动流程实例
+        String processDefinitionKey = "myProcessgh";
+
+        //从map中，取得用户名，该用户即为流程实例的发起者
+        String userId = map.get("userId").toString();
+        String id=map.get("reg_id").toString();
+        //设置流程实例的发起者
+
+        identityService.setAuthenticatedUserId(userId);
+
+        //启动流程实例
+        ProcessInstance instance = runtimeService.startProcessInstanceByKey(processDefinitionKey,id);
+
+
+        //任务2 ： 向业务表中，增加一条业务数据
+        map.put("createTime", new Date());//采购单创单时间
+        map.put("processInstanceId", instance.getProcessInstanceId());//流程实例的 id
+
+        createOrderMapper.registerOrder(map);
+    }
+
 }

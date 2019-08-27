@@ -14,7 +14,7 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, NAME, sex, age, comeage, tel, dep_div_id, role_id, photo, content
+    id, NAME , sex, age, comeage, tel, dep_div_id, role_id, photo, content
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

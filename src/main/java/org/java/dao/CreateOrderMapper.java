@@ -18,5 +18,7 @@ public interface CreateOrderMapper {
     public void Stock_In(Map<String,Object> map);
     public List<Map<String,Object>> findStock_In();
     public void updateDrug(Map map);
+    public void registerOrder(Map map);
+
 
 }

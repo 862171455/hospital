@@ -37,8 +37,9 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">工作</a>
                     <dl class="layui-nav-child">
-                        <dd><a href=""  target="right">拾取任务</a></dd>
-                        <dd><a href=""  target="right">处理任务</a></dd>
+                        <dd><a th:href="@{'/showclaimTask_reg'}"  target="right">拾取任务</a></dd>
+                        <dd><a th:href="@{'/showback_reg'}"  target="right">归还任务</a></dd>
+                        <dd><a th:href="@{'/findRegisterOrder'}"  target="right">处理任务</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item ">
@@ -51,7 +52,12 @@
                     </dl>
                 </li>
 
-
+                <li class="layui-nav-item">
+                    <a href="javascript:;">流程监控</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{'/showProcessInstance_reg'}"  target="right">审核中的业务流程</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>
