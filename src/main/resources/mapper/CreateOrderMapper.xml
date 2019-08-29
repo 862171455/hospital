@@ -28,4 +28,7 @@ supplier.sup_no=purchase_order1.ord_supplier_no
     <update id="updateDrug" parameterType="map">
         UPDATE  drug SET dru_drugnum=dru_drugnum+#{count} WHERE dru_name=#{name}
     </update>
+    <insert id="registerOrder" parameterType="map">
+   insert into reg values(#{reg_id},#{reg_type},#{reg_zzys},#{reg_br},#{createTime},#{reg_fz},#{reg_zy},#{reg_cy},#{reg_js},#{reg_lc},#{money},#{processInstanceId},#{userId})
+    </insert>
 </mapper>

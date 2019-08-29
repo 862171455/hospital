@@ -5,10 +5,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import org.java.conf.AlipayConfig;
-import org.java.service.HisService;
-import org.java.service.YaocarService;
-import org.java.service.YaookService;
-import org.java.service.YaoorderService;
+import org.java.service.*;
 import org.java.util.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +28,9 @@ import java.util.Map;
 public class aibbController {
 	@Autowired
 	private YaocarService yaocarService;
+	@Autowired
+	private CreateOrderService createOrderService;
+
 	@Autowired
 	private YaoorderService yaoorderService;
 	@Autowired
@@ -119,14 +119,14 @@ public class aibbController {
 		Map<String,Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
 		Map<String,Object> map=new HashMap<>();
 		map.put("reg_id",request.getParameter("out_trade_no"));//回调带回来的uuid主键
+		map.put("money",request.getParameter("total_amount"));
 		map.put("reg_zzys",ysid);
 		map.put("reg_type",ksid);
 		map.put("reg_br",user.get("patient_id"));
-		System.out.println(map);
-		//创建流程实例
-		
-		request.setAttribute("ok","挂号成功");
-		return "qt_main";
+		map.put("userId",user.get("patient_username"));
+		createOrderService.registerOrder(map);
+		//创建流程实例----挂号单
+		return "redirect:/user/findRegisterOrder";
 	}
 	
 	@RequestMapping("aibb/yaook")

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.registerOrderMapper">
+    <select id="findProcessInstanceId" resultType="map">
+SELECT reg.*,stafff.NAME AS sta_name,division.* FROM reg,stafff,division WHERE processInstance_id=#{processInstanceId} AND
+reg.reg_type=stafff.id AND reg.reg_zzys=division.id
+
+</select>
+    <select id="findOrder" resultType="map">
+ select * from reg where reg_id=#{regId}
+
+ </select>
+    <insert id="OrderSumit" parameterType="map">
+ insert into dispose values(#{id},#{user},#{Createtime},#{info},#{regId},#{status},#{defKey})
+
+ </insert>
+    <insert id="doctor_med" parameterType="map">
+ insert into doctor_med values(#{id},#{user},#{Createtime},#{info},#{regId},#{defKey},#{name},#{count})
+
+ </insert>
+</mapper>
