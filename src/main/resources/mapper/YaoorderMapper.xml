@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.YaoorderMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Yaoorder">
+    <id column="yaoorder_id" jdbcType="INTEGER" property="yaoorderId" />
+    <result column="yaoorder_num" jdbcType="INTEGER" property="yaoorderNum" />
+    <result column="yaoorder_br" jdbcType="VARCHAR" property="yaoorderBr" />
+    <result column="yaoorder_yao" jdbcType="INTEGER" property="yaoorderYao" />
+    <result column="yaoorder_money" jdbcType="INTEGER" property="yaoorderMoney" />
+    <result column="yaoorder_all" jdbcType="INTEGER" property="yaoorderAll" />
+    <result column="yaoorder_dd" jdbcType="VARCHAR" property="yaoorderDd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yaoorder_id, yaoorder_num, yaoorder_br, yaoorder_yao, yaoorder_money, yaoorder_all, 
+    yaoorder_dd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yaoorder
+    where yaoorder_id = #{yaoorderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yaoorder
+    where yaoorder_id = #{yaoorderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Yaoorder">
+    insert into yaoorder (yaoorder_id, yaoorder_num, yaoorder_br, 
+      yaoorder_yao, yaoorder_money, yaoorder_all, 
+      yaoorder_dd)
+    values (#{yaoorderId,jdbcType=INTEGER}, #{yaoorderNum,jdbcType=INTEGER}, #{yaoorderBr,jdbcType=VARCHAR}, 
+      #{yaoorderYao,jdbcType=INTEGER}, #{yaoorderMoney,jdbcType=INTEGER}, #{yaoorderAll,jdbcType=INTEGER}, 
+      #{yaoorderDd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Yaoorder">
+    insert into yaoorder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yaoorderId != null">
+        yaoorder_id,
+      </if>
+      <if test="yaoorderNum != null">
+        yaoorder_num,
+      </if>
+      <if test="yaoorderBr != null">
+        yaoorder_br,
+      </if>
+      <if test="yaoorderYao != null">
+        yaoorder_yao,
+      </if>
+      <if test="yaoorderMoney != null">
+        yaoorder_money,
+      </if>
+      <if test="yaoorderAll != null">
+        yaoorder_all,
+      </if>
+      <if test="yaoorderDd != null">
+        yaoorder_dd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yaoorderId != null">
+        #{yaoorderId,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderNum != null">
+        #{yaoorderNum,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderBr != null">
+        #{yaoorderBr,jdbcType=VARCHAR},
+      </if>
+      <if test="yaoorderYao != null">
+        #{yaoorderYao,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderMoney != null">
+        #{yaoorderMoney,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderAll != null">
+        #{yaoorderAll,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderDd != null">
+        #{yaoorderDd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Yaoorder">
+    update yaoorder
+    <set>
+      <if test="yaoorderNum != null">
+        yaoorder_num = #{yaoorderNum,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderBr != null">
+        yaoorder_br = #{yaoorderBr,jdbcType=VARCHAR},
+      </if>
+      <if test="yaoorderYao != null">
+        yaoorder_yao = #{yaoorderYao,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderMoney != null">
+        yaoorder_money = #{yaoorderMoney,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderAll != null">
+        yaoorder_all = #{yaoorderAll,jdbcType=INTEGER},
+      </if>
+      <if test="yaoorderDd != null">
+        yaoorder_dd = #{yaoorderDd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yaoorder_id = #{yaoorderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Yaoorder">
+    update yaoorder
+    set yaoorder_num = #{yaoorderNum,jdbcType=INTEGER},
+      yaoorder_br = #{yaoorderBr,jdbcType=VARCHAR},
+      yaoorder_yao = #{yaoorderYao,jdbcType=INTEGER},
+      yaoorder_money = #{yaoorderMoney,jdbcType=INTEGER},
+      yaoorder_all = #{yaoorderAll,jdbcType=INTEGER},
+      yaoorder_dd = #{yaoorderDd,jdbcType=VARCHAR}
+    where yaoorder_id = #{yaoorderId,jdbcType=INTEGER}
+  </update>
+  <insert id="addorder" parameterType="map">
+    INSERT INTO yaoorder VALUE(null,#{yaocar_num},#{yaocar_br},#{yaocar_yao},null,#{money},#{ddid});
+  </insert>
+  <select id="findorder" parameterType="map" resultType="map">
+    SELECT * from yaoorder,yaook,drug WHERE yaook.yaook_id=yaoorder.yaoorder_dd AND  yaook_id=#{id} and drug.dru_no=yaoorder_yao
+  </select>
+</mapper>

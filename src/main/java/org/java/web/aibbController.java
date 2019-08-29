@@ -4,13 +4,8 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
-import org.activiti.engine.HistoryService;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
 import org.java.conf.AlipayConfig;
-import org.java.service.CreateOrderService;
-import org.java.service.YaocarService;
+import org.java.service.*;
 import org.java.util.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,6 +31,14 @@ public class aibbController {
 	@Autowired
 	private CreateOrderService createOrderService;
 
+	@Autowired
+	private YaoorderService yaoorderService;
+	@Autowired
+	private YaookService yaookService;
+	
+	@Autowired
+	private HisService hisService;
+	
 	private int ysid;
 	private int ksid;
 	@RequestMapping("user/brguahao")
@@ -127,11 +131,21 @@ public class aibbController {
 	
 	@RequestMapping("aibb/yaook")
 	public String yaook(HttpServletRequest request){
-		//创建流程实例
-		request.setAttribute("ok","支付成功");
 		Map<String,Object> map=new HashMap<>();
+		//创建流程实例
+		map.put("money",request.getParameter("total_amount"));//回调带回来的金钱
+		map.put("ddid",request.getParameter("out_trade_no"));//回调带回来的uuid主键
 		Map<String,Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
 		map.put("userid",user.get("patient_id"));
+		List<Map> showcar = yaocarService.showcar(map);
+		for(Map<String,Object> m:showcar){
+			System.out.println(m);
+			m.put("money",map.get("money"));
+			m.put("ddid",map.get("ddid"));
+			yaocarService.updatetype(map);
+			yaoorderService.addorder(m);
+		}
+		yaookService.addyaook(map);
 		yaocarService.delallyao(map);
 		return "qt_main";
 	}

@@ -50,4 +50,10 @@ public class YaocarServiceImpl implements YaocarService {
 	public void delallyao(Map map) {
 		yaocarMapper.delallyao(map);
 	}
+	@Transactional
+	@Override
+	public void updatetype(Map map) {
+		yaocarMapper.updatetype(map);
+		
+	}
 }

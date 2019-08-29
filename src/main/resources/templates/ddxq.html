@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        table,th,tr,td{
+            border: 1px black solid;
+            border-collapse: collapse;
+            align:"center";
+        }
+        a{
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover{
+            color:red;
+        }
+        span{
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        img{
+            width:120px;
+            height:90px;
+        }
+
+    </style>
+    <script th:src="@{'/js/jquery.js'}"></script>
+
+</head>
+<body style="margin: 0px">
+
+<hr>
+<table width="60%" align="center">
+    <Tr>
+        <Th>药品名称</Th>
+        <Th>单价</Th>
+        <Th>数量</Th>
+        <Th>小计</Th>
+
+    </Tr>
+    <Tr align="center" th:each="k:${list}">
+        <Td th:text="${k.dru_name}"></Td>
+        <Td th:text="${k.dru_price}"></Td>
+        <Td th:text="${k.yaoorder_num}"></Td>
+        <Td th:text="${k.dru_price*k.yaoorder_num}"></Td>
+    </Tr>
+
+</table>
+<hr>
+
+</html>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -113,4 +114,9 @@ public class medServiceImpl implements medService {
     public Map findyaobyid(int id) {
         return medicineMapper.findyaobyid(id);
     }
+    
+    @Override
+    public List<Map<String, Object>> loaddrug() {
+    	return medicineMapper.loaddrug();
+	}
 }
