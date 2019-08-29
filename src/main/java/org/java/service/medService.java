@@ -25,4 +25,5 @@ public interface medService {
     public Map  findManagerId(String username);
     public void updatePur(String name,String password1);
     public Map findyaobyid(int id);
+    public List<Map<String,Object>> loaddrug();
 }

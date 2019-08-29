@@ -16,4 +16,9 @@ public class DateUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(d);
 	}
+	public static String getFormatDateTime(String pattern, java.sql.Date dateTime){
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		return sdf.format(dateTime);
+	}
+	
 }

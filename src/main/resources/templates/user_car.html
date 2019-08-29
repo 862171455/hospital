@@ -36,7 +36,6 @@
 <hr>
 <table width="60%" align="center">
     <Tr>
-        <Th>编号</Th>
         <Th>药品名称</Th>
         <Th>单价</Th>
         <Th>数量</Th>
@@ -44,7 +43,6 @@
         <Th>移除商品</Th>
     </Tr>
         <Tr align="center" th:each="k:${list}">
-            <Td th:text="${k.yaocar_id}"></Td>
             <Td th:text="${k.dru_name}"></Td>
             <Td th:text="${k.dru_price}"></Td>
             <Td th:text="${k.yaocar_num}"></Td>

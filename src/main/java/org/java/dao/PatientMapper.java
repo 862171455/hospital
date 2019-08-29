@@ -27,5 +27,6 @@ public interface PatientMapper {
     void addPatient(Map<String,Object> map);//患者注册
     List<Map<String,Object>> findalltel();//查看已注册的手机
     List<Map<String,Object>> findalluser();//查看已注册的用户
-    
+    List<Map<String,Object>> findallbr(Map<String,Object> map);//查看全部病人
+    int findbrcount();
 }

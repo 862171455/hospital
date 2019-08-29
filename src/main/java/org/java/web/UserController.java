@@ -12,6 +12,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import org.java.service.PatientService;
+import org.java.util.JsonUtils;
 import org.java.util.MD5Demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -34,6 +36,26 @@ public class UserController {
 	private PatientService patientService;
 	@Autowired
 	private HttpServletRequest request;
+	
+	@ResponseBody
+	@RequestMapping("loadbr")
+	public String loadDepartmentt(){
+		Map<String,Object> m = new HashMap<String, Object>();
+		int page = Integer.parseInt(request.getParameter("page"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		int start = (page-1)*limit;
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("start",start);
+		map.put("limit",limit);
+		List<Map<String, Object>> list = patientService.findallbr(map);
+		int count=patientService.findbrcount();
+		m.put("code",0);
+		m.put("msg", "");
+		m.put("data",list);
+		m.put("count",count);
+		String json= JsonUtils.objectToJson(m);
+		return json;
+	}
 	
 	@RequestMapping("user/login")
 	public String login(@RequestParam Map<String,Object> map, Model model){

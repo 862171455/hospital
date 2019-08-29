@@ -53,5 +53,15 @@ public class PatientServiceImpl implements PatientService {
 		return patientMapper.findalluser();
 	}
 	
+	@Override
+	public List<Map<String, Object>> findallbr(Map<String,Object> map) {
+		return patientMapper.findallbr(map);
+	}
+	
+	@Override
+	public int findbrcount() {
+		return patientMapper.findbrcount();
+	}
+	
 	
 }

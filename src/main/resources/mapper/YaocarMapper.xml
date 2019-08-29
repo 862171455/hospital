@@ -80,13 +80,13 @@
     where yaocar_id = #{yaocarId,jdbcType=INTEGER}
   </update>
   <insert id="addyaocar" parameterType="map">
-    INSERT  into yaocar values(null,#{number},#{userid},#{yaoid},null,1)
+    INSERT  into yaocar values(null,#{number},#{userid},#{yaoid},null,null)
   </insert>
   <select id="showcar" parameterType="map" resultType="map">
-    SELECT * FROM yaocar,drug WHERE dru_no=yaocar_yao AND yaocar_kj=1 AND yaocar_br=#{userid}
+    SELECT * FROM yaocar,drug WHERE dru_no=yaocar_yao  AND yaocar_br=#{userid}
   </select>
   <select id="findcf" parameterType="map" resultType="map">
-    select * FROM  yaocar where yaocar_kj=1 and yaocar_br=#{userid} and yaocar_yao=#{yaoid}
+    select * FROM  yaocar where   yaocar_br=#{userid} and yaocar_yao=#{yaoid}
   </select>
   <update id="updatenum" parameterType="map">
     UPDATE  yaocar SET yaocar_num=yaocar_num+#{number} where yaocar_br=#{userid} and yaocar_yao=#{yaoid}
@@ -97,4 +97,7 @@
   <delete id="delallyao" parameterType="map">
     DELETE from yaocar WHERE yaocar_br=#{userid}
   </delete>
+  <update id="updatetype" parameterType="map">
+    UPDATE  yaocar SET yaocar_kj=#{ddid} where yaocar_br=#{userid}
+  </update>
 </mapper>

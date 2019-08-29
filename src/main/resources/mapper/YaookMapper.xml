@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.YaookMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Yaook">
+    <id column="yaook_id" jdbcType="VARCHAR" property="yaookId" />
+    <result column="yaook_money" jdbcType="INTEGER" property="yaookMoney" />
+    <result column="yaook_br" jdbcType="VARCHAR" property="yaookBr" />
+    <result column="cretime" jdbcType="TIMESTAMP" property="cretime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yaook_id, yaook_money, yaook_br, cretime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yaook
+    where yaook_id = #{yaookId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from yaook
+    where yaook_id = #{yaookId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Yaook">
+    insert into yaook (yaook_id, yaook_money, yaook_br, 
+      cretime)
+    values (#{yaookId,jdbcType=VARCHAR}, #{yaookMoney,jdbcType=INTEGER}, #{yaookBr,jdbcType=VARCHAR}, 
+      #{cretime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Yaook">
+    insert into yaook
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yaookId != null">
+        yaook_id,
+      </if>
+      <if test="yaookMoney != null">
+        yaook_money,
+      </if>
+      <if test="yaookBr != null">
+        yaook_br,
+      </if>
+      <if test="cretime != null">
+        cretime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yaookId != null">
+        #{yaookId,jdbcType=VARCHAR},
+      </if>
+      <if test="yaookMoney != null">
+        #{yaookMoney,jdbcType=INTEGER},
+      </if>
+      <if test="yaookBr != null">
+        #{yaookBr,jdbcType=VARCHAR},
+      </if>
+      <if test="cretime != null">
+        #{cretime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Yaook">
+    update yaook
+    <set>
+      <if test="yaookMoney != null">
+        yaook_money = #{yaookMoney,jdbcType=INTEGER},
+      </if>
+      <if test="yaookBr != null">
+        yaook_br = #{yaookBr,jdbcType=VARCHAR},
+      </if>
+      <if test="cretime != null">
+        cretime = #{cretime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where yaook_id = #{yaookId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Yaook">
+    update yaook
+    set yaook_money = #{yaookMoney,jdbcType=INTEGER},
+      yaook_br = #{yaookBr,jdbcType=VARCHAR},
+      cretime = #{cretime,jdbcType=TIMESTAMP}
+    where yaook_id = #{yaookId,jdbcType=VARCHAR}
+  </update>
+  <insert id="addyaook" parameterType="map">
+    INSERT INTO yaook VALUE(#{ddid},#{money},#{userid},now(),1);
+  </insert>
+  <select id="findyaook" resultType="map">
+  SELECT  * from yaook,patient where yaook_type=1 and patient.patient_id=yaook.yaook_br </select>
+  <update id="updatetype"  parameterType="map">
+    UPDATE  yaook SET  yaook_type=2 where yaook_id=#{id}
+      </update>
+</mapper>

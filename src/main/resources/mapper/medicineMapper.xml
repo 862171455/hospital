@@ -72,4 +72,7 @@
     <select id="findyaobyid" parameterType="int" resultType="map">
        SELECT * from drug WHERE dru_no=#{id}
     </select>
+    <select id="loaddrug" resultType="map">
+       SELECT dru_name,dru_drugnum FROM drug
+    </select>
 </mapper>

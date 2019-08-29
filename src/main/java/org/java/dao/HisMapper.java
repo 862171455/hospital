@@ -16,4 +16,8 @@ public interface HisMapper {
 	public List<Map<String,Object>> findyjfk(Map<String,Object> map);//查询全部意见
 	public int findyjfkcount();//聚合
 	public void delyjfk(int id);//删除意见
+	
+	List<Map<String,Object>> findsy();
+	void upmoney(Map map);
+	void addday();//定时添加时间
 }

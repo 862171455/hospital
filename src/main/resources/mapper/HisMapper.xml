@@ -23,5 +23,14 @@
     <delete id="delyjfk" parameterType="int">
         DELETE  FROM yjfk WHERE yj_id=#{yj_id}
     </delete>
+    <select id="findsy" resultType="map">
+        SELECT * from yysr
+    </select>
+    <update id="upmoney" parameterType="map">
+        UPDATE yysr SET  money=money+#{money} where srdate=#{time}
+    </update>
+    <insert id="addday" >
+      INSERT INTO yysr VALUES(NOW(),0)
+    </insert>
 
 </mapper>

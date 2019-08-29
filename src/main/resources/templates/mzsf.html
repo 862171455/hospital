@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        table,th,tr,td{
+            border: 1px black solid;
+            border-collapse: collapse;
+            align:"center";
+        }
+        a{
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover{
+            color:red;
+        }
+        span{
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        img{
+            width:120px;
+            height:90px;
+        }
+
+    </style>
+    <script th:src="@{'/js/jquery.js'}"></script>
+
+</head>
+<body style="margin: 0px">
+<hr>
+<table width="60%" align="center">
+    <Tr>
+        <Th>订单编号</Th>
+        <Th>付款人</Th>
+        <Th>合计金额</Th>
+        <Th>付款时间</Th>
+        <Th>操作</Th>
+    </Tr>
+    <Tr align="center" th:each="k:${list}">
+        <Td th:text="${k.yaook_id}"></Td>
+        <Td th:text="${k.patient_username}"></Td>
+        <Td th:text="${k.yaook_money}"></Td>
+        <Td th:text="${k.cretime}"></Td>
+
+        <Td>
+        <A th:href="@{|/user/yaoorder/${k.yaook_id}|}" >查看详情</A>
+        <A th:href="@{|/user/yaook/${k.yaook_id}|}" >确认</A>
+        </Td>
+
+    </Tr>
+
+</table>
+<hr>
+</body>
+
+</html>

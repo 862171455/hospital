@@ -13,5 +13,6 @@ public interface YaocarService {
 	void updatenum(Map map);//添加
 	void delyao(Map map);//删除单个
 	void delallyao(Map map);//删除全部
+	void updatetype(Map map);//生成订单编号
 }
 

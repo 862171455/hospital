@@ -218,7 +218,12 @@
   <select id="findalluser"  resultType="map">
     select  patient.patient_username FROM patient ;
   </select>
-
+  <select id="findallbr"  resultType="map" parameterType="map">
+    select  * FROM patient limit #{start},#{limit}
+  </select>
+  <select id="findbrcount" resultType="int" parameterType="map">
+    select count(*) from patient
+  </select>
 
 
 </mapper>
