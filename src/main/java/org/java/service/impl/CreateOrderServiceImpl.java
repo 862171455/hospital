@@ -79,10 +79,12 @@ public class CreateOrderServiceImpl implements CreateOrderService {
     public List<Map<String, Object>> showProcessInstance() {
         ProcessInstanceQuery query = runtimeService.createProcessInstanceQuery();
         List<ProcessInstance> instance = query.list();
+        System.out.println(instance);
         List<Map<String, Object>> list=new ArrayList<Map<String,Object>>();
         for(ProcessInstance p:instance){
             String InstanceId = p.getProcessInstanceId();
             Map<String,Object> map = createOrderMapper.findProcessInstanceId(InstanceId);
+            System.out.println(map);
             map.put("processInstanceId", p.getProcessInstanceId());
             map.put("processDefinitionId", p.getProcessDefinitionId());
             map.put("activityId", p.getActivityId());//任务运行哪一个阶段

@@ -19,5 +19,7 @@ public interface registerOrderMapper {
     public void cure(Map map);
     public void operation(Map map);
     public void operationOver(Map map);
+    public Map<String,Object> dispose(@Param("regId") String  regId);
+    public Map<String,Object> doctorMed(@Param("regId") String  regId);
 
 }

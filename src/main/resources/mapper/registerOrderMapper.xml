@@ -34,4 +34,10 @@ reg.reg_type=stafff.id AND reg.reg_zzys=division.id
     <insert id="operationOver" parameterType="map">
  insert into operationover values(#{id},#{user},#{Createtime},#{info},#{regId},#{operationover_status})
  </insert>
+    <select id="dispose" resultType="map">
+    SELECT dispose.*,reg.* FROM  dispose,reg WHERE reg.reg_id=#{regId} AND reg.reg_id=dispose.dis_reg_id
+    </select>
+    <select id="doctorMed" resultType="map">
+      SELECT doctor_med.*,reg.* FROM  doctor_med,reg WHERE reg.reg_id=#{regId} AND reg.reg_id=doctor_med.doctor_reg_id
+    </select>
 </mapper>

@@ -62,7 +62,7 @@ public class RegisterOrderController {
         return "redirect:/user/findRegisterOrder";
     }
     @RequestMapping("/showProcessInstance_reg")
-    public String showProcessInstance(Model model) {
+    public String showProcessInstance_reg(Model model) {
         // 得到正在运行中的流程中实例（流程实例的信息+它对应的业务数据）
         List<Map<String,Object>> list =registerOrderService.showProcessInstance();
         model.addAttribute("list", list);
@@ -133,15 +133,34 @@ public class RegisterOrderController {
         return "redirect:/findRegisterOrder";
 
     }
-    @RequestMapping("/out_reg/{taskId}")
-    public String storage(@PathVariable("taskId") String taskId){
-        registerOrderService.storage(taskId);
-        return "redirect:/user/findRegisterOrder";
+    @RequestMapping("/out_reg/{taskId}/{regId}/{DefKey}")
+    public String out_reg(@PathVariable("taskId") String taskId,@PathVariable("regId") String regId,@PathVariable("DefKey") String DefKey, Model model){
+        Map<String, Object> map = registerOrderService.dispose(regId);
+        Map<String, Object> map1 = registerOrderService.doctorMed(regId);
+        System.out.println(map);
+        System.out.println(map1);
 
+        if(map!=null&&map1==null){
+            map.put("createTime", new Date());
+            model.addAttribute("map", map);
+            model.addAttribute("taskId", taskId);
+            model.addAttribute("regId", regId);
+            model.addAttribute("DefKey", DefKey);
+            return "/order/out_reg";
+        }if(map!=null&&map1!=null){
+            map.put("createTime", new Date());
+            model.addAttribute("map", map);
+            model.addAttribute("map1",map1);
+            model.addAttribute("taskId", taskId);
+            model.addAttribute("regId", regId);
+            model.addAttribute("DefKey", DefKey);
+            return "/order/out_reg1";
+        }
+        return null;
     }
 
-    @RequestMapping("/med_reg/{taskId}/{assignee}/{regId}/{DefKey}")
-    public String medicine(@PathVariable("taskId") String taskId,@PathVariable("assignee") String assignee,@PathVariable("regId") String regId,@PathVariable("DefKey") String DefKey, Model model)
+    @RequestMapping("/med_reg/{taskId}/{regId}/{DefKey}")
+    public String medicine(@PathVariable("taskId") String taskId,@PathVariable("regId") String regId,@PathVariable("DefKey") String DefKey, Model model)
     {
         Map<String, Object> map = registerOrderService.findOrder(regId);
         map.put("createTime", new Date());//采购单创单时间
@@ -165,7 +184,7 @@ public class RegisterOrderController {
     @RequestMapping("/finance_reg/{taskId}")
     public String finance_reg(@PathVariable("taskId") String taskId){
         registerOrderService.storage(taskId);
-        return "redirect:/findRegisterOrder";
+        return "redirect:/user/findRegisterOrder";
 
     }
     @RequestMapping("/check_reg/{taskId}/{regId}/{DefKey}")
@@ -227,7 +246,7 @@ public class RegisterOrderController {
     @RequestMapping("/financeC/{taskId}")
     public String financeC(@PathVariable("taskId") String taskId){
         registerOrderService.storage(taskId);
-        return "redirect:/findRegisterOrder";
+        return "redirect:/user/findRegisterOrder";
 
     }
     @RequestMapping("/bed/{taskId}/{regId}/{DefKey}")
@@ -313,6 +332,12 @@ public class RegisterOrderController {
     public String usertask17(@PathVariable("taskId") String taskId){
         registerOrderService.storage(taskId);
         return "redirect:/findRegisterOrder";
+
+    }
+    @RequestMapping("/out_hospital/{taskId}")
+    public String out_hospital(@PathVariable("taskId") String taskId){
+        registerOrderService.storage(taskId);
+        return "redirect:/user/findRegisterOrder";
 
     }
 }

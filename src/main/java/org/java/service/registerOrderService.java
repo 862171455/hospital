@@ -1,5 +1,7 @@
 package org.java.service;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 import java.util.Map;
 
@@ -22,4 +24,6 @@ public interface registerOrderService {
     public void cure(Map map);
     public void operation(Map map);
     public void operationOver(Map map);
+    public Map<String,Object> dispose(String regId);
+    public Map<String,Object> doctorMed(String regId);
 }

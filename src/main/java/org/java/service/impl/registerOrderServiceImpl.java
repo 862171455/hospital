@@ -265,4 +265,14 @@ public class registerOrderServiceImpl implements registerOrderService {
         map.put("Createtime",Createtime);
         registerOrderMapper.operationOver(map);
     }
+
+    @Override
+    public Map<String, Object> dispose(String regId) {
+        return registerOrderMapper.dispose(regId);
+    }
+
+    @Override
+    public Map<String, Object> doctorMed(String regId) {
+        return registerOrderMapper.doctorMed(regId);
+    }
 }

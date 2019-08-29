@@ -70,8 +70,11 @@
                 <span th:if ="${k.taskDefKey eq 'diagnose'}">
                     <a th:href="@{|/audit_reg/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">医生初诊断</a>
                 </span>
+                <span th:if ="${k.taskDefKey eq 'medicine'}">
+                    <a th:href="@{|/med_reg/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">医生开药</a>
+                </span>
                 <span th:if ="${k.taskDefKey eq 'out'}">
-                    <a th:href="@{|/out_reg/${k.taskId}|}">离开医院</a>
+                    <a th:href="@{|/out_reg/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">我的病历单</a>
                 </span>
                 <span th:if ="${k.taskDefKey eq 'finance'}">
                     <a th:href="@{|/finance_reg/${k.taskId}}">拿药交费</a>
