@@ -31,6 +31,11 @@ public class YaookServiceImpl implements YaookService {
 	}
 	
 	@Override
+	public List<Map<String, Object>> findyaookbyid(Map map) {
+		return yaookMapper.findyaookbyid(map);
+	}
+	
+	@Override
 	public void updatetype(Map map) {
 		yaookMapper.updatetype(map);
 	}

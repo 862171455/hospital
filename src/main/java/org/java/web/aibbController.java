@@ -6,6 +6,7 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import org.java.conf.AlipayConfig;
 import org.java.service.*;
+import org.java.util.DateUtils;
 import org.java.util.UuidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -124,6 +125,8 @@ public class aibbController {
 		map.put("reg_type",ksid);
 		map.put("reg_br",user.get("patient_id"));
 		map.put("userId",user.get("patient_username"));
+		map.put("time", DateUtils.getnow());
+		hisService.upmoney(map);//收益
 		createOrderService.registerOrder(map);
 		//创建流程实例----挂号单
 		return "redirect:/user/findRegisterOrder";
@@ -147,8 +150,49 @@ public class aibbController {
 		}
 		yaookService.addyaook(map);
 		yaocarService.delallyao(map);
+		map.put("time", DateUtils.getnow());
+		hisService.upmoney(map);//收益
+		
 		return "qt_main";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@ResponseBody
 	@RequestMapping("user/payi")

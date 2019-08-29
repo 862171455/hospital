@@ -27,6 +27,21 @@
                 }
 
             });
+            $.ajax({
+                url: "/allyaoname",
+                type: "post",
+                async: false,
+                dataType: "json",//后台返回的是一个json格式的数据
+                success: function (data) {
+                    //data，即为返回的json,它本身的类型是map
+                    //如果json的类型是map,循环取到的内容分别为：key(对应map中的键),value(对应map中的值)
+                    $.each(data, function (index, map) {
+                        $("<option value='" + map.sup_no + "'>" + map.dru_name + "</option>").appendTo("#yaoname");
+                    });
+                    form.render('select');//菜单渲染 把内容加载进去
+                }
+
+            });
             form.render();
             form.render('select' ,'test'); //刷新select选择框渲染//菜单渲染 把内容加载进去
         });
@@ -37,9 +52,12 @@
 <h1 align="center"><b>发起采购单</b></h1>
 <form class="layui-form" th:action="@{'/createOrder'}" lay-filter="example">
     <div class="layui-form-item">
-        <label class="layui-form-label">采购单名称</label>
+
+        <label class="layui-form-label">采购药品</label>
         <div class="layui-input-block">
-            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input">
+            <select name="name" lay-filter="aihao" id="yaoname">
+
+            </select>
         </div>
     </div>
     <div class="layui-form-item">

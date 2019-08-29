@@ -26,4 +26,5 @@ public interface medService {
     public void updatePur(String name,String password1);
     public Map findyaobyid(int id);
     public List<Map<String,Object>> loaddrug();
+    void updateyaonum(Map map);//拿药
 }

@@ -28,7 +28,7 @@ public class StaffServiceImpl implements StaffService {
 	}
 	
 	//@Cacheable("findAllStaffbyid")
-	@Override
+	
 	public Map<String, Object> findAllStaffbyid(int id) {
 		return staffMapper.findAllStaffbyid(id);
 	}

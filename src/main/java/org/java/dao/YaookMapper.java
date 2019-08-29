@@ -24,4 +24,5 @@ public interface YaookMapper {
     
     List<Map<String,Object>> findyaook();//确认收费列表
     void  updatetype(Map map);//修改状态
+    List<Map<String,Object>> findyaookbyid(Map map);//单个用户
 }

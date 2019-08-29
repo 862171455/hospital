@@ -15,5 +15,6 @@ public interface HisService {
 	public void delyjfk(int id);//删除意见
 	Map<String,Object> findsy();
 	void addday();//定时添加时间
+	void upmoney(Map map);//每日收益
 	
 }

@@ -119,4 +119,11 @@ public class medServiceImpl implements medService {
     public List<Map<String, Object>> loaddrug() {
     	return medicineMapper.loaddrug();
 	}
+ 
+	@Transactional
+    @Override
+    public void updateyaonum(Map map) {
+        medicineMapper.updateyaonum(map);
+        
+    }
 }
