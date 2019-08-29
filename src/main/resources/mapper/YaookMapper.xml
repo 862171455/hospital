@@ -84,7 +84,10 @@
   </insert>
   <select id="findyaook" resultType="map">
   SELECT  * from yaook,patient where yaook_type=1 and patient.patient_id=yaook.yaook_br </select>
+  <select id="findyaookbyid" resultType="map" parameterType="map">
+    SELECT  * from yaook,patient where yaook_type=2 and patient.patient_id=yaook.yaook_br and patient.patient_id=#{id} </select>
   <update id="updatetype"  parameterType="map">
     UPDATE  yaook SET  yaook_type=2 where yaook_id=#{id}
       </update>
+
 </mapper>

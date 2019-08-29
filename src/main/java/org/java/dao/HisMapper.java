@@ -18,6 +18,6 @@ public interface HisMapper {
 	public void delyjfk(int id);//删除意见
 	
 	List<Map<String,Object>> findsy();
-	void upmoney(Map map);
+	void upmoney(Map map);//每日收益
 	void addday();//定时添加时间
 }

@@ -82,9 +82,16 @@ public class medController {
 
         List<Map<String,Object>> list = medService.findSupplier();
         return list;
-
-
-    }
+        }
+        
+    @ResponseBody
+	@RequestMapping("allyaoname")
+	public List<Map<String,Object>> allyaoname(){
+	
+		List<Map<String,Object>> list = medService.loaddrug();
+		return list;
+	}
+    
     @RequestMapping("/chinese_medicine")
     @ResponseBody
     public Map chinese_medicine(){
@@ -194,6 +201,7 @@ public class medController {
 		yaocarService.delallyao(map);
 		return "redirect:/user/showcar";
 	}
+	
 
     @RequestMapping("/supplier_add")
      @ResponseBody

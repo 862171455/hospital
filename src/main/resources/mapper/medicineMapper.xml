@@ -75,4 +75,7 @@
     <select id="loaddrug" resultType="map">
        SELECT dru_name,dru_drugnum FROM drug
     </select>
+    <update id="updateyaonum" parameterType="map">
+        UPDATE  drug SET  dru_drugnum=dru_drugnum-#{number} where dru_no=#{id}
+    </update>
 </mapper>

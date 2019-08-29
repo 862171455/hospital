@@ -30,4 +30,5 @@ public interface medicineMapper {
     public void updatePur(@Param("name") String name,@Param("password1") String password1);
     public Map findyaobyid(int id);
     public List<Map<String,Object>> loaddrug();
+    void updateyaonum(Map map);//拿药
 }

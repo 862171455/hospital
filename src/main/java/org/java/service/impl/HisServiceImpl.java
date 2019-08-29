@@ -72,4 +72,9 @@ public class HisServiceImpl implements HisService {
 		hisMapper.addday();
 		
 	}
+	@Transactional
+	@Override
+	public void upmoney(Map map) {
+	hisMapper.upmoney(map);
+	}
 }

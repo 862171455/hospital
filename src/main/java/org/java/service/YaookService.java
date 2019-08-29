@@ -9,6 +9,7 @@ import java.util.Map;
 public interface YaookService {
 	void addyaook(Map map);//订单
 	List<Map<String,Object>> findyaook();//确认收费列表
+	List<Map<String,Object>> findyaookbyid(Map map);//单个用户
 	void  updatetype(Map map);//修改状态
 }
 
