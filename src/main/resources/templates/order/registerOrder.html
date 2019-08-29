@@ -73,8 +73,50 @@
                 <span th:if ="${k.taskDefKey eq 'out'}">
                     <a th:href="@{|/out_reg/${k.taskId}|}">离开医院</a>
                 </span>
-                <span th:if ="${k.taskDefKey eq 'medicine'}">
-                    <a th:href="@{|/med_reg/${k.taskId}/${k.assignee}/${k.reg_id}/${k.taskDefKey}|}">医生开药</a>
+                <span th:if ="${k.taskDefKey eq 'finance'}">
+                    <a th:href="@{|/finance_reg/${k.taskId}}">拿药交费</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'check'}">
+                    <a th:href="@{|/check_reg/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">进行各项检查</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'checkA'}">
+                    <a th:href="@{|/check_A/${k.taskId}|}">核磁共振</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'checkB'}">
+                    <a th:href="@{|/check_A/${k.taskId}|}">放射检查</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'checkC'}">
+                    <a th:href="@{|/check_A/${k.taskId}|}">血液检查</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'checkD'}">
+                    <a th:href="@{|/check_A/${k.taskId}|}">尿液检查</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'checkover'}">
+                    <a th:href="@{|/checkover/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">检查结果判断</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'financeC'}">
+                    <a th:href="@{|/financeC/${k.taskId}|}">住院交费</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'bed'}">
+                    <a th:href="@{|/bed/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">分配床位</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'operation'}">
+                    <a th:href="@{|/operation/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">手术</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'operationA'}">
+                    <a th:href="@{|/operationA/${k.taskId}|}">阑尾手术</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'operationB'}">
+                    <a th:href="@{|/operationA/${k.taskId}|}">心脏手术</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'operationC'}">
+                    <a th:href="@{|/operationA/${k.taskId}|}">良性肿瘤手术</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'operationover'}">
+                    <a th:href="@{|/operationOver/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">手术结束检验</a>
+                </span>
+                <span th:if ="${k.taskDefKey eq 'usertask17'}">
+                    <a th:href="@{|/usertask17/${k.taskId}|}">开始一些简单的治疗</a>
                 </span>
             </Td>
         </tr>

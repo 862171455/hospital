@@ -20,9 +20,9 @@
 </script>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>医生初步诊断结果</legend>
+    <legend>手术结束检验报告</legend>
 </fieldset>
-<form class="layui-form" th:action="@{'/OrderSumit_reg'}">
+<form class="layui-form" th:action="@{'/operationOver_reg'}">
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label"></label>
@@ -39,29 +39,21 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">诊断时间</label>
+                    <label class="layui-form-label">时间</label>
                     <div class="layui-input-inline">
                         <input type="text" th:value="${#dates.format(map?.createTime,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
-
             <div class="layui-form-item">
-                <label class="layui-form-label">是否生病</label>
+                <label class="layui-form-label">患者的康复情况</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="status" value="1" title="是" >
-                    <input type="radio" name="status" value="0" title="否">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">判断</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="eat" value="1" title="吃药">
-                    <input type="radio" name="eat" value="0" title="进一步检查">
+                    <input type="radio" name="operationover_status" value="0" title="良好">
+                    <input type="radio" name="operationover_status" value="1" title="再深入进行检查">
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">诊断结果</label>
+                <label class="layui-form-label">手术诊断建议</label>
                 <div class="layui-input-block">
                     <textarea placeholder="" class="layui-textarea" name="info"></textarea>
                 </div>

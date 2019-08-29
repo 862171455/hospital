@@ -14,4 +14,10 @@ public interface registerOrderMapper {
     public  Map<String,Object> findOrder(@Param("regId") String regId);
     public void OrderSumit(Map<String,Object> map);
     public void doctor_med(Map map);
+    public void detailsCheck(Map map);
+    public void checkOver(Map map);
+    public void cure(Map map);
+    public void operation(Map map);
+    public void operationOver(Map map);
+
 }

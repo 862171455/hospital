@@ -18,4 +18,20 @@ reg.reg_type=stafff.id AND reg.reg_zzys=division.id
  insert into doctor_med values(#{id},#{user},#{Createtime},#{info},#{regId},#{defKey},#{name},#{count})
 
  </insert>
+    <insert id="detailsCheck" parameterType="map">
+ insert into  check_body values(#{id},#{user},#{Createtime},#{info},#{regId},#{detailsCheck})
+
+ </insert>
+    <insert id="checkOver" parameterType="map">
+ insert into checkover values(#{id},#{user},#{Createtime},#{info},#{regId},#{detailsCheckover})
+ </insert>
+    <insert id="cure" parameterType="map">
+ insert into cure values(#{id},#{user},#{Createtime},#{info},#{regId},#{status})
+ </insert>
+    <insert id="operation" parameterType="map">
+ insert into operation values(#{id},#{user},#{Createtime},#{regId},#{operationtype})
+ </insert>
+    <insert id="operationOver" parameterType="map">
+ insert into operationover values(#{id},#{user},#{Createtime},#{info},#{regId},#{operationover_status})
+ </insert>
 </mapper>

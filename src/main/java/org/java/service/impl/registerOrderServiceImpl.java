@@ -137,15 +137,19 @@ public class registerOrderServiceImpl implements registerOrderService {
 
         String key = map.get("defKey").toString();
         String val = map.get("status").toString();
-        String eat = map.get("eat").toString();
-        Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put(key,val);
-        variables.put("eat",eat);
-        System.out.println(variables);
-
-
-        String taskId = (String) map.get("taskId");
-        taskservice.complete(taskId, variables);
+        String eat = (String) map.get("eat");
+        if(eat==null){
+            Map<String, Object> variables = new HashMap<String, Object>();
+            variables.put(key,val);
+            String taskId = (String) map.get("taskId");
+            taskservice.complete(taskId,variables);
+        }else{
+            Map<String, Object> variables = new HashMap<String, Object>();
+            variables.put("eat",eat);
+            variables.put(key,val);
+            String taskId = (String) map.get("taskId");
+            taskservice.complete(taskId,variables);
+        }
 
         String id = UUIDUtil.getTimeBasedUUID().toString();
         Date Createtime = new Date();
@@ -170,5 +174,95 @@ public class registerOrderServiceImpl implements registerOrderService {
             map.put("id",id);
             map.put("Createtime",Createtime);
             registerOrderMapper.doctor_med(map);
+    }
+
+
+
+    @Transactional
+    public void detailsCheck(Map map) {
+        String key = map.get("defKey").toString();
+        String val="1";
+        String vals = map.get("vals").toString();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put(key,val);
+        variables.put("detailsCheck",vals);
+
+        String taskId = (String) map.get("taskId");
+        taskservice.complete(taskId,variables);
+
+        String id = UUIDUtil.getTimeBasedUUID().toString();
+        Date Createtime = new Date();
+        map.put("id", id);
+        map.put("Createtime",Createtime);
+        registerOrderMapper.detailsCheck(map);
+    }
+    @Transactional
+    @Override
+    public void checkOver(Map map) {
+        String key = map.get("defKey").toString();
+        String val = map.get("detailsCheckover").toString();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put(key,val);
+        String taskId = (String) map.get("taskId");
+        taskservice.complete(taskId,variables);
+        String id = UUIDUtil.getTimeBasedUUID().toString();
+        Date Createtime = new Date();
+        map.put("id", id);
+        map.put("Createtime",Createtime);
+        registerOrderMapper.checkOver(map);
+    }
+    @Transactional
+    @Override
+    public void cure(Map map) {
+        String key = map.get("defKey").toString();
+        String val="1";
+        String vals = map.get("status").toString();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put(key,val);
+        variables.put("cure",vals);
+
+        String taskId = (String) map.get("taskId");
+        taskservice.complete(taskId,variables);
+
+        String id = UUIDUtil.getTimeBasedUUID().toString();
+        Date Createtime = new Date();
+        map.put("id", id);
+        map.put("Createtime",Createtime);
+        registerOrderMapper.cure(map);
+    }
+    @Transactional
+    @Override
+    public void operation(Map map) {
+        String key = map.get("defKey").toString();
+        String val="1";
+        String vals = map.get("vals").toString();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put(key,val);
+        variables.put("operationtype",vals);
+
+        String taskId = (String) map.get("taskId");
+        taskservice.complete(taskId,variables);
+
+        String id = UUIDUtil.getTimeBasedUUID().toString();
+        Date Createtime = new Date();
+        map.put("id", id);
+        map.put("Createtime",Createtime);
+        registerOrderMapper.operation(map);
+    }
+
+    @Override
+    @Transactional
+    public void operationOver(Map map) {
+        String key = map.get("defKey").toString();
+        String val = map.get("operationover_status").toString();
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put(key,val);
+        String taskId = (String) map.get("taskId");
+        taskservice.complete(taskId,variables);
+        String id = UUIDUtil.getTimeBasedUUID().toString();
+        Date Createtime = new Date();
+        map.put("id", id);
+        map.put("Createtime",Createtime);
+        registerOrderMapper.operationOver(map);
     }
 }
