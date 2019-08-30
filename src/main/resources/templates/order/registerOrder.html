@@ -77,7 +77,7 @@
                     <a th:href="@{|/out_reg/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">我的病历单</a>
                 </span>
                 <span th:if ="${k.taskDefKey eq 'finance'}">
-                    <a th:href="@{|/finance_reg/${k.taskId}}">拿药交费</a>
+                    <a th:href="@{|/finance_reg/${k.taskId}/${k.reg_id}|}">拿药交费</a>
                 </span>
                 <span th:if ="${k.taskDefKey eq 'check'}">
                     <a th:href="@{|/check_reg/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">进行各项检查</a>
@@ -98,7 +98,7 @@
                     <a th:href="@{|/checkover/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">检查结果判断</a>
                 </span>
                 <span th:if ="${k.taskDefKey eq 'financeC'}">
-                    <a th:href="@{|/financeC/${k.taskId}|}">住院交费</a>
+                    <a th:href="@{|/financeC/${k.taskId}/${k.reg_id}|}">住院交费</a>
                 </span>
                 <span th:if ="${k.taskDefKey eq 'bed'}">
                     <a th:href="@{|/bed/${k.taskId}/${k.reg_id}/${k.taskDefKey}|}">分配床位</a>

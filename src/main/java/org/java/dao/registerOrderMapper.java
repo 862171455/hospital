@@ -21,5 +21,13 @@ public interface registerOrderMapper {
     public void operationOver(Map map);
     public Map<String,Object> dispose(@Param("regId") String  regId);
     public Map<String,Object> doctorMed(@Param("regId") String  regId);
+    public void finance(Map map);
+    public Map<String,Object> check_body(@Param("regId") String  regId);
+    public Map<String,Object> checkover(@Param("regId") String  regId);
+    public Map<String,Object> Cure(@Param("regId") String  regId);
+    public Map<String,Object> Finance(@Param("regId") String  regId);
+    public Map<String,Object> Operationover(@Param("regId") String  regId);
+    public Map<String,Object> Operation(@Param("regId") String  regId);
+
 
 }

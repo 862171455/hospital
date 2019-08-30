@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{'/layui/css/layui.css'}" media="all">
+    <script th:src="@{'/layui/layui.js'}"></script>
+</head>
+<script>
+    layui.use('form', function(){
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+        //……
+
+        //但是，如果你的HTML是动态生成的，自动渲染就会失效
+        //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+        form.render();
+    });
+</script>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>病历单</legend>
+</fieldset>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <input type="hidden" name="taskId" th:value="${taskId}">
+                <input type="hidden" name="regId" th:value="${regId}">
+                <input type="hidden" name="defKey" th:value="${DefKey}">
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">患者</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map?.user_id}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">医生诊断</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map?.dis_con}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">检查的项目</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map2?.check_detailsCheck}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">检查结果后的建议</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${map3?.checkover_con}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">住院时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${#dates.format(map3?.checkover_time,'yyyy/MM/dd HH:mm:ss')}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">住院所交的金额</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map5?.finance_money}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">病历单打印时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${#dates.format(map?.createTime,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">住院恢复期的医生诊断</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${map4?.cure_con}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                <label class="layui-form-label">手术时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" th:value="${#dates.format(map6?.operation_time,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">手术项目</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map6?.operation_operationtype}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">主治医生</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map6?.operation_user_id}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">手术后恢复期的医生诊断</label>
+                    <div class="layui-input-block">
+                        <textarea class="layui-textarea">[[${map7?.operationover_con}]]</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">恢复后继续服用的药物名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${map1?.doctor_med_name}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">药物数量</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map1?.doctor_med_count}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">药物服用说明</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map1?.doctor_con}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<center>
+    <form th:action="@{|/out_hospital/${taskId}|}" method="post">
+        <input type="submit" value="离开医院">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </form>
+</center>
+</body>
+</html>

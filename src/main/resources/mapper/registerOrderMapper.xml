@@ -40,4 +40,25 @@ reg.reg_type=stafff.id AND reg.reg_zzys=division.id
     <select id="doctorMed" resultType="map">
       SELECT doctor_med.*,reg.* FROM  doctor_med,reg WHERE reg.reg_id=#{regId} AND reg.reg_id=doctor_med.doctor_reg_id
     </select>
+    <insert id="finance" parameterType="map">
+ insert into finance values(#{id},#{user},#{regId},#{money_med},#{Createtime})
+ </insert>
+    <select id="check_body" resultType="map">
+         SELECT check_body.*,reg.* FROM  check_body,reg WHERE reg.reg_id=#{regId} AND reg.reg_id=check_body.check_regId
+    </select>
+    <select id="checkover" resultType="map">
+        SELECT checkover.*,reg.* FROM   checkover,reg WHERE reg.reg_id=#{regId} AND reg.reg_id= checkover.checkover_regId
+    </select>
+    <select id="Cure" resultType="map">
+        SELECT cure.*,reg.* FROM   cure,reg WHERE reg.reg_id=#{regId} AND reg.reg_id= cure.cure_regId
+    </select>
+    <select id="Finance" resultType="map">
+        SELECT finance.*,reg.* FROM   finance,reg WHERE reg.reg_id=#{regId} AND reg.reg_id= finance.finance_regId
+    </select>
+    <select id="Operationover" resultType="map">
+        SELECT operationover.*,reg.* FROM   operationover,reg WHERE reg.reg_id=#{regId} AND reg.reg_id= operationover.operationover_regId
+    </select>
+    <select id="Operation" resultType="map">
+         SELECT operation.*,reg.* FROM   operation,reg WHERE reg.reg_id=#{regId} AND reg.reg_id= operation.operation_regId
+    </select>
 </mapper>

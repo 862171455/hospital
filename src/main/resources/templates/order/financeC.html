@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -19,16 +20,15 @@
 </script>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>医生开药证明</legend>
+    <legend>住院交钱</legend>
 </fieldset>
-<form class="layui-form" th:action="@{'/doctor_med_reg'}">
+<form class="layui-form" th:action="@{'/financeC_money'}">
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label"></label>
             <div class="layui-input-inline">
-                <input type="hidden" name="taskId" th:value="${taskId }">
+                <input type="hidden" name="taskId" th:value="${taskId}">
                 <input type="hidden" name="regId" th:value="${regId}">
-                <input type="hidden" name="defKey" th:value="${DefKey}">
             </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
@@ -38,36 +38,27 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">开药时间</label>
+                    <label class="layui-form-label">生成住院交费时间</label>
                     <div class="layui-input-inline">
                         <input type="text" th:value="${#dates.format(map?.createTime,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">药品名称</label>
-                <div class="layui-input-block">
-                    <input type="text" name="name" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">要交的金额</label>
+                <div class="layui-input-inline">
+                    <input type="number" name="money_med" autocomplete="off" class="layui-input">
                 </div>
             </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">药品数量</label>
-            <div class="layui-input-inline">
-                <input type="number" name="count" autocomplete="off" class="layui-input">
+            <div class="layui-inline">
+                <label class="layui-form-label">住的房間床位是</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="room_bed" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">交钱</button>
             </div>
         </div>
-    </div>
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">用法用量</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="" class="layui-textarea" name="info"></textarea>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
-            </div>
 </form>
-</body>
-</html>

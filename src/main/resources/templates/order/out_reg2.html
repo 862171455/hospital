@@ -44,6 +44,18 @@
                     </div>
                 </div>
                 <div class="layui-inline">
+                    <label class="layui-form-label">检查的项目</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map2?.check_detailsCheck}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">检查结果后的建议</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${map3?.checkover_con}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
                     <label class="layui-form-label">病历单打印时间</label>
                     <div class="layui-input-inline">
                         <input type="text" th:value="${#dates.format(map?.createTime,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off" class="layui-input">
@@ -61,15 +73,15 @@
                             <input type="text" th:value="${map1?.doctor_med_count}" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">药品的使用意见</label>
-                    <div class="layui-input-block">
-                        <textarea class="layui-textarea">[[${map1?.doctor_con}]]</textarea>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">药品的使用意见</label>
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea">[[${map1?.doctor_con}]]</textarea>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </form>
 <center>
     <form th:action="@{|/out_hospital/${taskId}|}" method="post">

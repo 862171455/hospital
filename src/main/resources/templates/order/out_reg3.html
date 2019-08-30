@@ -44,27 +44,57 @@
                     </div>
                 </div>
                 <div class="layui-inline">
+                    <label class="layui-form-label">检查的项目</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map2?.check_detailsCheck}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">检查结果后的建议</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${map3?.checkover_con}" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">住院时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${#dates.format(map3?.checkover_time,'yyyy/MM/dd HH:mm:ss')}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">住院所交的金额</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map5?.finance_money}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
                     <label class="layui-form-label">病历单打印时间</label>
                     <div class="layui-input-inline">
                         <input type="text" th:value="${#dates.format(map?.createTime,'yyyy/MM/dd HH:mm:ss')}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">住院恢复期的医生诊断</label>
+                    <div class="layui-input-block">
+                        <textarea class="layui-textarea">[[${map4?.cure_con}]]</textarea>
+                    </div>
+                </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">购买的药品</label>
+                    <label class="layui-form-label">恢复后继续服用的药物名称</label>
                     <div class="layui-input-block">
                         <input type="text" th:value="${map1?.doctor_med_name}" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">购买的数量</label>
-                        <div class="layui-input-inline">
-                            <input type="text" th:value="${map1?.doctor_med_count}" autocomplete="off" class="layui-input">
-                        </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">药物数量</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map1?.doctor_med_count}" autocomplete="off" class="layui-input">
                     </div>
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">药品的使用意见</label>
-                    <div class="layui-input-block">
-                        <textarea class="layui-textarea">[[${map1?.doctor_con}]]</textarea>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">药物服用说明</label>
+                    <div class="layui-input-inline">
+                        <input type="text" th:value="${map1?.doctor_con}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>

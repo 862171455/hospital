@@ -275,4 +275,46 @@ public class registerOrderServiceImpl implements registerOrderService {
     public Map<String, Object> doctorMed(String regId) {
         return registerOrderMapper.doctorMed(regId);
     }
+   @Transactional
+    @Override
+    public void finance(Map map) {
+        String taskId = (String) map.get("taskId");
+        taskservice.complete(taskId);
+
+        String id = UUIDUtil.getTimeBasedUUID().toString();
+        Date Createtime = new Date();
+        map.put("id", id);
+        map.put("Createtime",Createtime);
+        registerOrderMapper.finance(map);
+    }
+
+    @Override
+    public Map<String, Object> check_body(String regId) {
+        return registerOrderMapper.check_body(regId);
+    }
+
+    @Override
+    public Map<String, Object> checkover(String regId) {
+        return registerOrderMapper.checkover(regId);
+    }
+
+    @Override
+    public Map<String, Object> Cure(String regId) {
+        return registerOrderMapper.Cure(regId);
+    }
+
+    @Override
+    public Map<String, Object> Finance(String regId) {
+        return registerOrderMapper.Finance(regId);
+    }
+
+    @Override
+    public Map<String, Object> Operationover(String regId) {
+        return registerOrderMapper.Operationover(regId);
+    }
+
+    @Override
+    public Map<String, Object> Operation(String regId) {
+        return registerOrderMapper.Operation(regId);
+    }
 }

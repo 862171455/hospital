@@ -26,4 +26,11 @@ public interface registerOrderService {
     public void operationOver(Map map);
     public Map<String,Object> dispose(String regId);
     public Map<String,Object> doctorMed(String regId);
+    public void finance(Map map);
+    public Map<String,Object> check_body( String  regId);
+    public Map<String,Object> checkover( String  regId);
+    public Map<String,Object> Cure(String  regId);
+    public Map<String,Object> Finance(String  regId);
+    public Map<String,Object> Operationover( String  regId);
+    public Map<String,Object> Operation(String  regId);
 }
