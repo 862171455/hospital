@@ -36,7 +36,7 @@
                     //data，即为返回的json,它本身的类型是map
                     //如果json的类型是map,循环取到的内容分别为：key(对应map中的键),value(对应map中的值)
                     $.each(data, function (index, map) {
-                        $("<option value='" + map.sup_no + "'>" + map.dru_name + "</option>").appendTo("#yaoname");
+                        $("<option value='" + map.dru_name + "'>" + map.dru_name + "</option>").appendTo("#yaoname");
                     });
                     form.render('select');//菜单渲染 把内容加载进去
                 }

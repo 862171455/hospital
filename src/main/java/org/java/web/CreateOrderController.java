@@ -61,7 +61,7 @@ public class CreateOrderController {
     public String showTask(HttpSession ses, Model model) {
         String user = (String) ses.getAttribute("user");
         List<Map<String, Object>> list = createOrderService.showTask(user);
-        model.addAttribute("list", list);
+        model.addAttribute("list",list);
         return "/order/showTask";
 
     }
